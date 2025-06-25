@@ -1,0 +1,3689 @@
+--Group 8
+--Hospital management system
+-- DML 
+
+--department
+INSERT INTO DEPARTMENT (Department_ID, Department_Name,Room_no, Floor_no, HOD_ID) VALUES
+('ORT','Orthopedics',107,1,'DR0005'),
+('ENT','Ear,Nose,Throat',108,1,'DR0007'),
+('CRD','Cardiology',109,1,'DR0011'),
+('NEU','Neurology',206,2,'DR0012'),
+('PED','Pediatrics',207,2,'DR0013'),
+('RAD','Radiology',208,2,'DR0014'),
+('DRM','Dermatology',305,3,'DR0003'),
+('SUR','Surgery',306,3,'DR0004'),
+('GYN','Gynecology',307,3,'DR0009'),
+('PSY','Psychiatry',308,3,'DR0006'),
+('ONC','Oncology',404,4,'DR0008'),
+('URO','Urology',405,4,'DR0010'),
+('NEP','Nephrology',406,4,'DR0015'),
+('ANS','Anesthesiology',407,4,'DR0016'),
+('GAS','Gastroenterology',504,5,'DR0018'),
+('PUL','Pulmonology',505,5,'DR0020'),
+('OPH','Ophthalmology',506,5,'DR0021'),
+('PAT','Pathology',507,5,'DR0001'),
+('CLN', 'Cleaner', 601, 6, 'CL0001'),
+('CSH', 'Cashier', 602, 6, 'CS0002'),
+('ADM', 'Admin Staff', 603, 6, 'AD0003'),
+('SEC', 'Security', 604, 6, 'SC0004'),
+('DRV', 'Driver', 605, 6, 'DV0005');
+
+--inventory
+INSERT INTO INVENTORY (Inventory_ID, Inventory_Name, Price, Quantity) VALUES
+('IV0001', 'Surgical Mask', 30, 1000),
+('IV0002', 'Hand Sanitizer 500ml', 40, 500),
+('IV0003', 'Digital Thermometer', 200, 200),
+('IV0004', 'Stethoscope', 1250, 80),
+('IV0005', 'Blood Pressure Monitor', 2108, 60),
+('IV0006', 'Glucometer', 525, 100),
+('IV0007', 'Pulse Oximeter', 1250, 150),
+('IV0008', 'Nitrile Gloves (Box of 100)', 465, 300),
+('IV0009', 'Syringes 5ml (Box of 100)', 400, 250),
+('IV0010', 'IV Drip Set', 75, 400),
+('IV0011', 'Alcohol Swabs (Box of 200)', 269, 180),
+('IV0012', 'Medical Tape', 10, 220),
+('IV0013', 'Bandage Roll', 40, 350),
+('IV0014', 'First Aid Kit', 700, 75),
+('IV0015', 'Antiseptic Solution 250ml', 11, 130),
+('IV0016', 'Surgical Scissors', 150, 90),
+('IV0017', 'Otoscope', 1500, 40),
+('IV0018', 'Tongue Depressors (Box of 100)', 150, 120),
+('IV0019', 'Thermal Scanner', 2000, 30),
+('IV0020', 'Face Shield',150, 250),
+('IV0021', 'Disinfectant Spray', 200, 140),
+('IV0022', 'Cotton Balls (Bag of 500)', 80, 110),
+('IV0023', 'Saline Solution 500ml', 90, 200),
+('IV0024', 'Medical Waste Bags (Pack of 50)', 250, 100),
+('IV0025', 'Surgical Gown', 700, 85),
+('IV0026', 'Elastic Bandages (Pack of 3)', 80, 160),
+('IV0027', 'Medical Tray', 400, 50),
+('IV0028', 'Nebulizer', 1027, 40),
+('IV0029', 'Examination Gloves (Box of 100)', 400, 300),
+('IV0030', 'Specimen Container', 15, 500);
+
+INSERT INTO Department_Has_Inventory (Inventory_ID, Department_ID, Quantity_Associated) VALUES
+('IV0001', 'PED', 200),
+('IV0001', 'NEU', NULL),
+('IV0001', 'GYN', 190),
+('IV0001', 'CRD', NULL),
+('IV0001', 'ORT', 150),
+('IV0001', 'ENT', NULL),
+('IV0001', 'RAD', 50),
+('IV0001', 'DRM', NULL),
+('IV0001', 'SUR', 250),
+('IV0001', 'ONC', 100),
+('IV0001', 'URO', NULL),
+('IV0001', 'NEP', 110),
+('IV0001', 'ANS', 50),
+('IV0001', 'GAS', NULL),
+('IV0001', 'PAT', 120),
+
+('IV0002', 'PED', 90),
+('IV0002', 'NEU', 100),
+('IV0002', 'GYN', 80),
+('IV0002', 'SUR', 120),
+('IV0002', 'PAT', NULL),
+('IV0002', 'CRD', 60),
+('IV0002', 'NEP', 75),
+('IV0002', 'GAS', NULL),
+
+('IV0003', 'PED', 40),
+('IV0003', 'GYN', 50),
+('IV0003', 'SUR', 65),
+('IV0003', 'NEU', NULL),
+
+('IV0004', 'SUR', 70),
+('IV0004', 'PAT', 45),
+('IV0004', 'CRD', 55),
+('IV0004', 'PED', 35),
+
+('IV0005', 'CRD', 30),
+
+('IV0006', 'NEP', 40),
+('IV0006', 'PED', 38),
+('IV0006', 'CRD', NULL),
+
+('IV0007', 'PUL', 60),
+('IV0007', 'CRD', 50),
+('IV0007', 'NEU', NULL),
+
+('IV0008', 'SUR', 100),
+('IV0008', 'PED', 60),
+('IV0008', 'ENT', NULL),
+('IV0008', 'GYN', 50),
+('IV0008', 'PAT', 80),
+('IV0008', 'CRD', 45),
+('IV0008', 'NEU', NULL),
+('IV0008', 'DRM', 30),
+('IV0008', 'ONC', 55),
+('IV0008', 'URO', NULL),
+('IV0008', 'NEP', 35),
+
+('IV0009', 'SUR', 75),
+('IV0009', 'GYN', 30),
+('IV0009', 'PED', 45),
+('IV0009', 'DRM', NULL),
+
+('IV0010', 'SUR', 100),
+
+('IV0011', 'PAT', 40),
+('IV0012', 'PAT', NULL),
+
+('IV0013', 'PED', 60),
+
+('IV0014', 'GYN', 25),
+
+('IV0015', 'DRM', 35),
+
+('IV0016', 'SUR', 40),
+
+('IV0017', 'ENT', 20),
+('IV0018', 'ENT', NULL),
+
+('IV0019', 'RAD', 10),
+
+('IV0020', 'PSY', 30),
+
+('IV0021', 'PED', 55),
+
+('IV0022', 'DRM', 65),
+('IV0022', 'ORT', 30),
+('IV0022', 'ENT', 22),
+('IV0022', 'SUR', 45),
+('IV0022', 'PAT', NULL),
+('IV0022', 'GYN', 33),
+('IV0022', 'PED', 36),
+('IV0022', 'ONC', NULL),
+('IV0022', 'URO', 28),
+
+('IV0023', 'NEP', 48),
+
+('IV0024', 'PAT', 52),
+
+('IV0025', 'ANS', 37),
+('IV0025', 'CRD', 46),
+('IV0025', 'NEU', 41),
+('IV0025', 'ENT', 38),
+('IV0025', 'GYN', 36),
+('IV0025', 'PUL', 43),
+('IV0025', 'URO', NULL),
+('IV0025', 'ONC', 44),
+('IV0025', 'GAS', 39),
+('IV0025', 'OPH', 33),
+('IV0025', 'SUR', 50),
+
+('IV0026', 'ORT', 55),
+
+('IV0027', 'SUR', 60),
+('IV0027', 'PED', 42),
+('IV0027', 'DRM', NULL),
+('IV0027', 'ENT', 34),
+('IV0027', 'GYN', 48),
+('IV0027', 'CRD', 40),
+('IV0027', 'NEU', 38),
+
+('IV0028', 'PUL', 32),
+
+('IV0029', 'NEU', 77),
+
+('IV0030', 'GAS', 26);
+
+INSERT INTO Address_Contact_Information (ID, Apartment_no, Street_no, Street_Name, City, State, Pincode) VALUES
+('DR0001', 'A2', '56', 'Hillview Avenue', 'Ahmedabad', 'Gujarat', 380002),
+('DR0002', 'A3', '34', 'Greenview Road', 'Ahmedabad', 'Gujarat', 380003),
+('DR0003', 'B1', '12', 'Lotus Lane', 'Ahmedabad', 'Gujarat', 380004),
+('DR0004', 'B2', '15', 'Rose Garden Street', 'Surat', 'Gujarat', 395001),
+('DR0005', 'C3', '18', 'Silver Oaks Road', 'Vadodara', 'Gujarat', 390005),
+('DR0006', 'C1', '22', 'Palm Street', 'Rajkot', 'Gujarat', 360001),
+('DR0007', 'D2', '45', 'Sunshine Avenue', 'Ahmedabad', 'Gujarat', 380005),
+('DR0008', 'E1', '67', 'Pearl Street', 'Gandhinagar', 'Gujarat', 382010),
+('DR0009', 'F2', '32', 'Emerald Way', 'Surat', 'Gujarat', 395002),
+('DR0010', 'G3', '29', 'Sapphire Boulevard', 'Ahmedabad', 'Gujarat', 380006),
+('DR0011', 'H1', '44', 'Crystal Avenue', 'Vadodara', 'Gujarat', 390006),
+('DR0012', 'I2', '11', 'Amber Street', 'Surat', 'Gujarat', 395003),
+('DR0013', 'J3', '38', 'Maple Drive', 'Ahmedabad', 'Gujarat', 380007),
+('DR0014', 'K1', '17', 'Oakwood Lane', 'Rajkot', 'Gujarat', 360002),
+('DR0015', 'L2', '51', 'Magnolia Way', 'Vadodara', 'Gujarat', 390007),
+('DR0016', 'M3', '60', 'Lavender Lane', 'Surat', 'Gujarat', 395004),
+('DR0017', 'N1', '27', 'Cherry Blossom Rd', 'Gandhinagar', 'Gujarat', 382011),
+('DR0018', 'O2', '72', 'Camellia Court', 'Ahmedabad', 'Gujarat', 380008),
+('DR0019', 'P3', '88', 'Iris Avenue', 'Rajkot', 'Gujarat', 360003),
+('DR0020', 'Q1', '33', 'Heather Street', 'Surat', 'Gujarat', 395005),
+('DR0021', 'R2', '96', 'Lilac Way', 'Vadodara', 'Gujarat', 390008),
+('DR0022', 'S3', '25', 'Clover Avenue', 'Ahmedabad', 'Gujarat', 380009),
+('DR0023', 'T1', '13', 'Banyan Blvd', 'Rajkot', 'Gujarat', 360004),
+('DR0024', 'U2', '46', 'Hibiscus Road', 'Gandhinagar', 'Gujarat', 382012),
+('DR0025', 'V3', '79', 'Fern Street', 'Surat', 'Gujarat', 395006),
+('DR0026', 'W1', '84', 'Birch Lane', 'Ahmedabad', 'Gujarat', 380010),
+('DR0027', 'X2', '61', 'Daisy Avenue', 'Vadodara', 'Gujarat', 390009),
+('DR0028', 'Y3', '70', 'Azalea Drive', 'Rajkot', 'Gujarat', 360005),
+('DR0029', 'Z1', '90', 'Pine Street', 'Gandhinagar', 'Gujarat', 382013),
+('DR0030', 'AA1', '10', 'Gardenia Walk', 'Surat', 'Gujarat', 395007);
+
+INSERT INTO Address_Contact_Information (ID, Apartment_no, Street_no, Street_Name, City, State, Pincode) VALUES
+('DN0001', 'APT201', '201', 'Ashram Road', 'Ahmedabad', 'Gujarat', 380009),
+('DN0002', 'APT202', '202', 'Ring Road', 'Surat', 'Gujarat', 395002),
+('DN0003', 'APT203', '203', 'Kothrud', 'Pune', 'Maharashtra', 411038),
+('DN0004', 'APT204', '204', 'Jayanagar', 'Bengaluru', 'Karnataka', 560041),
+('DN0005', 'APT205', '205', 'Park Street', 'Kolkata', 'West Bengal', 700016),
+('DN0006', 'APT206', '206', 'Anna Nagar', 'Chennai', 'Tamil Nadu', 600040),
+('DN0007', 'APT207', '207', 'Rajaji Road', 'Cochin', 'Kerala', 682011),
+('DN0008', 'APT208', '208', 'Boring Road', 'Patna', 'Bihar', 800001),
+('DN0009', 'APT209', '209', 'Lal Kuan', 'Lucknow', 'Uttar Pradesh', 226001),
+('DN0010', 'APT210', '210', 'Gandhi Road', 'Bhopal', 'Madhya Pradesh', 462001),
+('DN0011', 'APT211', '211', 'Sector 22', 'Chandigarh', 'Chandigarh', 160022),
+('DN0012', 'APT212', '212', 'MG Road', 'Indore', 'Madhya Pradesh', 452001),
+('DN0013', 'APT213', '213', 'GTB Nagar', 'Delhi', 'Delhi', 110009),
+('DN0014', 'APT214', '214', 'Hazratganj', 'Lucknow', 'Uttar Pradesh', 226001),
+('DN0015', 'APT215', '215', 'CIDCO', 'Aurangabad', 'Maharashtra', 431001),
+('DN0016', 'APT216', '216', 'Navrangpura', 'Ahmedabad', 'Gujarat', 380009),
+('DN0017', 'APT217', '217', 'Gokhale Road', 'Mumbai', 'Maharashtra', 400028),
+('DN0018', 'APT218', '218', 'Banjara Hills', 'Hyderabad', 'Telangana', 500034),
+('DN0019', 'APT219', '219', 'Civil Lines', 'Jaipur', 'Rajasthan', 302006),
+('DN0020', 'APT220', '220', 'VIP Road', 'Raipur', 'Chhattisgarh', 492001),
+('DN0021', 'APT221', '221', 'Sadar Bazaar', 'Nagpur', 'Maharashtra', 440001),
+('DN0022', 'APT222', '222', 'Charminar', 'Hyderabad', 'Telangana', 500002),
+('DN0023', 'APT223', '223', 'Tilak Road', 'Pune', 'Maharashtra', 411030),
+('DN0024', 'APT224', '224', 'Ratanlal Nagar', 'Kanpur', 'Uttar Pradesh', 208022),
+('DN0025', 'APT225', '225', 'Ajmer Road', 'Jaipur', 'Rajasthan', 302021),
+('DN0026', 'APT226', '226', 'Wakad', 'Pune', 'Maharashtra', 411057),
+('DN0027', 'APT227', '227', 'Ameerpet', 'Hyderabad', 'Telangana', 500016),
+('DN0028', 'APT228', '228', 'Jubilee Hills', 'Hyderabad', 'Telangana', 500033),
+('DN0029', 'APT229', '229', 'Sector 17', 'Chandigarh', 'Chandigarh', 160017),
+('DN0030', 'APT230', '230', 'Gariahat', 'Kolkata', 'West Bengal', 700019);
+
+INSERT INTO Address_Contact_Information (ID, Apartment_no, Street_no, Street_Name, City, State, Pincode) VALUES
+('DV0001', 'APT101', '101', 'Jawahar', 'Ahmedabad', 'Gujarat', 380001),
+('DV0002', 'APT102', '102', 'Gandhi', 'Vadodara', 'Gujarat', 390002),
+('DV0003', 'APT103', '103', 'Sardar', 'Surat', 'Gujarat', 395003),
+('DV0004', 'APT104', '104', NULL, 'Rajkot', 'Gujarat', 360004),
+('DV0005', 'APT105', '105', 'Limda chok', 'Bhavnagar', 'Gujarat', 364005),
+('DV0006', 'APT106', '106', 'Mangadiya mora', 'Jamnagar', 'Gujarat', 361006),
+('DV0007', 'APT107', '107', 'Tekra faliya', 'Gandhinagar', 'Gujarat', 382007),
+('DV0008', 'APT108', '108', 'Dhobi talav', 'Anand', 'Gujarat', 388008),
+('DV0009', 'APT109', '109', 'Pritam nagar', 'Valsad', 'Gujarat', 387009),
+('DV0010', 'APT110', '110', 'Dukan faliya', 'Mehsana', 'Gujarat', 384010);
+
+-- Nurse address data
+INSERT INTO Address_Contact_Information (ID, Apartment_no, Street_no, Street_Name, City, State, Pincode) VALUES
+('NR0001', 'B4', '21', 'Sunset Blvd', 'Ahmedabad', 'Gujarat', 380011),
+('NR0002', 'B5', '23', 'Rosemary Lane', 'Ahmedabad', 'Gujarat', 380012),
+('NR0003', 'B6', '25', 'Ivy Street', 'Ahmedabad', 'Gujarat', 380013),
+('NR0004', 'B7', '27', 'Tulip Drive', 'Ahmedabad', 'Gujarat', 380014),
+('NR0005', 'B8', '29', 'Orchid Road', 'Surat', 'Gujarat', 395008),
+('NR0006', 'B9', '31', 'Begonia Street', 'Surat', 'Gujarat', 395009),
+('NR0007', 'C4', '33', 'Poppy Avenue', 'Surat', 'Gujarat', 395010),
+('NR0008', 'C5', '35', 'Petunia Lane', 'Surat', 'Gujarat', 395011),
+('NR0009', 'C6', '37', 'Zinnia Street', 'Vadodara', 'Gujarat', 390010),
+('NR0010', 'C7', '39', 'Snapdragon Blvd', 'Vadodara', 'Gujarat', 390011),
+('NR0011', 'C8', '41', 'Foxglove Way', 'Vadodara', 'Gujarat', 390012),
+('NR0012', 'C9', '43', 'Dandelion Road', 'Vadodara', 'Gujarat', 390013),
+('NR0013', 'D4', '45', 'Daisy Crescent', 'Rajkot', 'Gujarat', 360006),
+('NR0014', 'D5', '47', 'Jasmine Walk', 'Rajkot', 'Gujarat', 360007),
+('NR0015', 'D6', '49', 'Marigold Lane', 'Rajkot', 'Gujarat', 360008),
+('NR0016', 'D7', '51', 'Carnation Street', 'Rajkot', 'Gujarat', 360009),
+('NR0017', 'D8', '53', 'Aster Drive', 'Gandhinagar', 'Gujarat', 382014),
+('NR0018', 'D9', '55', 'Camellia Blvd', 'Gandhinagar', 'Gujarat', 382015),
+('NR0019', 'E4', '57', 'Garden Street', 'Gandhinagar', 'Gujarat', 382016),
+('NR0020', 'E5', '59', 'Bloom Road', 'Gandhinagar', 'Gujarat', 382017),
+('NR0021', 'E6', '61', 'Sunflower Lane', 'Ahmedabad', 'Gujarat', 380015),
+('NR0022', 'E7', '63', 'Lilac Crescent', 'Ahmedabad', 'Gujarat', 380016),
+('NR0023', 'E8', '65', 'Violet Street', 'Ahmedabad', 'Gujarat', 380017),
+('NR0024', 'E9', '67', 'Heather Way', 'Ahmedabad', 'Gujarat', 380018),
+('NR0025', 'F4', '69', 'Hibiscus Blvd', 'Surat', 'Gujarat', 395012),
+('NR0026', 'F5', '71', 'Peony Lane', 'Surat', 'Gujarat', 395013),
+('NR0027', 'F6', '73', 'Magnolia Crescent', 'Surat', 'Gujarat', 395014),
+('NR0028', 'F7', '75', 'Primrose Street', 'Surat', 'Gujarat', 395015),
+('NR0029', 'F8', '77', 'Daisy Walk', 'Vadodara', 'Gujarat', 390014),
+('NR0030', 'F9', '79', 'Tulip Way', 'Vadodara', 'Gujarat', 390015),
+('NR0031', 'G4', '81', 'Orchid Lane', 'Vadodara', 'Gujarat', 390016),
+('NR0032', 'G5', '83', 'Marigold Blvd', 'Vadodara', 'Gujarat', 390017),
+('NR0033', 'G6', '85', 'Lily Street', 'Rajkot', 'Gujarat', 360010),
+('NR0034', 'G7', '87', 'Petunia Crescent', 'Rajkot', 'Gujarat', 360011),
+('NR0035', 'G8', '89', 'Poppy Lane', 'Rajkot', 'Gujarat', 360012),
+('NR0036', 'G9', '91', 'Dandelion Drive', 'Rajkot', 'Gujarat', 360013),
+('NR0037', 'H4', '93', 'Rose Walk', 'Gandhinagar', 'Gujarat', 382018),
+('NR0038', 'H5', '95', 'Lily Crescent', 'Gandhinagar', 'Gujarat', 382019),
+('NR0039', 'H6', '97', 'Sunflower Street', 'Gandhinagar', 'Gujarat', 382020),
+('NR0040', 'H7', '99', 'Iris Lane', 'Gandhinagar', 'Gujarat', 382021);
+
+
+INSERT INTO Address_Contact_Information VALUES ('PT0001', 'Apt1', 'S1', 'Camac Street', 'Jaipur', 'Rajasthan', 994071);
+INSERT INTO Address_Contact_Information VALUES ('PT0002', 'Apt2', 'S2', 'Brigade Road', 'Ahmedabad', 'Gujarat', 916283);
+INSERT INTO Address_Contact_Information VALUES ('PT0003', 'Apt3', 'S3', 'Brigade Road', 'Pune', 'Maharashtra', 457883);
+INSERT INTO Address_Contact_Information VALUES ('PT0004', 'Apt4', 'S4', 'Camac Street', 'Lucknow', 'Uttar Pradesh', 327791);
+INSERT INTO Address_Contact_Information VALUES ('PT0005', 'Apt5', 'S5', 'Mahatma Gandhi Road', 'Jaipur', 'Rajasthan', 109839);
+INSERT INTO Address_Contact_Information VALUES ('PT0006', 'Apt6', 'S6', 'Mahatma Gandhi Road', 'Chennai', 'Tamil Nadu', 445255);
+INSERT INTO Address_Contact_Information VALUES ('PT0007', 'Apt7', 'S7', 'Camac Street', 'Ahmedabad', 'Gujarat', 742966);
+INSERT INTO Address_Contact_Information VALUES ('PT0008', 'Apt8', 'S8', 'Camac Street', 'Kolkata', 'West Bengal', 288303);
+INSERT INTO Address_Contact_Information VALUES ('PT0009', 'Apt9', 'S9', 'Mahatma Gandhi Road', 'Kolkata', 'West Bengal', 356980);
+INSERT INTO Address_Contact_Information VALUES ('PT0010', 'Apt10', 'S10', 'Linking Road', 'Hyderabad', 'Telangana', 822571);
+INSERT INTO Address_Contact_Information VALUES ('PT0011', 'Apt11', 'S11', 'Linking Road', 'Delhi', 'Delhi', 439906);
+INSERT INTO Address_Contact_Information VALUES ('PT0012', 'Apt12', 'S12', 'Mahatma Gandhi Road', 'Pune', 'Maharashtra', 987276);
+INSERT INTO Address_Contact_Information VALUES ('PT0013', 'Apt13', 'S13', 'Linking Road', 'Lucknow', 'Uttar Pradesh', 446487);
+INSERT INTO Address_Contact_Information VALUES ('PT0014', 'Apt14', 'S14', 'Mahatma Gandhi Road', 'Chennai', 'Tamil Nadu', 954613);
+INSERT INTO Address_Contact_Information VALUES ('PT0015', 'Apt15', 'S15', 'Mahatma Gandhi Road', 'Ahmedabad', 'Gujarat', 994080);
+INSERT INTO Address_Contact_Information VALUES ('PT0016', 'Apt16', 'S16', 'Brigade Road', 'Hyderabad', 'Telangana', 560228);
+INSERT INTO Address_Contact_Information VALUES ('PT0017', 'Apt17', 'S17', 'Camac Street', 'Jaipur', 'Rajasthan', 632452);
+INSERT INTO Address_Contact_Information VALUES ('PT0018', 'Apt18', 'S18', 'Anna Salai', 'Kolkata', 'West Bengal', 218990);
+INSERT INTO Address_Contact_Information VALUES ('PT0019', 'Apt19', 'S19', 'Camac Street', 'Ahmedabad', 'Gujarat', 135930);
+INSERT INTO Address_Contact_Information VALUES ('PT0020', 'Apt20', 'S20', 'Brigade Road', 'Hyderabad', 'Telangana', 427583);
+INSERT INTO Address_Contact_Information VALUES ('PT0021', 'Apt21', 'S21', 'Camac Street', 'Pune', 'Maharashtra', 927257);
+INSERT INTO Address_Contact_Information VALUES ('PT0022', 'Apt22', 'S22', 'Mahatma Gandhi Road', 'Kolkata', 'West Bengal', 195244);
+INSERT INTO Address_Contact_Information VALUES ('PT0023', 'Apt23', 'S23', 'Anna Salai', 'Delhi', 'Delhi', 553028);
+INSERT INTO Address_Contact_Information VALUES ('PT0024', 'Apt24', 'S24', 'Anna Salai', 'Delhi', 'Delhi', 602908);
+INSERT INTO Address_Contact_Information VALUES ('PT0025', 'Apt25', 'S25', 'Linking Road', 'Chennai', 'Tamil Nadu', 785453);
+INSERT INTO Address_Contact_Information VALUES ('PT0026', 'Apt26', 'S26', 'Linking Road', 'Bangalore', 'Karnataka', 257618);
+INSERT INTO Address_Contact_Information VALUES ('PT0027', 'Apt27', 'S27', 'Camac Street', 'Bangalore', 'Karnataka', 412764);
+INSERT INTO Address_Contact_Information VALUES ('PT0028', 'Apt28', 'S28', 'Linking Road', 'Mumbai', 'Maharashtra', 260720);
+INSERT INTO Address_Contact_Information VALUES ('PT0029', 'Apt29', 'S29', 'Camac Street', 'Mumbai', 'Maharashtra', 883048);
+INSERT INTO Address_Contact_Information VALUES ('PT0030', 'Apt30', 'S30', 'Mahatma Gandhi Road', 'Chennai', 'Tamil Nadu', 211380);
+INSERT INTO Address_Contact_Information VALUES ('PT0031', 'Apt31', 'S31', 'Anna Salai', 'Lucknow', 'Uttar Pradesh', 938993);
+INSERT INTO Address_Contact_Information VALUES ('PT0032', 'Apt32', 'S32', 'Brigade Road', 'Jaipur', 'Rajasthan', 505380);
+INSERT INTO Address_Contact_Information VALUES ('PT0033', 'Apt33', 'S33', 'Anna Salai', 'Delhi', 'Delhi', 768351);
+INSERT INTO Address_Contact_Information VALUES ('PT0034', 'Apt34', 'S34', 'Mahatma Gandhi Road', 'Ahmedabad', 'Gujarat', 795839);
+INSERT INTO Address_Contact_Information VALUES ('PT0035', 'Apt35', 'S35', 'Camac Street', 'Chennai', 'Tamil Nadu', 679552);
+INSERT INTO Address_Contact_Information VALUES ('PT0036', 'Apt36', 'S36', 'Anna Salai', 'Kolkata', 'West Bengal', 803491);
+INSERT INTO Address_Contact_Information VALUES ('PT0037', 'Apt37', 'S37', 'Linking Road', 'Jaipur', 'Rajasthan', 581302);
+INSERT INTO Address_Contact_Information VALUES ('PT0038', 'Apt38', 'S38', 'Brigade Road', 'Kolkata', 'West Bengal', 628066);
+INSERT INTO Address_Contact_Information VALUES ('PT0039', 'Apt39', 'S39', 'Anna Salai', 'Bangalore', 'Karnataka', 779579);
+INSERT INTO Address_Contact_Information VALUES ('PT0040', 'Apt40', 'S40', 'Anna Salai', 'Kolkata', 'West Bengal', 197225);
+INSERT INTO Address_Contact_Information VALUES ('PT0041', 'Apt41', 'S41', 'Brigade Road', 'Chennai', 'Tamil Nadu', 645020);
+INSERT INTO Address_Contact_Information VALUES ('PT0042', 'Apt42', 'S42', 'Anna Salai', 'Ahmedabad', 'Gujarat', 601135);
+INSERT INTO Address_Contact_Information VALUES ('PT0043', 'Apt43', 'S43', 'Camac Street', 'Chennai', 'Tamil Nadu', 209663);
+INSERT INTO Address_Contact_Information VALUES ('PT0044', 'Apt44', 'S44', 'Mahatma Gandhi Road', 'Delhi', 'Delhi', 227833);
+INSERT INTO Address_Contact_Information VALUES ('PT0045', 'Apt45', 'S45', 'Brigade Road', 'Pune', 'Maharashtra', 556541);
+INSERT INTO Address_Contact_Information VALUES ('PT0046', 'Apt46', 'S46', 'Anna Salai', 'Delhi', 'Delhi', 593047);
+INSERT INTO Address_Contact_Information VALUES ('PT0047', 'Apt47', 'S47', 'Mahatma Gandhi Road', 'Hyderabad', 'Telangana', 393081);
+INSERT INTO Address_Contact_Information VALUES ('PT0048', 'Apt48', 'S48', 'Camac Street', 'Bangalore', 'Karnataka', 941718);
+INSERT INTO Address_Contact_Information VALUES ('PT0049', 'Apt49', 'S49', 'Brigade Road', 'Mumbai', 'Maharashtra', 494047);
+INSERT INTO Address_Contact_Information VALUES ('PT0050', 'Apt50', 'S50', 'Linking Road', 'Hyderabad', 'Telangana', 369764);
+INSERT INTO Address_Contact_Information VALUES ('PT0051', 'Apt51', 'S51', 'Camac Street', 'Delhi', 'Delhi', 403921);
+INSERT INTO Address_Contact_Information VALUES ('PT0052', 'Apt52', 'S52', 'Linking Road', 'Mumbai', 'Maharashtra', 502934);
+INSERT INTO Address_Contact_Information VALUES ('PT0053', 'Apt53', 'S53', 'Anna Salai', 'Chennai', 'Tamil Nadu', 601238);
+INSERT INTO Address_Contact_Information VALUES ('PT0054', 'Apt54', 'S54', 'Brigade Road', 'Bangalore', 'Karnataka', 738201);
+INSERT INTO Address_Contact_Information VALUES ('PT0055', 'Apt55', 'S55', 'Camac Street', 'Jaipur', 'Rajasthan', 892101);
+INSERT INTO Address_Contact_Information VALUES ('PT0056', 'Apt56', 'S56', 'Mahatma Gandhi Road', 'Hyderabad', 'Telangana', 611245);
+INSERT INTO Address_Contact_Information VALUES ('PT0057', 'Apt57', 'S57', 'Linking Road', 'Kolkata', 'West Bengal', 709845);
+INSERT INTO Address_Contact_Information VALUES ('PT0058', 'Apt58', 'S58', 'Anna Salai', 'Pune', 'Maharashtra', 830192);
+INSERT INTO Address_Contact_Information VALUES ('PT0059', 'Apt59', 'S59', 'Camac Street', 'Ahmedabad', 'Gujarat', 902347);
+INSERT INTO Address_Contact_Information VALUES ('PT0060', 'Apt60', 'S60', 'Brigade Road', 'Delhi', 'Delhi', 459738);
+INSERT INTO Address_Contact_Information VALUES ('PT0061', 'Apt61', 'S61', 'Mahatma Gandhi Road', 'Lucknow', 'Uttar Pradesh', 718392);
+INSERT INTO Address_Contact_Information VALUES ('PT0062', 'Apt62', 'S62', 'Brigade Road', 'Pune', 'Maharashtra', 628197);
+INSERT INTO Address_Contact_Information VALUES ('PT0063', 'Apt63', 'S63', 'Anna Salai', 'Delhi', 'Delhi', 809237);
+INSERT INTO Address_Contact_Information VALUES ('PT0064', 'Apt64', 'S64', 'Camac Street', 'Bangalore', 'Karnataka', 983217);
+INSERT INTO Address_Contact_Information VALUES ('PT0065', 'Apt65', 'S65', 'Linking Road', 'Kolkata', 'West Bengal', 744029);
+INSERT INTO Address_Contact_Information VALUES ('PT0066', 'Apt66', 'S66', 'Anna Salai', 'Mumbai', 'Maharashtra', 893104);
+INSERT INTO Address_Contact_Information VALUES ('PT0067', 'Apt67', 'S67', 'Brigade Road', 'Jaipur', 'Rajasthan', 642839);
+INSERT INTO Address_Contact_Information VALUES ('PT0068', 'Apt68', 'S68', 'Mahatma Gandhi Road', 'Ahmedabad', 'Gujarat', 702384);
+INSERT INTO Address_Contact_Information VALUES ('PT0069', 'Apt69', 'S69', 'Camac Street', 'Pune', 'Maharashtra', 537218);
+INSERT INTO Address_Contact_Information VALUES ('PT0070', 'Apt70', 'S70', 'Brigade Road', 'Chennai', 'Tamil Nadu', 814205);
+INSERT INTO Address_Contact_Information VALUES ('PT0071', 'Apt71', 'S71', 'Linking Road', 'Delhi', 'Delhi', 902173);
+INSERT INTO Address_Contact_Information VALUES ('PT0072', 'Apt72', 'S72', 'Anna Salai', 'Hyderabad', 'Telangana', 786032);
+INSERT INTO Address_Contact_Information VALUES ('PT0073', 'Apt73', 'S73', 'Mahatma Gandhi Road', 'Lucknow', 'Uttar Pradesh', 839204);
+INSERT INTO Address_Contact_Information VALUES ('PT0074', 'Apt74', 'S74', 'Camac Street', 'Mumbai', 'Maharashtra', 653819);
+INSERT INTO Address_Contact_Information VALUES ('PT0075', 'Apt75', 'S75', 'Brigade Road', 'Ahmedabad', 'Gujarat', 915430);
+INSERT INTO Address_Contact_Information VALUES ('PT0076', 'Apt76', 'S76', 'Anna Salai', 'Pune', 'Maharashtra', 754823);
+INSERT INTO Address_Contact_Information VALUES ('PT0077', 'Apt77', 'S77', 'Camac Street', 'Chennai', 'Tamil Nadu', 897412);
+INSERT INTO Address_Contact_Information VALUES ('PT0078', 'Apt78', 'S78', 'Linking Road', 'Bangalore', 'Karnataka', 689347);
+INSERT INTO Address_Contact_Information VALUES ('PT0079', 'Apt79', 'S79', 'Brigade Road', 'Delhi', 'Delhi', 904723);
+INSERT INTO Address_Contact_Information VALUES ('PT0080', 'Apt80', 'S80', 'Anna Salai', 'Hyderabad', 'Telangana', 725019);
+INSERT INTO Address_Contact_Information VALUES ('PT0081', 'Apt81', 'S81', 'Mahatma Gandhi Road', 'Jaipur', 'Rajasthan', 614930);
+INSERT INTO Address_Contact_Information VALUES ('PT0082', 'Apt82', 'S82', 'Camac Street', 'Ahmedabad', 'Gujarat', 587310);
+INSERT INTO Address_Contact_Information VALUES ('PT0083', 'Apt83', 'S83', 'Linking Road', 'Lucknow', 'Uttar Pradesh', 932481);
+INSERT INTO Address_Contact_Information VALUES ('PT0084', 'Apt84', 'S84', 'Brigade Road', 'Pune', 'Maharashtra', 803145);
+INSERT INTO Address_Contact_Information VALUES ('PT0085', 'Apt85', 'S85', 'Anna Salai', 'Kolkata', 'West Bengal', 875093);
+INSERT INTO Address_Contact_Information VALUES ('PT0086', 'Apt86', 'S86', 'Mahatma Gandhi Road', 'Chennai', 'Tamil Nadu', 738214);
+INSERT INTO Address_Contact_Information VALUES ('PT0087', 'Apt87', 'S87', 'Camac Street', 'Mumbai', 'Maharashtra', 663205);
+INSERT INTO Address_Contact_Information VALUES ('PT0088', 'Apt88', 'S88', 'Brigade Road', 'Delhi', 'Delhi', 799218);
+INSERT INTO Address_Contact_Information VALUES ('PT0089', 'Apt89', 'S89', 'Linking Road', 'Bangalore', 'Karnataka', 740238);
+INSERT INTO Address_Contact_Information VALUES ('PT0090', 'Apt90', 'S90', 'Anna Salai', 'Ahmedabad', 'Gujarat', 629384);
+INSERT INTO Address_Contact_Information VALUES ('PT0091', 'Apt91', 'S91', 'Mahatma Gandhi Road', 'Jaipur', 'Rajasthan', 904218);
+INSERT INTO Address_Contact_Information VALUES ('PT0092', 'Apt92', 'S92', 'Brigade Road', 'Kolkata', 'West Bengal', 615837);
+INSERT INTO Address_Contact_Information VALUES ('PT0093', 'Apt93', 'S93', 'Linking Road', 'Pune', 'Maharashtra', 839520);
+INSERT INTO Address_Contact_Information VALUES ('PT0094', 'Apt94', 'S94', 'Camac Street', 'Lucknow', 'Uttar Pradesh', 950481);
+INSERT INTO Address_Contact_Information VALUES ('PT0095', 'Apt95', 'S95', 'Brigade Road', 'Delhi', 'Delhi', 720184);
+INSERT INTO Address_Contact_Information VALUES ('PT0096', 'Apt96', 'S96', 'Anna Salai', 'Chennai', 'Tamil Nadu', 891034);
+INSERT INTO Address_Contact_Information VALUES ('PT0097', 'Apt97', 'S97', 'Camac Street', 'Hyderabad', 'Telangana', 759283);
+INSERT INTO Address_Contact_Information VALUES ('PT0098', 'Apt98', 'S98', 'Mahatma Gandhi Road', 'Ahmedabad', 'Gujarat', 803492);
+INSERT INTO Address_Contact_Information VALUES ('PT0099', 'Apt99', 'S99', 'Linking Road', 'Mumbai', 'Maharashtra', 670214);
+INSERT INTO Address_Contact_Information VALUES ('PT0100', 'Apt100', 'S100', 'Brigade Road', 'Delhi', 'Delhi', 934718);
+
+
+INSERT INTO Address_Contact_Information (ID, Apartment_no, Street_no, Street_Name, City, State, Pincode) VALUES
+('TT0001', 'A-101', '12', 'Green Park Road', 'Mumbai', 'Maharashtra', 400001),
+('TT0002', 'B-202', '8', 'MG Road', 'Pune', 'Maharashtra', 411001),
+('TT0003', 'C-303', '15', 'Brigade Road', 'Bangalore', 'Karnataka', 560001),
+('TT0004', 'D-404', '22', 'Park Street', 'Kolkata', 'West Bengal', 700016),
+('TT0005', 'E-105', '5', 'Banjara Hills', 'Hyderabad', 'Telangana', 500034),
+('TT0006', 'F-206', '3', 'Ashok Nagar', 'Chennai', 'Tamil Nadu', 600083),
+('TT0007', 'G-307', '19', 'Civil Lines', 'Delhi', 'Delhi', 110054),
+('TT0008', 'H-408', '27', 'Camac Street', 'Kolkata', 'West Bengal', 700017),
+('TT0009', 'I-109', '7', 'Gachibowli', 'Hyderabad', 'Telangana', 500032),
+('TT0010', 'J-210', '10', 'LBS Marg', 'Mumbai', 'Maharashtra', 400086),
+('TT0011', 'K-311', '14', 'Whitefield', 'Bangalore', 'Karnataka', 560066),
+('TT0012', 'L-412', '2', 'Nungambakkam High Rd', 'Chennai', 'Tamil Nadu', 600034),
+('TT0013', 'M-113', '6', 'Sector 18', 'Noida', 'Uttar Pradesh', 201301),
+('TT0014', 'N-214', '16', 'Rajpur Road', 'Dehradun', 'Uttarakhand', 248001),
+('TT0015', 'O-315', '25', 'Carter Road', 'Mumbai', 'Maharashtra', 400050),
+('TT0016', 'P-416', '18', 'Anna Salai', 'Chennai', 'Tamil Nadu', 600002),
+('TT0017', 'Q-117', '21', 'Koregaon Park', 'Pune', 'Maharashtra', 411001),
+('TT0018', 'R-218', '20', 'New BEL Road', 'Bangalore', 'Karnataka', 560094),
+('TT0019', 'S-319', '11', 'Connaught Place', 'Delhi', 'Delhi', 110001),
+('TT0020', 'T-420', '4', 'VIP Road', 'Kolkata', 'West Bengal', 700059),
+('TT0021', 'U-121', '13', 'Sector 44', 'Gurgaon', 'Haryana', 122002),
+('TT0022', 'V-222', '17', 'Panampilly Nagar', 'Kochi', 'Kerala', 682036),
+('TT0023', 'W-323', '24', 'Lal Kothi', 'Jaipur', 'Rajasthan', 302015),
+('TT0024', 'X-424', '26', 'Hitech City Rd', 'Hyderabad', 'Telangana', 500081),
+('TT0025', 'Y-125', '9', 'Manikonda', 'Hyderabad', 'Telangana', 500089),
+('TT0026', 'Z-226', '28', 'Lake Road', 'Bhopal', 'Madhya Pradesh', 462002),
+('TT0027', 'AA-327', '23', 'Race Course Rd', 'Indore', 'Madhya Pradesh', 452001),
+('TT0028', 'AB-428', '29', 'C-Scheme', 'Jaipur', 'Rajasthan', 302001),
+('TT0029', 'AC-129', '30', 'Alkapuri', 'Vadodara', 'Gujarat', 390007),
+('TT0030', 'AD-230', '31', 'Vastrapur', 'Ahmedabad', 'Gujarat', 380015);
+
+-- Mothers' Address Info
+INSERT INTO Address_Contact_Information VALUES ('PT0101', '101', '12', 'MG Road', 'Ahmedabad', 'Gujarat', 380001);
+INSERT INTO Address_Contact_Information VALUES ('PT0102', '202', '15', 'Banjara Hills', 'Hyderabad', 'Telangana', 500034);
+INSERT INTO Address_Contact_Information VALUES ('PT0103', '303', '8', 'Park Street', 'Kolkata', 'West Bengal', 700016);
+INSERT INTO Address_Contact_Information VALUES ('PT0104', '404', '21', 'Gandhi Nagar', 'Bhopal', 'Madhya Pradesh', 462001);
+INSERT INTO Address_Contact_Information VALUES ('PT0105', '505', '10', 'Nungambakkam', 'Chennai', 'Tamil Nadu', 600034);
+
+-- Babies' Address Info (same as mothers)
+INSERT INTO Address_Contact_Information VALUES ('PT0106', '101', '12', 'MG Road', 'Ahmedabad', 'Gujarat', 380001);
+INSERT INTO Address_Contact_Information VALUES ('PT0107', '202', '15', 'Banjara Hills', 'Hyderabad', 'Telangana', 500034);
+INSERT INTO Address_Contact_Information VALUES ('PT0108', '303', '8', 'Park Street', 'Kolkata', 'West Bengal', 700016);
+INSERT INTO Address_Contact_Information VALUES ('PT0109', '404', '21', 'Gandhi Nagar', 'Bhopal', 'Madhya Pradesh', 462001);
+INSERT INTO Address_Contact_Information VALUES ('PT0110', '505', '10', 'Nungambakkam', 'Chennai', 'Tamil Nadu', 600034);
+
+
+
+-- GENERAL_INFORMATION entries for DR0001 to DR0030
+INSERT INTO GENERAL_INFORMATION (ID, BLOOD_GROUP, WEIGHT, HEIGHT) VALUES
+('DR0001', 'A+', 70.2, 176.5), ('DR0002', 'B-', 68.4, 168.9), ('DR0003', 'O+', 72.1, 174.3), ('DR0004', 'AB-', 65.9, 169.7),
+('DR0005', 'A-', 71.3, 175.6), ('DR0006', 'B+', 66.5, 166.2), ('DR0007', 'O-', 74.0, 180.3), ('DR0008', 'AB+', 67.2, 171.4),
+('DR0009', 'A+', 73.4, 178.2), ('DR0010', 'B-', 69.6, 173.5),
+('DR0011', 'A+', 70.5, 175.2), ('DR0012', 'B+', 68.0, 168.4), ('DR0013', 'O-', 72.3, 180.1), ('DR0014', 'AB+', 65.7, 169.9),
+('DR0015', 'A-', 74.2, 172.5), ('DR0016', 'B-', 69.5, 178.3), ('DR0017', 'O+', 66.0, 165.2), ('DR0018', 'AB-', 73.4, 177.7),
+('DR0019', 'A+', 75.1, 182.4), ('DR0020', 'B+', 64.8, 170.9), ('DR0021', 'O-', 71.6, 179.0), ('DR0022', 'AB+', 67.9, 173.1),
+('DR0023', 'A-', 68.4, 171.5), ('DR0024', 'B-', 70.0, 176.2), ('DR0025', 'O+', 69.2, 174.3), ('DR0026', 'AB-', 73.0, 181.5),
+('DR0027', 'A+', 66.8, 167.6), ('DR0028', 'B+', 70.7, 178.8), ('DR0029', 'O-', 72.5, 180.9), ('DR0030', 'AB+', 65.9, 172.0);
+
+INSERT INTO General_Information (ID, Blood_Group, Weight, Height) VALUES
+('DN0001', 'O+', 65.5, 168.2),
+('DN0002', 'A-', 70.3, 174.0),
+('DN0003', 'B+', 59.8, 160.5),
+('DN0004', 'AB-', 67.1, 172.8),
+('DN0005', 'O-', 55.0, 158.3),
+('DN0006', 'A+', 61.7, 165.0),
+('DN0007', 'B+', 68.9, 175.2),
+('DN0008', 'A+', 73.1, 178.6),
+('DN0009', 'O-', 60.4, 162.4),
+('DN0010', 'AB+', 64.0, 167.9),
+('DN0011', 'B-', 58.9, 160.2),
+('DN0012', 'A+', 67.0, 169.8),
+('DN0013', 'O+', 70.2, 173.6),
+('DN0014', 'A-', 69.1, 168.9),
+('DN0015', 'B+', 62.3, 164.2),
+('DN0016', 'AB+', 63.7, 166.5),
+('DN0017', 'O-', 65.4, 170.4),
+('DN0018', 'A+', 66.2, 171.1),
+('DN0019', 'AB-', 74.3, 179.5),
+('DN0020', 'B+', 69.5, 174.3),
+('DN0021', 'AB+', 64.4, 165.9),
+('DN0022', 'O+', 66.8, 172.0),
+('DN0023', 'B+', 70.0, 177.7),
+('DN0024', 'A-', 62.5, 163.8),
+('DN0025', 'B-', 60.3, 160.7),
+('DN0026', 'AB+', 59.9, 161.9),
+('DN0027', 'O+', 68.0, 173.2),
+('DN0028', 'A-', 64.1, 168.8),
+('DN0029', 'B-', 71.4, 175.5),
+('DN0030', 'O-', 67.5, 170.9);
+
+INSERT INTO General_Information (ID, Blood_Group, Weight, Height) VALUES ('DV0001', 'A+', 59.50, 160.20);
+INSERT INTO General_Information (ID, Blood_Group, Weight, Height) VALUES ('DV0002', 'B+', 71.10, 171.40);
+INSERT INTO General_Information (ID, Blood_Group, Weight, Height) VALUES ('DV0003', 'O-', 66.75, 165.00);
+INSERT INTO General_Information (ID, Blood_Group, Weight, Height) VALUES ('DV0004', 'AB+', 45.30, 163.50);
+INSERT INTO General_Information (ID, Blood_Group, Weight, Height) VALUES ('DV0005', 'A-', 66.20, 155.00);
+INSERT INTO General_Information (ID, Blood_Group, Weight, Height) VALUES ('DV0006', 'B-', 67.40, 165.30);
+INSERT INTO General_Information (ID, Blood_Group, Weight, Height) VALUES ('DV0007', 'O+', 74.00, 169.10);
+INSERT INTO General_Information (ID, Blood_Group, Weight, Height) VALUES ('DV0008', 'AB-', 52.55, 167.70);
+INSERT INTO General_Information (ID, Blood_Group, Weight, Height) VALUES ('DV0009', 'A+', 61.80, 163.90);
+INSERT INTO General_Information (ID, Blood_Group, Weight, Height) VALUES ('DV0010', 'B+', 65.60, 175.50);
+
+
+INSERT INTO GENERAL_INFORMATION (ID, BLOOD_GROUP, WEIGHT, HEIGHT) VALUES
+('NR0001', 'B+', 60.5, 162.4), ('NR0002', 'A-', 58.3, 158.7), ('NR0003', 'O+', 62.0, 165.2), ('NR0004', 'AB+', 59.1, 160.6),
+('NR0005', 'B-', 61.7, 163.8), ('NR0006', 'A+', 57.5, 159.4), ('NR0007', 'O-', 63.2, 166.1), ('NR0008', 'AB-', 60.0, 161.9),
+('NR0009', 'B+', 64.3, 167.2), ('NR0010', 'A-', 59.9, 162.7), ('NR0011', 'O+', 62.5, 164.8), ('NR0012', 'AB+', 60.8, 160.3),
+('NR0013', 'B-', 61.2, 161.7), ('NR0014', 'A+', 58.6, 159.1), ('NR0015', 'O-', 63.0, 165.9), ('NR0016', 'AB-', 60.3, 163.5),
+('NR0017', 'B+', 64.1, 168.0), ('NR0018', 'A-', 59.0, 160.2), ('NR0019', 'O+', 61.4, 164.1), ('NR0020', 'AB+', 60.6, 162.9),
+('NR0021', 'B-', 63.3, 166.4), ('NR0022', 'A+', 58.4, 159.8), ('NR0023', 'O-', 64.0, 167.8), ('NR0024', 'AB-', 59.5, 161.3),
+('NR0025', 'B+', 62.1, 164.6), ('NR0026', 'A-', 60.2, 160.9), ('NR0027', 'O+', 63.7, 166.8), ('NR0028', 'AB+', 61.0, 163.0),
+('NR0029', 'B-', 59.8, 160.5), ('NR0030', 'A+', 64.5, 168.4), ('NR0031', 'O-', 60.7, 161.2), ('NR0032', 'AB-', 58.9, 159.6),
+('NR0033', 'B+', 62.8, 165.5), ('NR0034', 'A-', 60.4, 161.1), ('NR0035', 'O+', 63.9, 167.0), ('NR0036', 'AB+', 61.6, 162.6),
+('NR0037', 'B-', 58.7, 159.3), ('NR0038', 'A+', 64.0, 169.1), ('NR0039', 'O-', 60.1, 160.0), ('NR0040', 'AB-', 59.2, 158.9);
+
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0001', 'O-', 60.3, 168.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0002', 'AB+', 82.4, 188.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0003', 'O-', 53.4, 161.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0004', 'O+', 69.0, 153.5);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0005', 'B+', 79.6, 152.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0006', 'A-', 58.8, 171.1);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0007', 'A+', 88.6, 185.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0008', 'B+', 84.0, 178.7);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0009', 'A-', 82.2, 153.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0010', 'O-', 88.5, 161.3);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0011', 'AB-', 77.8, 174.8);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0012', 'O-', 47.3, 172.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0013', 'A+', 80.2, 161.5);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0014', 'A-', 56.6, 168.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0015', 'B-', 89.5, 186.3);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0016', 'AB-', 46.4, 159.3);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0017', 'AB+', 68.1, 176.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0018', 'A-', 57.3, 169.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0019', 'AB+', 65.4, 181.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0020', 'O+', 60.0, 179.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0021', 'O-', 86.2, 165.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0022', 'O-', 83.8, 171.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0023', 'O-', 64.1, 159.5);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0024', 'AB+', 61.2, 189.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0025', 'A+', 63.8, 165.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0026', 'A+', 71.5, 164.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0027', 'AB+', 66.1, 185.9);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0028', 'O-', 70.9, 165.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0029', 'A+', 79.0, 176.9);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0030', 'AB+', 57.7, 154.3);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0031', 'A+', 87.5, 180.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0032', 'A-', 55.8, 184.8);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0033', 'B+', 77.0, 162.3);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0034', 'B-', 62.0, 154.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0035', 'B+', 82.8, 182.1);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0036', 'A+', 62.8, 155.8);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0037', 'A+', 76.4, 171.9);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0038', 'O+', 53.0, 173.7);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0039', 'B+', 86.1, 174.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0040', 'A+', 79.7, 165.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0041', 'B-', 50.9, 162.7);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0042', 'O-', 84.4, 181.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0043', 'O-', 51.6, 185.9);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0044', 'B-', 83.0, 188.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0045', 'A+', 84.5, 182.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0046', 'O+', 88.3, 157.3);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0047', 'AB-', 67.6, 158.1);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0048', 'B+', 89.5, 165.1);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0049', 'B-', 57.3, 155.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0050', 'B+', 46.0, 180.7);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0051', 'A+', 67.2, 168.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0052', 'B-', 74.5, 172.9);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0053', 'O+', 80.1, 178.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0054', 'A-', 56.9, 160.3);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0055', 'B+', 61.0, 162.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0056', 'AB+', 69.3, 179.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0057', 'O-', 53.6, 157.5);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0058', 'A+', 77.7, 170.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0059', 'AB-', 59.8, 163.8);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0060', 'B+', 83.4, 181.1);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0061', 'O-', 70.3, 174.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0062', 'A+', 66.2, 173.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0063', 'B-', 58.1, 165.7);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0064', 'AB+', 78.0, 182.3);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0065', 'O+', 55.6, 160.1);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0066', 'A-', 84.3, 176.7);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0067', 'B+', 62.4, 158.9);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0068', 'O-', 71.5, 177.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0069', 'AB+', 60.6, 159.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0070', 'A+', 75.2, 183.3);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0071', 'B-', 63.5, 162.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0072', 'O-', 79.0, 180.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0073', 'A+', 64.1, 167.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0074', 'AB-', 85.6, 179.8);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0075', 'O+', 68.9, 164.5);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0076', 'A-', 70.2, 175.7);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0077', 'B+', 59.4, 157.8);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0078', 'AB+', 72.8, 174.1);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0079', 'O-', 57.5, 166.5);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0080', 'A+', 82.1, 180.9);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0081', 'B-', 54.3, 161.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0082', 'O+', 76.7, 178.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0083', 'A+', 63.0, 159.8);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0084', 'B+', 80.9, 181.3);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0085', 'O-', 69.6, 169.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0086', 'AB-', 74.8, 173.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0087', 'A-', 55.0, 156.9);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0088', 'B+', 73.5, 177.6);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0089', 'AB+', 61.3, 164.8);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0090', 'A+', 77.2, 182.7);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0091', 'B-', 66.4, 158.5);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0092', 'O-', 81.0, 185.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0093', 'A+', 62.6, 166.7);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0094', 'O+', 84.7, 180.4);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0095', 'B+', 60.1, 160.2);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0096', 'AB-', 79.3, 179.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0097', 'O-', 65.7, 168.1);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0098', 'A-', 75.5, 176.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0099', 'AB+', 58.0, 163.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0100', 'B-', 85.0, 184.5);
+-- Mothers' General Info
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0101', 'B+', 56.2, 162.5);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0102', 'O+', 60.5, 159.8);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0103', 'A-', 53.0, 158.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0104', 'AB+', 62.0, 165.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0105', 'B-', 58.3, 160.2);
+
+-- Babies' General Info (same as mothers)
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0106', 'B+', 56.2, 162.5);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0107', 'O+', 60.5, 159.8);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0108', 'A-', 53.0, 158.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0109', 'AB+', 62.0, 165.0);
+INSERT INTO GENERAL_INFORMATION VALUES ('PT0110', 'B-', 58.3, 160.2);
+
+--vehicle
+INSERT INTO Vehicle (Vehicle_ID, No_Plate, Vehicle_Type) VALUES
+(1, 'MH12AB1234', 'Ambulance'),
+(2, 'DL05CD5678', 'Van'),
+(3, 'KA01EF9101', 'Car'),
+(4, 'TN10GH2345', 'Ambulance'),
+(5, 'GJ18IJ6789', 'Ambulance'),
+(6, 'RJ14KL4321', 'Van'),
+(7, 'UP32MN9876', 'Car'),
+(8, 'WB20OP5432', 'Ambulance'),
+(9, 'MP09QR6780', 'Van'),
+(10, 'CH01ST1122', 'Van');
+
+--patient
+INSERT INTO Patient VALUES ('PT0001', 'M', 'Aarav Mehta', '1985-06-28');
+INSERT INTO Patient VALUES ('PT0002', 'M', 'Vivaan Sharma', '2006-02-26');
+INSERT INTO Patient VALUES ('PT0003', 'M', 'Aryan Reddy', '1965-03-14');
+INSERT INTO Patient VALUES ('PT0004', 'F', 'Ananya Iyer', '1996-05-17');
+INSERT INTO Patient VALUES ('PT0005', 'F', 'Diya Joshi', '1973-12-18');
+INSERT INTO Patient VALUES ('PT0006', 'F', 'Meera Patel', '2010-08-02');
+INSERT INTO Patient VALUES ('PT0007', 'F', 'Riya Nair', '1968-12-06');
+INSERT INTO Patient VALUES ('PT0008', 'M', 'Kabir Kapoor', '1982-05-21');
+INSERT INTO Patient VALUES ('PT0009', 'F', 'Ishita Roy', '2002-11-24');
+INSERT INTO Patient VALUES ('PT0010', 'M', 'Reyansh Bansal', '1987-07-18');
+INSERT INTO Patient VALUES ('PT0011', 'M', 'Krishna Desai', '1964-10-20');
+INSERT INTO Patient VALUES ('PT0012', 'M', 'Rudra Singh', '1962-11-21');
+INSERT INTO Patient VALUES ('PT0013', 'M', 'Dhruv Jain', '1986-05-16');
+INSERT INTO Patient VALUES ('PT0014', 'F', 'Saanvi Varma', '1976-12-01');
+INSERT INTO Patient VALUES ('PT0015', 'F', 'Aisha Pillai', '1981-04-23');
+INSERT INTO Patient VALUES ('PT0016', 'M', 'Ishaan Shetty', '2000-12-28');
+INSERT INTO Patient VALUES ('PT0017', 'F', 'Tanya Kaul', '1993-09-11');
+INSERT INTO Patient VALUES ('PT0018', 'F', 'Nisha Malhotra', '1970-08-06');
+INSERT INTO Patient VALUES ('PT0019', 'M', 'Rohan Bhatt', '1975-07-01');
+INSERT INTO Patient VALUES ('PT0020', 'F', 'Shruti Agrawal', '1971-07-19');
+INSERT INTO Patient VALUES ('PT0021', 'F', 'Pooja Srivastava', '1980-07-06');
+INSERT INTO Patient VALUES ('PT0022', 'M', 'Yuvraj Trivedi', '1988-05-09');
+INSERT INTO Patient VALUES ('PT0023', 'F', 'Kavya Sengupta', '1998-11-17');
+INSERT INTO Patient VALUES ('PT0024', 'F', 'Neha Kulkarni', '1961-03-22');
+INSERT INTO Patient VALUES ('PT0025', 'M', 'Arjun Dey', '1994-11-08');
+INSERT INTO Patient VALUES ('PT0026', 'M', 'Siddharth Ghosh', '1971-12-09');
+INSERT INTO Patient VALUES ('PT0027', 'F', 'Trisha Lamba', '2001-07-31');
+INSERT INTO Patient VALUES ('PT0028', 'F', 'Charvi Bhagat', '1986-07-08');
+INSERT INTO Patient VALUES ('PT0029', 'M', 'Kunal Mehra', '1989-01-22');
+INSERT INTO Patient VALUES ('PT0030', 'F', 'Sneha Tiwari', '1970-04-28');
+INSERT INTO Patient VALUES ('PT0031', 'F', 'Namrata Gokhale', '1972-10-19');
+INSERT INTO Patient VALUES ('PT0032', 'M', 'Veer Choudhary', '1981-11-26');
+INSERT INTO Patient VALUES ('PT0033', 'F', 'Bhavna Menon', '1974-05-10');
+INSERT INTO Patient VALUES ('PT0034', 'M', 'Manav Purohit', '1970-04-02');
+INSERT INTO Patient VALUES ('PT0035', 'F', 'Aarohi Mohan', '1993-02-15');
+INSERT INTO Patient VALUES ('PT0036', 'F', 'Tanvi Arora', '1969-11-03');
+INSERT INTO Patient VALUES ('PT0037', 'F', 'Shalini Sood', '1962-05-07');
+INSERT INTO Patient VALUES ('PT0038', 'M', 'Aditya Chopra', '1999-09-08');
+INSERT INTO Patient VALUES ('PT0039', 'F', 'Lavanya Rawat', '2000-05-25');
+INSERT INTO Patient VALUES ('PT0040', 'M', 'Nikhil Prasad', '1984-07-30');
+INSERT INTO Patient VALUES ('PT0041', 'M', 'Dev Anand', '1998-01-10');
+INSERT INTO Patient VALUES ('PT0042', 'M', 'Harsh Sinha', '2000-10-06');
+INSERT INTO Patient VALUES ('PT0043', 'M', 'Samar Dubey', '1993-02-24');
+INSERT INTO Patient VALUES ('PT0044', 'M', 'Jayant Mishra', '1994-04-23');
+INSERT INTO Patient VALUES ('PT0045', 'M', 'Tushar Kohli', '1984-08-30');
+INSERT INTO Patient VALUES ('PT0046', 'F', 'Mitali Vora', '1999-06-07');
+INSERT INTO Patient VALUES ('PT0047', 'F', 'Veena Sabharwal', '1961-12-25');
+INSERT INTO Patient VALUES ('PT0048', 'M', 'Rajat Narayan', '1982-07-27');
+INSERT INTO Patient VALUES ('PT0049', 'M', 'Amit Kaushik', '1976-07-02');
+INSERT INTO Patient VALUES ('PT0050', 'M', 'Shivam Raina', '1991-05-31');
+INSERT INTO Patient VALUES ('PT0051', 'F', 'Ira Saxena', '1998-04-12');
+INSERT INTO Patient VALUES ('PT0052', 'M', 'Raghav Bhatia', '1992-07-25');
+INSERT INTO Patient VALUES ('PT0053', 'M', 'Neeraj Malhotra', '1988-03-09');
+INSERT INTO Patient VALUES ('PT0054', 'F', 'Simran Kaur', '2000-11-16');
+INSERT INTO Patient VALUES ('PT0055', 'F', 'Avni Srivastava', '1995-05-21');
+INSERT INTO Patient VALUES ('PT0056', 'M', 'Karan Joshi', '1985-08-30');
+INSERT INTO Patient VALUES ('PT0057', 'F', 'Aaliya Mirza', '1999-01-13');
+INSERT INTO Patient VALUES ('PT0058', 'M', 'Yash Verma', '1990-06-05');
+INSERT INTO Patient VALUES ('PT0059', 'F', 'Mehak Bansal', '1996-09-14');
+INSERT INTO Patient VALUES ('PT0060', 'M', 'Arnav Chatterjee', '2001-12-03');
+INSERT INTO Patient VALUES ('PT0061', 'F', 'Ritika Sood', '1987-02-18');
+INSERT INTO Patient VALUES ('PT0062', 'M', 'Naman Deshmukh', '1993-10-10');
+INSERT INTO Patient VALUES ('PT0063', 'F', 'Shraddha Rathi', '1994-03-22');
+INSERT INTO Patient VALUES ('PT0064', 'M', 'Anshul Dubey', '1989-05-06');
+INSERT INTO Patient VALUES ('PT0065', 'F', 'Pallavi Sharma', '1991-08-15');
+INSERT INTO Patient VALUES ('PT0066', 'M', 'Devansh Mehra', '1997-01-29');
+INSERT INTO Patient VALUES ('PT0067', 'F', 'Radhika Kaul', '1986-10-02');
+INSERT INTO Patient VALUES ('PT0068', 'M', 'Mohit Rajput', '1990-07-08');
+INSERT INTO Patient VALUES ('PT0069', 'F', 'Anika Goyal', '1998-12-20');
+INSERT INTO Patient VALUES ('PT0070', 'M', 'Taran Khurana', '1984-11-11');
+INSERT INTO Patient VALUES ('PT0071', 'F', 'Niharika Sinha', '1992-06-19');
+INSERT INTO Patient VALUES ('PT0072', 'M', 'Ritesh Jaiswal', '1983-03-15');
+INSERT INTO Patient VALUES ('PT0073', 'F', 'Kritika Batra', '1999-04-27');
+INSERT INTO Patient VALUES ('PT0074', 'M', 'Harshit Anand', '1995-09-07');
+INSERT INTO Patient VALUES ('PT0075', 'F', 'Ishita Khanna', '2000-05-10');
+INSERT INTO Patient VALUES ('PT0076', 'M', 'Rehan Qureshi', '1988-12-01');
+INSERT INTO Patient VALUES ('PT0077', 'F', 'Tanisha Bedi', '1997-07-30');
+INSERT INTO Patient VALUES ('PT0078', 'M', 'Sahil Khatri', '1986-08-23');
+INSERT INTO Patient VALUES ('PT0079', 'F', 'Zoya Baig', '1996-02-28');
+INSERT INTO Patient VALUES ('PT0080', 'M', 'Pranav Bhaskar', '1993-11-17');
+INSERT INTO Patient VALUES ('PT0081', 'F', 'Divya Chauhan', '1994-01-06');
+INSERT INTO Patient VALUES ('PT0082', 'M', 'Yug Kohli', '2001-09-25');
+INSERT INTO Patient VALUES ('PT0083', 'F', 'Snehal Pawar', '1989-06-12');
+INSERT INTO Patient VALUES ('PT0084', 'M', 'Nikhil Thakur', '1992-10-03');
+INSERT INTO Patient VALUES ('PT0085', 'F', 'Sanya Kapoor', '1995-12-29');
+INSERT INTO Patient VALUES ('PT0086', 'M', 'Kabir Malani', '1985-04-04');
+INSERT INTO Patient VALUES ('PT0087', 'F', 'Vidya Rane', '1998-07-18');
+INSERT INTO Patient VALUES ('PT0088', 'M', 'Omkar Pathak', '1987-03-26');
+INSERT INTO Patient VALUES ('PT0089', 'F', 'Jyoti Vashisht', '1990-09-02');
+INSERT INTO Patient VALUES ('PT0090', 'M', 'Ayaan Luthra', '1996-01-21');
+INSERT INTO Patient VALUES ('PT0091', 'F', 'Navya Reddy', '1993-08-14');
+INSERT INTO Patient VALUES ('PT0092', 'M', 'Vivaan Menon', '1984-05-31');
+INSERT INTO Patient VALUES ('PT0093', 'F', 'Harleen Kaur', '1999-11-04');
+INSERT INTO Patient VALUES ('PT0094', 'M', 'Parth Mathur', '1991-02-09');
+INSERT INTO Patient VALUES ('PT0095', 'F', 'Preeti Joshi', '1986-10-26');
+INSERT INTO Patient VALUES ('PT0096', 'M', 'Aarush Sethi', '2000-06-07');
+INSERT INTO Patient VALUES ('PT0097', 'F', 'Riya Chhabra', '1997-04-15');
+INSERT INTO Patient VALUES ('PT0098', 'M', 'Laksh Singhania', '1994-07-01');
+INSERT INTO Patient VALUES ('PT0099', 'F', 'Tanya Kapoor', '1990-03-20');
+INSERT INTO Patient VALUES ('PT0100', 'M', 'Aryan Rathore', '1998-08-09');
+-- Mothers' Patient Info
+INSERT INTO Patient VALUES ('PT0101', 'F', 'Priya Shah', '1993-04-21');
+INSERT INTO Patient VALUES ('PT0102', 'F', 'Anita Reddy', '1990-08-11');
+INSERT INTO Patient VALUES ('PT0103', 'F', 'Sumita Sen', '1992-06-03');
+INSERT INTO Patient VALUES ('PT0104', 'F', 'Rekha Verma', '1988-12-19');
+INSERT INTO Patient VALUES ('PT0105', 'F', 'Meena Iyer', '1991-02-07');
+
+-- Babies' Patient Info (birth date = admit date of mothers)
+INSERT INTO Patient VALUES ('PT0106', 'M', 'Baby1', '2024-02-01');
+INSERT INTO Patient VALUES ('PT0107', 'M', 'Baby2', '2024-05-04');
+INSERT INTO Patient VALUES ('PT0108', 'F', 'Baby3', '2024-05-07');
+INSERT INTO Patient VALUES ('PT0109', 'F', 'Baby4', '2024-07-08');
+INSERT INTO Patient VALUES ('PT0110', 'M', 'Baby5', '2024-10-10');
+
+--# BED
+
+-- Floor 1
+INSERT INTO Bed VALUES ('GEN1110101', 101, 1, 'GEN1', 'PT0001');
+INSERT INTO Bed VALUES ('GEN1110102', 101, 1, 'GEN1', NULL);
+INSERT INTO Bed VALUES ('GEN1110103', 101, 1, 'GEN1', 'PT0002');
+INSERT INTO Bed VALUES ('GEN1110104', 101, 1, 'GEN1', NULL);
+INSERT INTO Bed VALUES ('GEN1110105', 101, 1, 'GEN1', 'PT0003');
+INSERT INTO Bed VALUES ('GEN1110106', 101, 1, 'GEN1', NULL);
+INSERT INTO Bed VALUES ('GEN1110107', 101, 1, 'GEN1', 'PT0004');
+INSERT INTO Bed VALUES ('GEN1110108', 101, 1, 'GEN1', 'PT0005');
+INSERT INTO Bed VALUES ('GEN1110109', 101, 1, 'GEN1', NULL);
+INSERT INTO Bed VALUES ('GEN1110110', 101, 1, 'GEN1', 'PT0006');
+
+-- Floor 2
+INSERT INTO Bed VALUES ('GEN1210201', 102, 2, 'GEN2', 'PT0007');
+INSERT INTO Bed VALUES ('GEN1210202', 102, 2, 'GEN2', NULL);
+INSERT INTO Bed VALUES ('GEN1210203', 102, 2, 'GEN2', 'PT0008');
+INSERT INTO Bed VALUES ('GEN1210204', 102, 2, 'GEN2', NULL);
+INSERT INTO Bed VALUES ('GEN1210205', 102, 2, 'GEN2', 'PT0009');
+INSERT INTO Bed VALUES ('GEN1210206', 102, 2, 'GEN2', NULL);
+INSERT INTO Bed VALUES ('GEN1210207', 102, 2, 'GEN2', 'PT0010');
+INSERT INTO Bed VALUES ('GEN1210208', 102, 2, 'GEN2', 'PT0011');
+INSERT INTO Bed VALUES ('GEN1210209', 102, 2, 'GEN2', NULL);
+INSERT INTO Bed VALUES ('GEN1210210', 102, 2, 'GEN2', 'PT0012');
+
+-- Floor 3
+INSERT INTO Bed VALUES ('GEN1310301', 103, 3, 'GEN3', 'PT0013');
+INSERT INTO Bed VALUES ('GEN1310302', 103, 3, 'GEN3', NULL);
+INSERT INTO Bed VALUES ('GEN1310303', 103, 3, 'GEN3', 'PT0014');
+INSERT INTO Bed VALUES ('GEN1310304', 103, 3, 'GEN3', NULL);
+INSERT INTO Bed VALUES ('GEN1310305', 103, 3, 'GEN3', 'PT0015');
+INSERT INTO Bed VALUES ('GEN1310306', 103, 3, 'GEN3', NULL);
+INSERT INTO Bed VALUES ('GEN1310307', 103, 3, 'GEN3', 'PT0016');
+INSERT INTO Bed VALUES ('GEN1310308', 103, 3, 'GEN3', NULL);
+INSERT INTO Bed VALUES ('GEN1310309', 103, 3, 'GEN3', NULL);
+INSERT INTO Bed VALUES ('GEN1310310', 103, 3, 'GEN3', 'PT0017');
+
+-- Floor 4
+INSERT INTO Bed VALUES ('GEN1410401', 104, 4, 'GEN4', 'PT0018');
+INSERT INTO Bed VALUES ('GEN1410402', 104, 4, 'GEN4', 'PT0019');
+INSERT INTO Bed VALUES ('GEN1410403', 104, 4, 'GEN4', NULL);
+INSERT INTO Bed VALUES ('GEN1410404', 104, 4, 'GEN4', 'PT0020');
+INSERT INTO Bed VALUES ('GEN1410405', 104, 4, 'GEN4', NULL);
+INSERT INTO Bed VALUES ('GEN1410406', 104, 4, 'GEN4', 'PT0021');
+INSERT INTO Bed VALUES ('GEN1410407', 104, 4, 'GEN4', NULL);
+INSERT INTO Bed VALUES ('GEN1410408', 104, 4, 'GEN4', 'PT0022');
+INSERT INTO Bed VALUES ('GEN1410409', 104, 4, 'GEN4', NULL);
+INSERT INTO Bed VALUES ('GEN1410410', 104, 4, 'GEN4', 'PT0023');
+
+-- Floor 5
+INSERT INTO Bed VALUES ('GEN1510501', 105, 5, 'GEN5', NULL);
+INSERT INTO Bed VALUES ('GEN1510502', 105, 5, 'GEN5', 'PT0024');
+INSERT INTO Bed VALUES ('GEN1510503', 105, 5, 'GEN5', NULL);
+INSERT INTO Bed VALUES ('GEN1510504', 105, 5, 'GEN5', NULL);
+INSERT INTO Bed VALUES ('GEN1510505', 105, 5, 'GEN5', 'PT0025');
+INSERT INTO Bed VALUES ('GEN1510506', 105, 5, 'GEN5', NULL);
+INSERT INTO Bed VALUES ('GEN1510507', 105, 5, 'GEN5', 'PT0026');
+INSERT INTO Bed VALUES ('GEN1510508', 105, 5, 'GEN5', NULL);
+INSERT INTO Bed VALUES ('GEN1510509', 105, 5, 'GEN5', NULL);
+INSERT INTO Bed VALUES ('GEN1510510', 105, 5, 'GEN5', 'PT0027');
+
+
+-- Floor 1
+INSERT INTO Bed VALUES ('ICU1110101', 106, 1, 'ICU1', 'PT0028');
+INSERT INTO Bed VALUES ('ICU1110102', 106, 1, 'ICU1', NULL);
+INSERT INTO Bed VALUES ('ICU1110103', 106, 1, 'ICU1', 'PT0029');
+INSERT INTO Bed VALUES ('ICU1110104', 106, 1, 'ICU1', NULL);
+INSERT INTO Bed VALUES ('ICU1110105', 106, 1, 'ICU1', 'PT0030');
+
+-- Floor 3
+INSERT INTO Bed VALUES ('ICU1310301', 107, 3, 'ICU2', NULL);
+INSERT INTO Bed VALUES ('ICU1310302', 107, 3, 'ICU2', 'PT0031');
+INSERT INTO Bed VALUES ('ICU1310303', 107, 3, 'ICU2', NULL);
+INSERT INTO Bed VALUES ('ICU1310304', 107, 3, 'ICU2', NULL);
+INSERT INTO Bed VALUES ('ICU1310305', 107, 3, 'ICU2', 'PT0032');
+
+
+-- Floor 1
+INSERT INTO Bed VALUES ('EMG1110101', 108, 1, 'EMG1', 'PT0033');
+INSERT INTO Bed VALUES ('EMG1110102', 108, 1, 'EMG1', NULL);
+INSERT INTO Bed VALUES ('EMG1110103', 108, 1, 'EMG1', 'PT0034');
+INSERT INTO Bed VALUES ('EMG1110104', 108, 1, 'EMG1', NULL);
+INSERT INTO Bed VALUES ('EMG1110105', 108, 1, 'EMG1', 'PT0035');
+
+-- Floor 2
+INSERT INTO Bed VALUES ('EMG1210201', 109, 2, 'EMG2', NULL);
+INSERT INTO Bed VALUES ('EMG1210202', 109, 2, 'EMG2', 'PT0036');
+INSERT INTO Bed VALUES ('EMG1210203', 109, 2, 'EMG2', 'PT0037');
+INSERT INTO Bed VALUES ('EMG1210204', 109, 2, 'EMG2', NULL);
+INSERT INTO Bed VALUES ('EMG1210205', 109, 2, 'EMG2', 'PT0038');
+
+
+-- Floor 1
+INSERT INTO Bed VALUES ('NIC1110101', 110, 1, 'NIC1', NULL);
+INSERT INTO Bed VALUES ('NIC1110102', 110, 1, 'NIC1', 'PT0039');
+INSERT INTO Bed VALUES ('NIC1110103', 110, 1, 'NIC1', 'PT0040');
+INSERT INTO Bed VALUES ('NIC1110104', 110, 1, 'NIC1', NULL);
+INSERT INTO Bed VALUES ('NIC1110105', 110, 1, 'NIC1', NULL);
+INSERT INTO Bed VALUES ('NIC1110106', 110, 1, 'NIC1', 'PT0041');
+INSERT INTO Bed VALUES ('NIC1110107', 110, 1, 'NIC1', NULL);
+INSERT INTO Bed VALUES ('NIC1110108', 110, 1, 'NIC1', 'PT0042');
+INSERT INTO Bed VALUES ('NIC1110109', 110, 1, 'NIC1', 'PT0043');
+INSERT INTO Bed VALUES ('NIC1110110', 110, 1, 'NIC1', NULL);
+
+-- Floor 2
+INSERT INTO Bed VALUES ('NIC1210201', 111, 2, 'NIC2', 'PT0044');
+INSERT INTO Bed VALUES ('NIC1210202', 111, 2, 'NIC2', NULL);
+INSERT INTO Bed VALUES ('NIC1210203', 111, 2, 'NIC2', NULL);
+INSERT INTO Bed VALUES ('NIC1210204', 111, 2, 'NIC2', 'PT0045');
+INSERT INTO Bed VALUES ('NIC1210205', 111, 2, 'NIC2', NULL);
+INSERT INTO Bed VALUES ('NIC1210206', 111, 2, 'NIC2', 'PT0046');
+INSERT INTO Bed VALUES ('NIC1210207', 111, 2, 'NIC2', NULL);
+INSERT INTO Bed VALUES ('NIC1210208', 111, 2, 'NIC2', 'PT0047');
+INSERT INTO Bed VALUES ('NIC1210209', 111, 2, 'NIC2', NULL);
+INSERT INTO Bed VALUES ('NIC1210210', 111, 2, 'NIC2', 'PT0048');
+
+
+
+-- Floor 1
+INSERT INTO Bed VALUES ('OPD1110101', 112, 1, 'OPD1', NULL);
+INSERT INTO Bed VALUES ('OPD1110102', 112, 1, 'OPD1', 'PT0049');
+INSERT INTO Bed VALUES ('OPD1110103', 112, 1, 'OPD1', 'PT0050');
+
+-- Floor 2
+INSERT INTO Bed VALUES ('OPD1210201', 113, 2, 'OPD2', NULL);
+INSERT INTO Bed VALUES ('OPD1210202', 113, 2, 'OPD2', 'PT0051');
+INSERT INTO Bed VALUES ('OPD1210203', 113, 2, 'OPD2', NULL);
+
+-- Floor 3
+INSERT INTO Bed VALUES ('OPD1310301', 114, 3, 'OPD3', 'PT0052');
+INSERT INTO Bed VALUES ('OPD1310302', 114, 3, 'OPD3', NULL);
+INSERT INTO Bed VALUES ('OPD1310303', 114, 3, 'OPD3', 'PT0053');
+
+-- Floor 4
+INSERT INTO Bed VALUES ('OPD1410401', 115, 4, 'OPD4', NULL);
+INSERT INTO Bed VALUES ('OPD1410402', 115, 4, 'OPD4', NULL);
+INSERT INTO Bed VALUES ('OPD1410403', 115, 4, 'OPD4', 'PT0054');
+
+-- Floor 5
+INSERT INTO Bed VALUES ('OPD1510501', 116, 5, 'OPD5', 'PT0055');
+INSERT INTO Bed VALUES ('OPD1510502', 116, 5, 'OPD5', NULL);
+INSERT INTO Bed VALUES ('OPD1510503', 116, 5, 'OPD5', NULL);
+
+-- Employee Details for Doctors
+INSERT INTO Employee (Employee_ID, Employee_Name, Date_Of_Birth, Gender, Joining_Date, Retirement_Date, Salary, Qualification, Department_ID) VALUES
+('DR0001', 'Dr. Aarav Patel', '1975-06-15', 'M', '2010-01-10', '2035-06-15', 150000, 'MBBS, MS (Orthopedics)', 'ORT'),
+('DR0002', 'Dr. Neha Shah', '1980-08-20', 'F', '2012-03-18', '2040-08-20', 145000, 'MBBS, MS (ENT)', 'ENT'),
+('DR0003', 'Dr. Rohit Mehta', '1978-01-25', 'M', '2009-11-05', '2038-01-25', 148000, 'MBBS, DM (Cardiology)', 'CRD'),
+('DR0004', 'Dr. Kavita Desai', '1982-12-03', 'F', '2014-06-22', '2042-12-03', 140000, 'MBBS, DM (Neurology)', 'NEU'),
+('DR0005', 'Dr. Vivek Joshi', '1976-09-10', 'M', '2008-02-12', '2036-09-10', 152000, 'MBBS, MD (Pediatrics)', 'PED'),
+('DR0006', 'Dr. Sneha Bhatt', '1985-04-17', 'F', '2015-07-14', '2045-04-17', 138000, 'MBBS, MD (Radiology)', 'RAD'),
+('DR0007', 'Dr. Manav Trivedi', '1979-02-08', 'M', '2010-05-30', '2039-02-08', 146000, 'MBBS, MD (Dermatology)', 'DRM'),
+('DR0008', 'Dr. Aditi Rana', '1983-03-11', 'F', '2011-09-25', '2043-03-11', 142000, 'MBBS, MS (General Surgery)', 'SUR'),
+('DR0009', 'Dr. Kunal Sinha', '1981-07-05', 'M', '2013-01-20', '2041-07-05', 144000, 'MBBS, MS (Gynecology)', 'GYN'),
+('DR0010', 'Dr. Meera Kapadia', '1986-10-29', 'F', '2017-08-18', '2046-10-29', 135000, 'MBBS, DM (Oncology)', 'ONC'),
+
+('DR0011', 'Dr. Anuj Goyal', '1980-06-15', 'M', '2012-09-01', '2040-06-15', 145000, 'MBBS, MCh (Urology)', 'URO'),
+('DR0012', 'Dr. Riya Pandya', '1984-02-21', 'F', '2014-11-10', '2044-02-21', 139000, 'MBBS, DM (Nephrology)', 'NEP'),
+('DR0013', 'Dr. Ishaan Thakkar', '1982-11-30', 'M', '2013-07-05', '2042-11-30', 141000, 'MBBS, DM (Gastroenterology)', 'GAS'),
+('DR0014', 'Dr. Nidhi Solanki', '1977-12-19', 'F', '2009-03-15', '2037-12-19', 150000, 'MBBS, MD (Pulmonology)', 'PUL'),
+('DR0015', 'Dr. Jatin Rawal', '1981-05-07', 'M', '2011-10-25', '2041-05-07', 144000, 'MBBS, MS (Ophthalmology)', 'OPH'),
+('DR0016', 'Dr. Priya Chaudhary', '1983-08-22', 'F', '2012-06-15', '2043-08-22', 143000, 'MBBS, MD (Anesthesiology)', 'ANS'),
+('DR0017', 'Dr. Karan Bhatia', '1979-11-10', 'M', '2009-12-01', '2039-11-10', 147000, 'MBBS, MD (Psychiatry)', 'PSY'),
+('DR0018', 'Dr. Divya Vora', '1985-03-14', 'F', '2015-05-20', '2045-03-14', 138000, 'MBBS, MD (Pathology)', 'PAT'),
+('DR0019', 'Dr. Harshad Malhotra', '1982-01-28', 'M', '2013-04-11', '2042-01-28', 142000, 'MBBS, MS (Orthopedics)', 'ORT'),
+('DR0020', 'Dr. Sheetal Sheth', '1980-09-17', 'F', '2011-11-21', '2040-09-17', 145000, 'MBBS, MS (ENT)', 'ENT'),
+
+('DR0021', 'Dr. Aditya Suri', '1984-07-23', 'M', '2014-08-30', '2044-07-23', 143000, 'MBBS, DM (Cardiology)', 'CRD'),
+('DR0022', 'Dr. Tara Jain', '1986-02-05', 'F', '2016-02-20', '2046-02-05', 137000, 'MBBS, DM (Neurology)', 'NEU'),
+('DR0023', 'Dr. Nikhil Verma', '1978-04-26', 'M', '2010-10-08', '2038-04-26', 149000, 'MBBS, MD (Pediatrics)', 'PED'),
+('DR0024', 'Dr. Pooja Raval', '1981-06-02', 'F', '2013-03-11', '2041-06-02', 144000, 'MBBS, MD (Radiology)', 'RAD'),
+('DR0025', 'Dr. Rajesh Chauhan', '1979-08-09', 'M', '2010-12-25', '2039-08-09', 147000, 'MBBS, MD (Dermatology)', 'DRM'),
+('DR0026', 'Dr. Anjali Shroff', '1983-09-03', 'F', '2012-05-18', '2043-09-03', 142000, 'MBBS, MS (General Surgery)', 'SUR'),
+('DR0027', 'Dr. Akash Nair', '1985-01-17', 'M', '2015-09-02', '2045-01-17', 139000, 'MBBS, MS (Gynecology)', 'GYN'),
+('DR0028', 'Dr. Rachna Dave', '1980-12-12', 'F', '2011-06-28', '2040-12-12', 145000, 'MBBS, DM (Oncology)', 'ONC'),
+('DR0029', 'Dr. Ramesh Sagar', '1977-10-06', 'M', '2008-08-14', '2037-10-06', 150000, 'MBBS, MCh (Urology)', 'URO'),
+('DR0030', 'Dr. Snehal Kothari', '1984-11-27', 'F', '2014-12-10', '2044-11-27', 140000, 'MBBS, DM (Nephrology)', 'NEP');
+
+--driver data
+INSERT INTO Employee VALUES
+('DV0001', 'Mukesh Chauhan', '1980-04-15', 'M', '2010-06-01', '2040-04-15', 20000, 'Heavy Vehicle License', 'DRV'),
+('DV0002', 'Ramesh Solanki', '1982-09-20', 'M', '2011-03-10', '2042-09-20', 21000, 'Light Motor Vehicle Certified', 'DRV'),
+('DV0003', 'Nitin Parmar', '1985-02-11', 'M', '2012-07-05', '2045-02-11', 22000, 'LMV + HMV License', 'DRV'),
+('DV0004', 'Mahesh Suthar', '1979-11-23', 'M', '2008-11-01', '2039-11-23', 21500, 'Heavy Vehicle License', 'DRV'),
+('DV0005', 'Priya Desai', '1987-06-08', 'F', '2014-01-18', '2047-06-08', 20500, 'LMV Certified Driver', 'DRV'),
+('DV0006', 'Kiran Rathod', '1984-08-19', 'F', '2013-05-25', '2044-08-19', 21000, 'Commercial Driving License', 'DRV'),
+('DV0007', 'Suman Sharma', '1981-12-30', 'F', '2010-09-14', '2041-12-30', 21500, 'HMV Certified', 'DRV'),
+('DV0008', 'Bharat Thakor', '1983-03-03', 'M', '2011-12-11', '2043-03-03', 22000, 'Transport License Holder', 'DRV'),
+('DV0009', 'Anita Bhatt', '1986-07-17', 'F', '2015-04-20', '2046-07-17', 20000, 'LMV + Badge License', 'DRV'),
+('DV0010', 'Dilip Barot', '1988-01-29', 'M', '2016-06-06', '2048-01-29', 20500, 'Professional Driver Certificate', 'DRV');
+
+INSERT INTO Employee (Employee_ID, Employee_Name, Date_Of_Birth, Gender, Joining_Date, Retirement_Date, Salary, Qualification, Department_ID) VALUES
+('NR0001', 'Anjali Mehta', '1985-06-12', 'F', '2015-04-01', '2045-06-12', 32000, 'B.Sc Nursing', 'PED'),
+('NR0002', 'Neha Patel', '1987-11-25', 'F', '2016-06-15', '2047-11-25', 33000, 'GNM', 'GYN'),
+('NR0003', 'Pooja Desai', '1989-02-19', 'F', '2017-09-01', '2049-02-19', 29500, 'ANM', 'NEU'),
+('NR0004', 'Rita Sharma', '1983-08-05', 'F', '2013-01-10', '2043-08-05', 36000, 'B.Sc Nursing', 'SUR'),
+('NR0005', 'Kavita Joshi', '1990-10-14', 'F', '2018-11-20', '2050-10-14', 28000, 'GNM', 'CRD'),
+('NR0006', 'Mina Chauhan', '1986-07-30', 'F', '2014-03-01', '2046-07-30', 31000, 'M.Sc Nursing', 'ORT'),
+('NR0007', 'Sonal Gandhi', '1992-04-17', 'F', '2019-07-01', '2052-04-17', 27000, 'B.Sc Nursing', 'ENT'),
+('NR0008', 'Deepa Soni', '1988-01-09', 'F', '2015-10-15', '2048-01-09', 29000, 'GNM', 'DRM'),
+('NR0009', 'Bhavna Shah', '1984-09-23', 'F', '2012-08-01', '2044-09-23', 34000, 'B.Sc Nursing', 'RAD'),
+('NR0010', 'Seema Rawal', '1991-12-03', 'F', '2020-01-01', '2051-12-03', 26000, 'ANM', 'PSY'),
+('NR0011', 'Nirali Vyas', '1985-03-28', 'F', '2013-06-01', '2045-03-28', 31000, 'M.Sc Nursing', 'NEP'),
+('NR0012', 'Roshni Bhatt', '1987-05-17', 'F', '2014-05-20', '2047-05-17', 32000, 'B.Sc Nursing', 'URO'),
+('NR0013', 'Falguni Parmar', '1983-10-02', 'F', '2012-11-01', '2043-10-02', 35500, 'GNM', 'GAS'),
+('NR0014', 'Sneha Kapadia', '1986-01-20', 'F', '2013-09-15', '2046-01-20', 30500, 'ANM', 'PUL'),
+('NR0015', 'Komal Shah', '1990-06-10', 'F', '2017-04-01', '2050-06-10', 29000, 'B.Sc Nursing', 'OPH'),
+('NR0016', 'Naina Rathod', '1989-08-25', 'F', '2016-12-20', '2049-08-25', 30000, 'GNM', 'ANS'),
+('NR0017', 'Rupal Deshmukh', '1984-03-15', 'F', '2011-03-10', '2044-03-15', 34500, 'M.Sc Nursing', 'PED'),
+('NR0018', 'Binal Acharya', '1991-01-30', 'F', '2018-05-01', '2051-01-30', 28500, 'B.Sc Nursing', 'NEU'),
+('NR0019', 'Hetal Trivedi', '1988-06-22', 'F', '2015-11-01', '2048-06-22', 30000, 'ANM', 'SUR'),
+('NR0020', 'Krupa Shah', '1993-09-05', 'F', '2020-08-01', '2053-09-05', 27000, 'GNM', 'GYN'),
+('NR0021', 'Namrata Iyer', '1986-02-10', 'F', '2013-02-01', '2046-02-10', 31000, 'B.Sc Nursing', 'CRD'),
+('NR0022', 'Disha Solanki', '1987-07-29', 'F', '2014-01-01', '2047-07-29', 32000, 'M.Sc Nursing', 'DRM'),
+('NR0023', 'Varsha Pandya', '1990-11-13', 'F', '2017-06-01', '2050-11-13', 28500, 'ANM', 'NEP'),
+('NR0024', 'Sanjana Rao', '1985-12-19', 'F', '2012-10-01', '2045-12-19', 33000, 'GNM', 'RAD'),
+('NR0025', 'Ritika Nair', '1989-03-11', 'F', '2016-03-01', '2049-03-11', 30000, 'B.Sc Nursing', 'GAS'),
+('NR0026', 'Jigna Saxena', '1983-04-08', 'F', '2010-05-01', '2043-04-08', 36000, 'M.Sc Nursing', 'URO'),
+('NR0027', 'Surbhi Kaur', '1991-09-25', 'F', '2018-01-01', '2051-09-25', 28000, 'GNM', 'PAT'),
+('NR0028', 'Pranali Gokhale', '1986-05-19', 'F', '2013-07-01', '2046-05-19', 31000, 'B.Sc Nursing', 'OPH'),
+('NR0029', 'Chhaya Rane', '1988-08-08', 'F', '2014-04-01', '2048-08-08', 29500, 'ANM', 'PSY'),
+('NR0030', 'Meena Pillai', '1984-11-06', 'F', '2011-01-01', '2044-11-06', 34000, 'M.Sc Nursing', 'PED'),
+('NR0031', 'Priya Kulkarni', '1992-02-14', 'F', '2019-02-01', '2052-02-14', 27500, 'GNM', 'PUL'),
+('NR0032', 'Smita Joshi', '1987-09-18', 'F', '2014-08-01', '2047-09-18', 31000, 'B.Sc Nursing', 'NEU'),
+('NR0033', 'Ruchi Mishra', '1983-01-12', 'F', '2010-04-01', '2043-01-12', 36500, 'M.Sc Nursing', 'ENT'),
+('NR0034', 'Karishma Naik', '1986-10-27', 'F', '2012-12-01', '2046-10-27', 32000, 'B.Sc Nursing', 'ORT'),
+('NR0035', 'Sheetal Shetty', '1990-04-09', 'F', '2017-08-01', '2050-04-09', 29000, 'GNM', 'SUR'),
+('NR0036', 'Priti Banerjee', '1989-07-03', 'F', '2016-05-01', '2049-07-03', 30500, 'B.Sc Nursing', 'RAD'),
+('NR0037', 'Rina Tiwari', '1985-05-22', 'F', '2012-01-01', '2045-05-22', 33500, 'ANM', 'GYN'),
+('NR0038', 'Divya Pathak', '1991-06-16', 'F', '2018-10-01', '2051-06-16', 28500, 'B.Sc Nursing', 'PAT'),
+('NR0039', 'Gayatri More', '1987-03-04', 'F', '2014-02-01', '2047-03-04', 30000, 'GNM', 'CRD'),
+('NR0040', 'Rupali Borkar', '1988-12-28', 'F', '2015-07-01', '2048-12-28', 31000, 'B.Sc Nursing', 'DRM');
+
+INSERT INTO Address_Contact_Information (ID, Apartment_no, Street_no, Street_Name, City, State, Pincode) VALUES
+('CS0001', 'A-301', '22', 'Andheri West', 'Mumbai', 'Maharashtra', 400058),
+('CS0002', 'B-105', '18', 'Lajpat Nagar', 'Delhi', 'Delhi', 110024),
+('CS0003', 'C-207', '9', 'Jayanagar', 'Bengaluru', 'Karnataka', 560011),
+('CS0004', 'D-402', '13', 'Navrangpura', 'Ahmedabad', 'Gujarat', 380009),
+('CS0005', 'E-110', '6', 'T Nagar', 'Chennai', 'Tamil Nadu', 600017);
+
+INSERT INTO Address_Contact_Information VALUES
+('AD0001', 'A-101', '12', 'MG Road', 'Mumbai', 'Maharashtra', 400001),
+('AD0002', 'B-204', '22', 'Bannerghatta Road', 'Bengaluru', 'Karnataka', 560076),
+('AD0003', 'C-303', '7', 'Anna Salai', 'Chennai', 'Tamil Nadu', 600002),
+('AD0004', 'D-405', '5', 'Park Street', 'Kolkata', 'West Bengal', 700016),
+('AD0005', 'E-110', '18', 'Law College Road', 'Pune', 'Maharashtra', 411004),
+('AD0006', 'F-210', '10', 'Banjara Hills', 'Hyderabad', 'Telangana', 500034),
+('AD0007', 'G-307', '8', 'Civil Lines', 'Delhi', 'Delhi', 110054),
+('AD0008', 'H-101', '20', 'Ashram Road', 'Ahmedabad', 'Gujarat', 380009),
+('AD0009', 'I-302', '3', 'VIP Road', 'Raipur', 'Chhattisgarh', 492001),
+('AD0010', 'J-504', '25', 'Gopalpura Bypass', 'Jaipur', 'Rajasthan', 302018),
+('AD0011', 'K-206', '16', 'Rajpur Road', 'Dehradun', 'Uttarakhand', 248001),
+('AD0012', 'L-109', '13', 'JLN Marg', 'Bhopal', 'Madhya Pradesh', 462003),
+('AD0013', 'M-404', '9', 'Shivaji Nagar', 'Nagpur', 'Maharashtra', 440010),
+('AD0014', 'N-305', '11', 'Hazratganj', 'Lucknow', 'Uttar Pradesh', 226001),
+('AD0015', 'O-501', '15', 'Marine Drive', 'Cochin', 'Kerala', 682031);
+
+INSERT INTO Address_Contact_Information VALUES
+('SC0001', 'A-101', '12', 'LBS Marg', 'Mumbai', 'Maharashtra', 400070),
+('SC0002', 'B-204', '18', 'BTM Layout', 'Bengaluru', 'Karnataka', 560029),
+('SC0003', 'C-303', '7', 'Vadapalani Road', 'Chennai', 'Tamil Nadu', 600026),
+('SC0004', 'D-405', '5', 'Salt Lake Sector 5', 'Kolkata', 'West Bengal', 700091),
+('SC0005', 'E-110', '22', 'Kothrud Road', 'Pune', 'Maharashtra', 411038),
+('SC0006', 'F-210', '10', 'Begumpet', 'Hyderabad', 'Telangana', 500016),
+('SC0007', 'G-307', '14', 'Patparganj', 'Delhi', 'Delhi', 110092),
+('SC0008', 'H-101', '20', 'Maninagar', 'Ahmedabad', 'Gujarat', 380008),
+('SC0009', 'I-302', '3', 'Shankar Nagar', 'Raipur', 'Chhattisgarh', 492007),
+('SC0010', 'J-504', '25', 'Malviya Nagar', 'Jaipur', 'Rajasthan', 302017);
+
+INSERT INTO Address_Contact_Information (ID, Apartment_no, Street_no, Street_Name, City, State, Pincode) VALUES
+('CL0001', 'A-101', '12', 'MG Road', 'Mumbai', 'Maharashtra', 400001),
+('CL0002', 'B-203', '18', 'Laxmi Nagar', 'Delhi', 'Delhi', 110092),
+('CL0003', 'C-304', '21', 'Bannerghatta Road', 'Bengaluru', 'Karnataka', 560076),
+('CL0004', 'D-405', '5', 'Anna Salai', 'Chennai', 'Tamil Nadu', 600002),
+('CL0005', 'E-106', '11', 'Ashram Road', 'Ahmedabad', 'Gujarat', 380009),
+('CL0006', 'F-207', '8', 'Sikar Road', 'Jaipur', 'Rajasthan', 302013),
+('CL0007', 'G-308', '7', 'Gomti Nagar', 'Lucknow', 'Uttar Pradesh', 226010),
+('CL0008', 'H-409', '10', 'Salt Lake', 'Kolkata', 'West Bengal', 700091),
+('CL0009', 'I-110', '9', 'MP Nagar', 'Bhopal', 'Madhya Pradesh', 462011),
+('CL0010', 'J-211', '6', 'Sector 22', 'Chandigarh', 'Chandigarh', 160022);
+
+INSERT INTO GENERAL_INFORMATION VALUES
+('CL0001', 'O+', 68.2, 170.5),
+('CL0002', 'B+', 58.7, 158.2),
+('CL0003', 'A+', 70.1, 172.0),
+('CL0004', 'AB+', 55.3, 155.8),
+('CL0005', 'O-', 67.0, 169.4),
+('CL0006', 'B-', 60.4, 160.1),
+('CL0007', 'A+', 69.8, 171.2),
+('CL0008', 'O+', 54.6, 157.3),
+('CL0009', 'B+', 66.5, 168.9),
+('CL0010', 'AB-', 56.1, 159.6);
+
+INSERT INTO GENERAL_INFORMATION VALUES
+('CS0001', 'A+', 71.2, 173.5),
+('CS0002', 'B+', 58.0, 160.2),
+('CS0003', 'O+', 74.6, 175.1),
+('CS0004', 'AB+', 56.3, 158.7),
+('CS0005', 'B-', 72.8, 174.0);
+
+INSERT INTO GENERAL_INFORMATION (ID, BLOOD_GROUP, WEIGHT, HEIGHT) VALUES
+('AD0001', 'A+', 62.5, 162.0),
+('AD0002', 'B+', 75.2, 175.0),
+('AD0003', 'O+', 58.6, 160.0),
+('AD0004', 'AB-', 78.4, 178.5),
+('AD0005', 'A-', 60.0, 164.0),
+('AD0006', 'B-', 80.5, 177.0),
+('AD0007', 'O-', 59.3, 165.2),
+('AD0008', 'AB+', 76.0, 174.5),
+('AD0009', 'A+', 57.8, 163.0),
+('AD0010', 'B+', 82.0, 180.0),
+('AD0011', 'O+', 61.2, 166.0),
+('AD0012', 'AB-', 79.5, 179.0),
+('AD0013', 'A-', 56.4, 161.5),
+('AD0014', 'B-', 84.1, 181.0),
+('AD0015', 'O+', 55.0, 160.5);
+
+INSERT INTO GENERAL_INFORMATION VALUES
+('SC0001', 'O+', 78.4, 178.0),
+('SC0002', 'B+', 75.0, 175.5),
+('SC0003', 'A+', 73.2, 173.4),
+('SC0004', 'AB-', 76.5, 176.0),
+('SC0005', 'O-', 70.8, 172.3),
+('SC0006', 'B-', 74.0, 174.6),
+('SC0007', 'A-', 77.6, 177.2),
+('SC0008', 'O-', 70.8, 179.3),
+('SC0009', 'AB+', 50.0, 174.6),
+('SC0010', 'A-', 76.6, 160.2);
+
+
+INSERT INTO Employee (Employee_ID, Employee_Name, Date_Of_Birth, Gender, Joining_Date, Retirement_Date, Salary, Qualification, Department_ID) VALUES
+('CS0001', 'Rohan Mehta', '1990-05-12', 'M', '2015-06-01', '2050-05-12', 30000, 'B.Com', 'CSH'),
+('CS0002', 'Priya Sharma', '1992-08-24', 'F', '2016-03-15', '2052-08-24', 31000, 'B.Com', 'CSH'),
+('CS0003', 'Anil Verma', '1988-11-10', 'M', '2014-01-20', '2048-11-10', 29500, 'BBA', 'CSH'),
+('CS0004', 'Neha Patel', '1991-07-05', 'F', '2017-09-10', '2056-07-05', 30500, 'B.Com', 'CSH'),
+('CS0005', 'Sanjay Rao', '1989-03-18', 'M', '2013-11-25', '2049-03-18', 30000, 'B.Com', 'CSH');
+
+
+INSERT INTO Employee VALUES 
+('AD0001', 'Anjali Sharma', '1985-04-12', 'F', '2010-07-01', '2045-04-12', 52000, 'MHA (Master of Hospital Administration)', 'ADM'),
+('AD0002', 'Rajeev Menon', '1982-09-23', 'M', '2008-06-15', '2042-09-23', 54000, 'MPH (Master of Public Health)', 'ADM'),
+('AD0003', 'Kavita Iyer', '1990-02-15', 'F', '2015-05-10', '2050-02-15', 50000, 'MBA in Healthcare Management', 'ADM'),
+('AD0004', 'Amitabh Desai', '1987-08-04', 'M', '2012-01-20', '2047-08-04', 56000, 'MHA', 'ADM'),
+('AD0005', 'Neha Bhandari', '1991-12-30', 'F', '2017-02-14', '2056-12-30', 48000, 'B.Sc in Hospital Administration', 'ADM'),
+('AD0006', 'Suresh Reddy', '1983-05-18', 'M', '2009-04-01', '2043-05-18', 58000, 'MBA in Healthcare', 'ADM'),
+('AD0007', 'Pooja Nair', '1989-11-10', 'F', '2014-06-22', '2049-11-10', 49000, 'M.Sc in Public Health', 'ADM'),
+('AD0008', 'Nikhil Verma', '1986-07-27', 'M', '2011-09-05', '2046-07-27', 53000, 'MHA', 'ADM'),
+('AD0009', 'Swati Kulkarni', '1992-10-11', 'F', '2016-03-20', '2057-10-11', 47000, 'MBA in Healthcare Management', 'ADM'),
+('AD0010', 'Manish Jha', '1980-01-25', 'M', '2005-11-30', '2040-01-25', 60000, 'MHA', 'ADM'),
+('AD0011', 'Priya Das', '1988-06-19', 'F', '2013-08-12', '2048-06-19', 51000, 'MPH', 'ADM'),
+('AD0012', 'Rahul Mehta', '1984-03-02', 'M', '2009-12-03', '2044-03-02', 57000, 'M.Sc in Healthcare Management', 'ADM'),
+('AD0013', 'Deepa Joshi', '1993-09-21', 'F', '2018-04-25', '2058-09-21', 46000, 'B.Sc in Hospital Administration', 'ADM'),
+('AD0014', 'Arun Patil', '1981-02-17', 'M', '2006-10-10', '2041-02-17', 59000, 'MBA in Health Services Management', 'ADM'),
+('AD0015', 'Meera Sinha', '1994-08-08', 'F', '2019-05-15', '2059-08-08', 45000, 'MHA', 'ADM');
+
+
+--cleaner's data in employee
+INSERT INTO Employee (Employee_ID, Employee_Name, Date_Of_Birth, Gender, Joining_Date, Retirement_Date, Salary, Qualification, Department_ID) VALUES
+('CL0001', 'Ravi Shankar', '1980-04-15', 'M', '2010-06-01', '2040-04-15', 18000, '10th Pass', 'CLN'),
+('CL0002', 'Geeta Kumari', '1982-08-20', 'F', '2011-03-10', '2042-08-20', 18500, '10th Pass', 'CLN'),
+('CL0003', 'Suresh Kumar', '1979-12-02', 'M', '2009-11-15', '2039-12-02', 19000, '10th Pass', 'CLN'),
+('CL0004', 'Laxmi Devi', '1985-06-25', 'F', '2014-01-20', '2045-06-25', 17500, '10th Pass', 'CLN'),
+('CL0005', 'Kiran Yadav', '1983-10-11', 'M', '2012-07-05', '2043-10-11', 18000, '10th Pass', 'CLN'),
+('CL0006', 'Sunita Patel', '1981-02-14', 'F', '2010-09-01', '2041-02-14', 18500, '10th Pass', 'CLN'),
+('CL0007', 'Manoj Singh', '1984-11-19', 'M', '2013-05-12', '2044-11-19', 17800, '10th Pass', 'CLN'),
+('CL0008', 'Pooja Verma', '1987-01-08', 'F', '2016-08-22', '2047-01-08', 17000, '10th Pass', 'CLN'),
+('CL0009', 'Ramesh Lal', '1980-03-30', 'M', '2011-10-10', '2040-03-30', 18200, '10th Pass', 'CLN'),
+('CL0010', 'Asha Rani', '1986-09-17', 'F', '2015-02-05', '2046-09-17', 17500, '10th Pass', 'CLN');
+
+
+--security guard data
+INSERT INTO Employee VALUES
+('SC0001', 'Rakesh Thakur', '1978-03-15', 'M', '2005-06-10', '2038-03-15', 25000, 'Ex-Defense Personnel', 'SEC'),
+('SC0002', 'Sanjay Kumar', '1980-07-22', 'M', '2006-09-18', '2040-07-22', 24000, 'Certified Security Professional', 'SEC'),
+('SC0003', 'Manoj Rawat', '1985-01-05', 'M', '2010-01-01', '2045-01-05', 23000, 'Diploma in Security Management', 'SEC'),
+('SC0004', 'Vikram Singh', '1983-12-10', 'M', '2009-02-14', '2043-12-10', 24000, 'Ex-Army Personnel', 'SEC'),
+('SC0005', 'Ravi Yadav', '1986-08-25', 'M', '2012-04-05', '2046-08-25', 22000, 'Certified Security Officer', 'SEC'),
+('SC0006', 'Suraj Chauhan', '1987-06-11', 'M', '2013-03-20', '2047-06-11', 23000, 'Basic Security Training', 'SEC'),
+('SC0007', 'Amit Negi', '1982-11-09', 'M', '2008-07-15', '2042-11-09', 24000, 'Ex-Defense Personnel', 'SEC'),
+('SC0008', 'Ravi Yadav', '1986-08-25', 'M', '2012-04-05', '2046-08-25', 22000, 'Certified Security Officer', 'SEC'),
+('SC0009', 'Gaurav Macwan', '1999-08-21', 'M', '2013-03-20', '2048-07-21', 25000, 'Basic Security Training', 'SEC'),
+('SC0010', 'Amit Trivedi', '1992-11-09', 'M', '2019-07-15', '2046-11-09', 24000, 'Ex-Defense Personnel', 'SEC');
+
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0001', '12:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0001', '15:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0002', '10:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0002', '12:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0002', '15:00:00', '18:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0003', '08:00:00', '11:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0003', '13:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0003', '17:00:00', '18:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0004', '11:00:00', '13:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0004', '09:00:00', '11:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0004', '14:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0005', '15:00:00', '18:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0005', '14:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0005', '13:00:00', '15:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0006', '14:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0006', '08:00:00', '11:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0006', '16:00:00', '19:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0007', '15:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0008', '08:00:00', '11:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0008', '14:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0009', '13:00:00', '15:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0010', '11:00:00', '13:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0010', '15:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0010', '09:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0011', '12:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0011', '17:00:00', '19:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0012', '15:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0013', '11:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0013', '17:00:00', '19:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0013', '15:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0014', '13:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0014', '10:00:00', '13:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0014', '08:00:00', '09:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0015', '14:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0015', '17:00:00', '19:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0015', '08:00:00', '10:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0016', '11:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0016', '10:00:00', '13:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0016', '16:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0017', '09:00:00', '11:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0017', '14:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0017', '12:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0018', '14:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0019', '14:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0019', '11:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0020', '13:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0021', '10:00:00', '13:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0021', '14:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0021', '16:00:00', '18:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0022', '12:00:00', '15:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0022', '10:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0023', '12:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0023', '08:00:00', '11:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0024', '09:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0024', '08:00:00', '10:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0024', '12:00:00', '15:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0025', '10:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0026', '09:00:00', '11:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0027', '11:00:00', '13:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0027', '17:00:00', '19:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0027', '10:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0028', '08:00:00', '10:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0028', '10:00:00', '13:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0028', '15:00:00', '18:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0029', '08:00:00', '10:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0029', '10:00:00', '13:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0029', '17:00:00', '19:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('DR0030', '15:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0001', '13:00:00', '21:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0002', '16:00:00', '24:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0003', '04:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0004', '02:00:00', '10:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0005', '02:00:00', '10:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0006', '01:00:00', '09:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0007', '13:00:00', '21:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0008', '08:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0009', '01:00:00', '09:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0010', '15:00:00', '23:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0011', '14:00:00', '22:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0012', '08:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0013', '08:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0014', '04:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0015', '16:00:00', '24:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0016', '08:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0017', '00:00:00', '08:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0018', '03:00:00', '11:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0019', '06:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0020', '14:00:00', '22:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0021', '04:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0022', '10:00:00', '18:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0023', '00:00:00', '08:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0024', '06:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0025', '09:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0026', '09:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0027', '09:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0028', '02:00:00', '10:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0029', '16:00:00', '24:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0030', '15:00:00', '23:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0031', '05:00:00', '13:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0032', '04:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0033', '05:00:00', '13:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0034', '07:00:00', '15:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0035', '07:00:00', '15:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0036', '09:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0037', '16:00:00', '24:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0038', '03:00:00', '11:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0039', '11:00:00', '19:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('NR0040', '10:00:00', '18:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CL0001', '02:00:00', '10:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CL0002', '14:00:00', '22:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CL0003', '06:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CL0004', '13:00:00', '21:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CL0005', '08:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CL0006', '03:00:00', '11:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CL0007', '01:00:00', '09:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CL0008', '03:00:00', '11:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CL0009', '10:00:00', '18:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CL0010', '09:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CS0001', '06:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CS0002', '06:00:00', '14:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CS0003', '11:00:00', '19:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CS0004', '16:00:00', '24:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('CS0005', '09:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0001', '01:00:00', '09:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0002', '00:00:00', '08:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0003', '05:00:00', '13:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0004', '02:00:00', '10:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0005', '13:00:00', '21:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0006', '13:00:00', '21:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0007', '12:00:00', '20:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0008', '16:00:00', '24:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0009', '16:00:00', '24:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0010', '14:00:00', '22:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0011', '05:00:00', '13:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0012', '07:00:00', '15:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0013', '09:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0014', '14:00:00', '22:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('AD0015', '14:00:00', '22:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('SC0001', '02:00:00', '10:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('SC0002', '04:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('SC0003', '09:00:00', '17:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('SC0004', '04:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('SC0005', '13:00:00', '21:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('SC0006', '15:00:00', '23:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('SC0007', '08:00:00', '16:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('SC0008', '04:00:00', '12:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('SC0009', '07:00:00', '15:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES ('SC0010', '03:00:00', '11:00:00');
+INSERT INTO AVAILABLE_TIME (EMPLOYEE_ID, AVAILABLE_FROM, AVAILABLE_TO) VALUES 
+('DV0001', '08:00:00', '16:00:00'),
+('DV0002', '09:00:00', '17:00:00'),
+('DV0003', '10:00:00', '18:00:00'),
+('DV0004', '06:00:00', '14:00:00'),
+('DV0005', '07:00:00', '15:00:00'),
+('DV0006', '11:00:00', '19:00:00'),
+('DV0007', '12:00:00', '20:00:00'),
+('DV0008', '13:00:00', '21:00:00'),
+('DV0009', '14:00:00', '22:00:00'),
+('DV0010', '15:00:00', '23:00:00');
+
+INSERT INTO ATTENDANCE VALUES ('DR0001', '2024/01/15');
+INSERT INTO ATTENDANCE VALUES ('DR0001', '2024/03/10');
+INSERT INTO ATTENDANCE VALUES ('DR0001', '2024/07/25');
+
+INSERT INTO ATTENDANCE VALUES ('DR0002', '2024/02/05');
+INSERT INTO ATTENDANCE VALUES ('DR0002', '2024/02/15');
+INSERT INTO ATTENDANCE VALUES ('DR0002', '2024/04/18');
+INSERT INTO ATTENDANCE VALUES ('DR0002', '2024/08/29');
+
+INSERT INTO ATTENDANCE VALUES ('DR0003', '2024/05/21');
+
+-- DR0004 has 0 leaves
+
+INSERT INTO ATTENDANCE VALUES ('DR0005', '2024/01/12');
+INSERT INTO ATTENDANCE VALUES ('DR0005', '2024/04/03');
+INSERT INTO ATTENDANCE VALUES ('DR0005', '2024/10/16');
+
+INSERT INTO ATTENDANCE VALUES ('DR0006', '2024/03/01');
+INSERT INTO ATTENDANCE VALUES ('DR0006', '2024/03/30');
+INSERT INTO ATTENDANCE VALUES ('DR0006', '2024/06/14');
+INSERT INTO ATTENDANCE VALUES ('DR0006', '2024/09/09');
+INSERT INTO ATTENDANCE VALUES ('DR0006', '2024/12/11');
+
+INSERT INTO ATTENDANCE VALUES ('DR0007', '2024/07/02');
+INSERT INTO ATTENDANCE VALUES ('DR0007', '2024/08/05');
+
+INSERT INTO ATTENDANCE VALUES ('DR0008', '2024/11/19');
+INSERT INTO ATTENDANCE VALUES ('DR0008', '2024/12/24');
+INSERT INTO ATTENDANCE VALUES ('DR0008', '2024/12/30');
+
+INSERT INTO ATTENDANCE VALUES ('DR0009', '2024/02/13');
+INSERT INTO ATTENDANCE VALUES ('DR0009', '2024/03/22');
+INSERT INTO ATTENDANCE VALUES ('DR0009', '2024/06/01');
+INSERT INTO ATTENDANCE VALUES ('DR0009', '2024/08/07');
+INSERT INTO ATTENDANCE VALUES ('DR0009', '2024/10/21');
+INSERT INTO ATTENDANCE VALUES ('DR0009', '2024/11/15');
+
+INSERT INTO ATTENDANCE VALUES ('DR0010', '2024/04/10');
+
+
+-- DR0011
+INSERT INTO ATTENDANCE VALUES ('DR0011', '2024/01/22');
+INSERT INTO ATTENDANCE VALUES ('DR0011', '2024/03/14');
+INSERT INTO ATTENDANCE VALUES ('DR0011', '2024/06/20');
+
+-- DR0012
+INSERT INTO ATTENDANCE VALUES ('DR0012', '2024/02/03');
+INSERT INTO ATTENDANCE VALUES ('DR0012', '2024/02/28');
+INSERT INTO ATTENDANCE VALUES ('DR0012', '2024/03/30');
+INSERT INTO ATTENDANCE VALUES ('DR0012', '2024/05/01');
+INSERT INTO ATTENDANCE VALUES ('DR0012', '2024/06/17');
+
+-- DR0013 (No leaves)
+
+-- DR0014
+INSERT INTO ATTENDANCE VALUES ('DR0014', '2024/04/08');
+INSERT INTO ATTENDANCE VALUES ('DR0014', '2024/05/19');
+INSERT INTO ATTENDANCE VALUES ('DR0014', '2024/10/02');
+
+-- DR0015
+INSERT INTO ATTENDANCE VALUES ('DR0015', '2024/03/11');
+INSERT INTO ATTENDANCE VALUES ('DR0015', '2024/07/15');
+
+-- DR0016
+INSERT INTO ATTENDANCE VALUES ('DR0016', '2024/01/05');
+INSERT INTO ATTENDANCE VALUES ('DR0016', '2024/08/12');
+INSERT INTO ATTENDANCE VALUES ('DR0016', '2024/09/30');
+INSERT INTO ATTENDANCE VALUES ('DR0016', '2024/11/08');
+
+-- DR0017
+INSERT INTO ATTENDANCE VALUES ('DR0017', '2024/02/10');
+INSERT INTO ATTENDANCE VALUES ('DR0017', '2024/06/24');
+
+-- DR0018
+INSERT INTO ATTENDANCE VALUES ('DR0018', '2024/05/23');
+INSERT INTO ATTENDANCE VALUES ('DR0018', '2024/07/05');
+INSERT INTO ATTENDANCE VALUES ('DR0018', '2024/08/19');
+INSERT INTO ATTENDANCE VALUES ('DR0018', '2024/10/11');
+INSERT INTO ATTENDANCE VALUES ('DR0018', '2024/12/06');
+
+-- DR0019
+INSERT INTO ATTENDANCE VALUES ('DR0019', '2024/01/19');
+INSERT INTO ATTENDANCE VALUES ('DR0019', '2024/04/14');
+INSERT INTO ATTENDANCE VALUES ('DR0019', '2024/09/17');
+
+-- DR0020
+INSERT INTO ATTENDANCE VALUES ('DR0020', '2024/05/09');
+INSERT INTO ATTENDANCE VALUES ('DR0020', '2024/07/22');
+INSERT INTO ATTENDANCE VALUES ('DR0020', '2024/11/30');
+
+-- DR0021
+INSERT INTO ATTENDANCE VALUES ('DR0021', '2024/03/04');
+INSERT INTO ATTENDANCE VALUES ('DR0021', '2024/06/12');
+
+-- DR0022 (No leaves)
+
+-- DR0023
+INSERT INTO ATTENDANCE VALUES ('DR0023', '2024/09/03');
+INSERT INTO ATTENDANCE VALUES ('DR0023', '2024/10/27');
+
+-- DR0024
+INSERT INTO ATTENDANCE VALUES ('DR0024', '2024/04/07');
+INSERT INTO ATTENDANCE VALUES ('DR0024', '2024/06/03');
+INSERT INTO ATTENDANCE VALUES ('DR0024', '2024/08/25');
+
+-- DR0025
+INSERT INTO ATTENDANCE VALUES ('DR0025', '2024/01/29');
+
+-- DR0026
+INSERT INTO ATTENDANCE VALUES ('DR0026', '2024/02/21');
+INSERT INTO ATTENDANCE VALUES ('DR0026', '2024/03/25');
+INSERT INTO ATTENDANCE VALUES ('DR0026', '2024/05/20');
+INSERT INTO ATTENDANCE VALUES ('DR0026', '2024/07/17');
+INSERT INTO ATTENDANCE VALUES ('DR0026', '2024/11/01');
+
+-- DR0027
+INSERT INTO ATTENDANCE VALUES ('DR0027', '2024/10/05');
+INSERT INTO ATTENDANCE VALUES ('DR0027', '2024/12/12');
+
+-- DR0028 (No leaves)
+
+-- DR0029
+INSERT INTO ATTENDANCE VALUES ('DR0029', '2024/06/09');
+INSERT INTO ATTENDANCE VALUES ('DR0029', '2024/07/31');
+
+-- DR0030
+INSERT INTO ATTENDANCE VALUES ('DR0030', '2024/01/08');
+INSERT INTO ATTENDANCE VALUES ('DR0030', '2024/03/06');
+INSERT INTO ATTENDANCE VALUES ('DR0030', '2024/09/21');
+
+
+
+INSERT INTO ATTENDANCE VALUES ('NR0001', '2024/02/14');
+INSERT INTO ATTENDANCE VALUES ('NR0001', '2024/04/19');
+
+INSERT INTO ATTENDANCE VALUES ('NR0002', '2024/03/01');
+INSERT INTO ATTENDANCE VALUES ('NR0002', '2024/06/08');
+INSERT INTO ATTENDANCE VALUES ('NR0002', '2024/09/23');
+
+INSERT INTO ATTENDANCE VALUES ('NR0003', '2024/01/15');
+
+INSERT INTO ATTENDANCE VALUES ('NR0004', '2024/05/21');
+INSERT INTO ATTENDANCE VALUES ('NR0004', '2024/08/10');
+INSERT INTO ATTENDANCE VALUES ('NR0004', '2024/08/12');
+INSERT INTO ATTENDANCE VALUES ('NR0004', '2024/08/15');
+
+INSERT INTO ATTENDANCE VALUES ('NR0005', '2024/10/31');
+INSERT INTO ATTENDANCE VALUES ('NR0005', '2024/12/02');
+INSERT INTO ATTENDANCE VALUES ('NR0005', '2024/12/11');
+
+-- Skipping NR0006 (0 leaves)
+
+INSERT INTO ATTENDANCE VALUES ('NR0007', '2024/03/17');
+INSERT INTO ATTENDANCE VALUES ('NR0007', '2024/06/04');
+
+INSERT INTO ATTENDANCE VALUES ('NR0008', '2024/07/21');
+INSERT INTO ATTENDANCE VALUES ('NR0008', '2024/07/22');
+INSERT INTO ATTENDANCE VALUES ('NR0008', '2024/09/03');
+
+INSERT INTO ATTENDANCE VALUES ('NR0009', '2024/11/14');
+
+INSERT INTO ATTENDANCE VALUES ('NR0010', '2024/01/05');
+INSERT INTO ATTENDANCE VALUES ('NR0010', '2024/01/06');
+INSERT INTO ATTENDANCE VALUES ('NR0010', '2024/01/07');
+
+INSERT INTO ATTENDANCE VALUES ('NR0011', '2024/02/03');
+INSERT INTO ATTENDANCE VALUES ('NR0011', '2024/02/17');
+INSERT INTO ATTENDANCE VALUES ('NR0011', '2024/03/22');
+
+INSERT INTO ATTENDANCE VALUES ('NR0012', '2024/04/15');
+INSERT INTO ATTENDANCE VALUES ('NR0012', '2024/06/16');
+
+-- NR0013 has no leave
+
+INSERT INTO ATTENDANCE VALUES ('NR0014', '2024/09/09');
+INSERT INTO ATTENDANCE VALUES ('NR0014', '2024/09/10');
+INSERT INTO ATTENDANCE VALUES ('NR0014', '2024/09/11');
+
+INSERT INTO ATTENDANCE VALUES ('NR0015', '2024/11/01');
+INSERT INTO ATTENDANCE VALUES ('NR0015', '2024/11/04');
+INSERT INTO ATTENDANCE VALUES ('NR0015', '2024/11/08');
+INSERT INTO ATTENDANCE VALUES ('NR0015', '2024/11/10');
+INSERT INTO ATTENDANCE VALUES ('NR0015', '2024/12/12');
+
+INSERT INTO ATTENDANCE VALUES ('NR0016', '2024/01/25');
+
+INSERT INTO ATTENDANCE VALUES ('NR0017', '2024/03/04');
+INSERT INTO ATTENDANCE VALUES ('NR0017', '2024/03/05');
+INSERT INTO ATTENDANCE VALUES ('NR0017', '2024/03/06');
+
+-- NR0018 - high leave count (16+)
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/01/01');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/01/02');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/01/03');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/01/04');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/01/05');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/02/11');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/02/12');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/03/01');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/03/02');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/03/03');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/04/15');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/06/17');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/06/18');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/07/04');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/07/05');
+INSERT INTO ATTENDANCE VALUES ('NR0018', '2024/07/06');
+
+INSERT INTO ATTENDANCE VALUES ('NR0019', '2024/05/19');
+INSERT INTO ATTENDANCE VALUES ('NR0019', '2024/05/20');
+
+-- NR0020 - no leave
+
+
+INSERT INTO ATTENDANCE VALUES ('NR0021', '2024/01/10');
+INSERT INTO ATTENDANCE VALUES ('NR0021', '2024/01/15');
+INSERT INTO ATTENDANCE VALUES ('NR0021', '2024/02/12');
+
+INSERT INTO ATTENDANCE VALUES ('NR0022', '2024/04/20');
+INSERT INTO ATTENDANCE VALUES ('NR0022', '2024/04/23');
+INSERT INTO ATTENDANCE VALUES ('NR0022', '2024/04/25');
+INSERT INTO ATTENDANCE VALUES ('NR0022', '2024/04/26');
+
+INSERT INTO ATTENDANCE VALUES ('NR0023', '2024/07/04');
+
+INSERT INTO ATTENDANCE VALUES ('NR0024', '2024/05/11');
+INSERT INTO ATTENDANCE VALUES ('NR0024', '2024/05/12');
+INSERT INTO ATTENDANCE VALUES ('NR0024', '2024/05/13');
+INSERT INTO ATTENDANCE VALUES ('NR0024', '2024/06/01');
+
+-- NR0025 high leave count (17)
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/01/05');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/01/06');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/01/07');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/01/08');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/02/14');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/02/15');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/02/16');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/02/17');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/03/01');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/03/02');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/03/03');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/04/11');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/04/12');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/05/01');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/05/02');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/06/15');
+INSERT INTO ATTENDANCE VALUES ('NR0025', '2024/06/16');
+
+-- NR0026 has no leave
+
+INSERT INTO ATTENDANCE VALUES ('NR0027', '2024/02/22');
+INSERT INTO ATTENDANCE VALUES ('NR0027', '2024/03/15');
+INSERT INTO ATTENDANCE VALUES ('NR0027', '2024/03/18');
+INSERT INTO ATTENDANCE VALUES ('NR0027', '2024/03/19');
+
+INSERT INTO ATTENDANCE VALUES ('NR0028', '2024/08/01');
+
+INSERT INTO ATTENDANCE VALUES ('NR0029', '2024/09/17');
+INSERT INTO ATTENDANCE VALUES ('NR0029', '2024/10/12');
+
+INSERT INTO ATTENDANCE VALUES ('NR0030', '2024/11/11');
+INSERT INTO ATTENDANCE VALUES ('NR0030', '2024/11/12');
+INSERT INTO ATTENDANCE VALUES ('NR0030', '2024/11/13');
+
+-- NR0031 high leave count (18)
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/01/01');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/01/03');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/01/04');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/02/01');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/02/02');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/02/03');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/03/01');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/03/02');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/03/03');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/03/04');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/03/05');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/04/10');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/04/11');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/05/01');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/05/02');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/06/01');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/06/02');
+INSERT INTO ATTENDANCE VALUES ('NR0031', '2024/06/03');
+
+INSERT INTO ATTENDANCE VALUES ('NR0032', '2024/03/07');
+
+-- NR0033 has no leave
+
+INSERT INTO ATTENDANCE VALUES ('NR0034', '2024/09/01');
+INSERT INTO ATTENDANCE VALUES ('NR0034', '2024/09/02');
+INSERT INTO ATTENDANCE VALUES ('NR0034', '2024/09/03');
+
+INSERT INTO ATTENDANCE VALUES ('NR0035', '2024/07/11');
+INSERT INTO ATTENDANCE VALUES ('NR0035', '2024/08/15');
+INSERT INTO ATTENDANCE VALUES ('NR0035', '2024/10/10');
+
+INSERT INTO ATTENDANCE VALUES ('NR0036', '2024/11/25');
+
+INSERT INTO ATTENDANCE VALUES ('NR0037', '2024/02/20');
+INSERT INTO ATTENDANCE VALUES ('NR0037', '2024/02/21');
+INSERT INTO ATTENDANCE VALUES ('NR0037', '2024/02/22');
+INSERT INTO ATTENDANCE VALUES ('NR0037', '2024/02/23');
+
+INSERT INTO ATTENDANCE VALUES ('NR0038', '2024/12/29');
+
+INSERT INTO ATTENDANCE VALUES ('NR0039', '2024/01/30');
+INSERT INTO ATTENDANCE VALUES ('NR0039', '2024/01/31');
+
+-- NR0040 high leave count (20)
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/01/01');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/01/02');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/01/03');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/01/04');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/01/05');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/02/01');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/02/02');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/02/03');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/03/01');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/03/02');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/03/03');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/04/01');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/04/02');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/04/03');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/04/04');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/05/01');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/05/02');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/05/03');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/06/01');
+INSERT INTO ATTENDANCE VALUES ('NR0040', '2024/06/02');
+
+
+
+-- CL0001 (leave count = 3)
+INSERT INTO ATTENDANCE VALUES ('CL0001', '2024/01/10');
+INSERT INTO ATTENDANCE VALUES ('CL0001', '2024/02/14');
+INSERT INTO ATTENDANCE VALUES ('CL0001', '2024/04/01');
+
+-- CL0002 (leave count = 14)
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/01/02');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/01/12');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/01/25');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/02/11');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/03/02');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/03/11');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/03/27');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/04/10');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/04/25');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/05/03');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/06/01');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/06/16');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/07/07');
+INSERT INTO ATTENDANCE VALUES ('CL0002', '2024/07/25');
+
+-- CL0003 (leave count = 0) – no leave
+
+-- CL0004 (leave count = 18) – exceeds 15
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/01/01');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/01/02');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/01/03');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/01/04');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/02/01');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/02/02');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/02/03');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/02/04');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/03/01');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/03/02');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/03/03');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/04/01');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/04/02');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/04/03');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/05/01');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/05/02');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/06/01');
+INSERT INTO ATTENDANCE VALUES ('CL0004', '2024/06/02');
+
+-- CL0005 (leave count = 2)
+INSERT INTO ATTENDANCE VALUES ('CL0005', '2024/08/01');
+INSERT INTO ATTENDANCE VALUES ('CL0005', '2024/09/10');
+
+-- CL0006 (leave count = 6)
+INSERT INTO ATTENDANCE VALUES ('CL0006', '2024/02/14');
+INSERT INTO ATTENDANCE VALUES ('CL0006', '2024/03/18');
+INSERT INTO ATTENDANCE VALUES ('CL0006', '2024/03/30');
+INSERT INTO ATTENDANCE VALUES ('CL0006', '2024/04/16');
+INSERT INTO ATTENDANCE VALUES ('CL0006', '2024/05/11');
+INSERT INTO ATTENDANCE VALUES ('CL0006', '2024/06/23');
+
+-- CL0007 (leave count = 11)
+INSERT INTO ATTENDANCE VALUES ('CL0007', '2024/01/06');
+INSERT INTO ATTENDANCE VALUES ('CL0007', '2024/01/09');
+INSERT INTO ATTENDANCE VALUES ('CL0007', '2024/02/13');
+INSERT INTO ATTENDANCE VALUES ('CL0007', '2024/03/09');
+INSERT INTO ATTENDANCE VALUES ('CL0007', '2024/04/04');
+INSERT INTO ATTENDANCE VALUES ('CL0007', '2024/05/17');
+INSERT INTO ATTENDANCE VALUES ('CL0007', '2024/05/28');
+INSERT INTO ATTENDANCE VALUES ('CL0007', '2024/06/06');
+INSERT INTO ATTENDANCE VALUES ('CL0007', '2024/07/20');
+INSERT INTO ATTENDANCE VALUES ('CL0007', '2024/09/11');
+INSERT INTO ATTENDANCE VALUES ('CL0007', '2024/10/01');
+
+-- CL0008 (leave count = 1)
+INSERT INTO ATTENDANCE VALUES ('CL0008', '2024/12/05');
+
+-- CL0009 (leave count = 20) – exceeds
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/01/01');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/01/02');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/01/03');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/01/04');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/02/01');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/02/02');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/02/03');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/03/01');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/03/02');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/03/03');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/04/01');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/04/02');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/05/01');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/05/02');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/06/01');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/06/02');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/07/01');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/07/02');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/08/01');
+INSERT INTO ATTENDANCE VALUES ('CL0009', '2024/08/02');
+
+-- CL0010 (leave count = 5)
+INSERT INTO ATTENDANCE VALUES ('CL0010', '2024/03/05');
+INSERT INTO ATTENDANCE VALUES ('CL0010', '2024/04/12');
+INSERT INTO ATTENDANCE VALUES ('CL0010', '2024/06/18');
+INSERT INTO ATTENDANCE VALUES ('CL0010', '2024/07/23');
+INSERT INTO ATTENDANCE VALUES ('CL0010', '2024/08/08');
+
+
+--#cashier
+
+-- CS0001 (leave count = 14)
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/01/08');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/01/22');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/02/05');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/02/19');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/03/04');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/03/18');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/04/01');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/04/15');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/05/06');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/05/20');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/06/03');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/06/17');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/07/01');
+INSERT INTO ATTENDANCE VALUES ('CS0001', '2024/07/15');
+
+-- CS0002 (leave count = 2)
+INSERT INTO ATTENDANCE VALUES ('CS0002', '2024/02/14');
+INSERT INTO ATTENDANCE VALUES ('CS0002', '2024/08/25');
+
+-- CS0003 (leave count = 19) – exceeds
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/01/03');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/01/17');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/01/31');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/02/14');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/02/28');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/03/13');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/03/27');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/04/10');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/04/24');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/05/08');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/05/22');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/06/05');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/06/19');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/07/03');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/07/17');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/07/31');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/08/14');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/08/28');
+INSERT INTO ATTENDANCE VALUES ('CS0003', '2024/09/11');
+
+-- CS0004 (leave count = 0) – no leave
+
+-- CS0005 (leave count = 9)
+INSERT INTO ATTENDANCE VALUES ('CS0005', '2024/01/04');
+INSERT INTO ATTENDANCE VALUES ('CS0005', '2024/02/01');
+INSERT INTO ATTENDANCE VALUES ('CS0005', '2024/03/07');
+INSERT INTO ATTENDANCE VALUES ('CS0005', '2024/04/03');
+INSERT INTO ATTENDANCE VALUES ('CS0005', '2024/05/09');
+INSERT INTO ATTENDANCE VALUES ('CS0005', '2024/06/13');
+INSERT INTO ATTENDANCE VALUES ('CS0005', '2024/07/11');
+INSERT INTO ATTENDANCE VALUES ('CS0005', '2024/08/08');
+INSERT INTO ATTENDANCE VALUES ('CS0005', '2024/09/05');
+
+
+-- Admin Staff Leave Records
+
+INSERT INTO ATTENDANCE VALUES ('AD0001', '2024/01/04');
+INSERT INTO ATTENDANCE VALUES ('AD0001', '2024/02/16');
+INSERT INTO ATTENDANCE VALUES ('AD0001', '2024/04/05');
+INSERT INTO ATTENDANCE VALUES ('AD0001', '2024/06/13');
+
+INSERT INTO ATTENDANCE VALUES ('AD0002', '2024/01/22');
+INSERT INTO ATTENDANCE VALUES ('AD0002', '2024/02/11');
+INSERT INTO ATTENDANCE VALUES ('AD0002', '2024/05/09');
+INSERT INTO ATTENDANCE VALUES ('AD0002', '2024/09/17');
+INSERT INTO ATTENDANCE VALUES ('AD0002', '2024/11/23');
+INSERT INTO ATTENDANCE VALUES ('AD0002', '2024/12/03');
+
+INSERT INTO ATTENDANCE VALUES ('AD0003', '2024/03/08');
+INSERT INTO ATTENDANCE VALUES ('AD0003', '2024/06/14');
+INSERT INTO ATTENDANCE VALUES ('AD0003', '2024/08/22');
+INSERT INTO ATTENDANCE VALUES ('AD0003', '2024/10/12');
+INSERT INTO ATTENDANCE VALUES ('AD0003', '2024/12/01');
+INSERT INTO ATTENDANCE VALUES ('AD0003', '2024/12/24');
+
+INSERT INTO ATTENDANCE VALUES ('AD0004', '2024/02/01');
+INSERT INTO ATTENDANCE VALUES ('AD0004', '2024/04/13');
+INSERT INTO ATTENDANCE VALUES ('AD0004', '2024/05/26');
+
+INSERT INTO ATTENDANCE VALUES ('AD0005', '2024/01/10');
+INSERT INTO ATTENDANCE VALUES ('AD0005', '2024/03/19');
+INSERT INTO ATTENDANCE VALUES ('AD0005', '2024/05/02');
+INSERT INTO ATTENDANCE VALUES ('AD0005', '2024/08/09');
+
+INSERT INTO ATTENDANCE VALUES ('AD0006', '2024/01/20');
+INSERT INTO ATTENDANCE VALUES ('AD0006', '2024/02/18');
+INSERT INTO ATTENDANCE VALUES ('AD0006', '2024/07/04');
+INSERT INTO ATTENDANCE VALUES ('AD0006', '2024/11/27');
+
+INSERT INTO ATTENDANCE VALUES ('AD0007', '2024/02/13');
+INSERT INTO ATTENDANCE VALUES ('AD0007', '2024/06/29');
+INSERT INTO ATTENDANCE VALUES ('AD0007', '2024/09/05');
+INSERT INTO ATTENDANCE VALUES ('AD0007', '2024/10/28');
+INSERT INTO ATTENDANCE VALUES ('AD0007', '2024/12/20');
+
+INSERT INTO ATTENDANCE VALUES ('AD0008', '2024/03/02');
+INSERT INTO ATTENDANCE VALUES ('AD0008', '2024/07/11');
+INSERT INTO ATTENDANCE VALUES ('AD0008', '2024/09/15');
+
+INSERT INTO ATTENDANCE VALUES ('AD0009', '2024/02/21');
+INSERT INTO ATTENDANCE VALUES ('AD0009', '2024/04/30');
+INSERT INTO ATTENDANCE VALUES ('AD0009', '2024/06/03');
+INSERT INTO ATTENDANCE VALUES ('AD0009', '2024/08/01');
+INSERT INTO ATTENDANCE VALUES ('AD0009', '2024/10/14');
+
+INSERT INTO ATTENDANCE VALUES ('AD0010', '2024/01/30');
+INSERT INTO ATTENDANCE VALUES ('AD0010', '2024/03/14');
+INSERT INTO ATTENDANCE VALUES ('AD0010', '2024/05/23');
+INSERT INTO ATTENDANCE VALUES ('AD0010', '2024/07/19');
+INSERT INTO ATTENDANCE VALUES ('AD0010', '2024/09/11');
+INSERT INTO ATTENDANCE VALUES ('AD0010', '2024/12/29');
+INSERT INTO ATTENDANCE VALUES ('AD0010', '2024/12/31');
+
+INSERT INTO ATTENDANCE VALUES ('AD0011', '2024/02/15');
+INSERT INTO ATTENDANCE VALUES ('AD0011', '2024/03/26');
+INSERT INTO ATTENDANCE VALUES ('AD0011', '2024/06/06');
+
+INSERT INTO ATTENDANCE VALUES ('AD0012', '2024/01/17');
+INSERT INTO ATTENDANCE VALUES ('AD0012', '2024/03/06');
+INSERT INTO ATTENDANCE VALUES ('AD0012', '2024/06/18');
+INSERT INTO ATTENDANCE VALUES ('AD0012', '2024/08/27');
+
+INSERT INTO ATTENDANCE VALUES ('AD0013', '2024/05/10');
+INSERT INTO ATTENDANCE VALUES ('AD0013', '2024/07/21');
+INSERT INTO ATTENDANCE VALUES ('AD0013', '2024/10/05');
+INSERT INTO ATTENDANCE VALUES ('AD0013', '2024/11/16');
+
+INSERT INTO ATTENDANCE VALUES ('AD0014', '2024/02/25');
+INSERT INTO ATTENDANCE VALUES ('AD0014', '2024/04/19');
+INSERT INTO ATTENDANCE VALUES ('AD0014', '2024/06/12');
+
+INSERT INTO ATTENDANCE VALUES ('AD0015', '2024/03/23');
+INSERT INTO ATTENDANCE VALUES ('AD0015', '2024/08/14');
+INSERT INTO ATTENDANCE VALUES ('AD0015', '2024/11/07');
+
+
+
+-- Security Guards Leave Records
+
+INSERT INTO ATTENDANCE VALUES ('SC0001', '2024/01/04');
+INSERT INTO ATTENDANCE VALUES ('SC0001', '2024/02/16');
+INSERT INTO ATTENDANCE VALUES ('SC0001', '2024/05/12');
+
+INSERT INTO ATTENDANCE VALUES ('SC0002', '2024/01/10');
+INSERT INTO ATTENDANCE VALUES ('SC0002', '2024/03/05');
+INSERT INTO ATTENDANCE VALUES ('SC0002', '2024/05/26');
+INSERT INTO ATTENDANCE VALUES ('SC0002', '2024/07/14');
+INSERT INTO ATTENDANCE VALUES ('SC0002', '2024/09/01');
+
+INSERT INTO ATTENDANCE VALUES ('SC0003', '2024/02/01');
+INSERT INTO ATTENDANCE VALUES ('SC0003', '2024/04/07');
+INSERT INTO ATTENDANCE VALUES ('SC0003', '2024/06/19');
+INSERT INTO ATTENDANCE VALUES ('SC0003', '2024/09/10');
+INSERT INTO ATTENDANCE VALUES ('SC0003', '2024/11/30');
+
+INSERT INTO ATTENDANCE VALUES ('SC0004', '2024/03/15');
+INSERT INTO ATTENDANCE VALUES ('SC0004', '2024/04/26');
+INSERT INTO ATTENDANCE VALUES ('SC0004', '2024/07/23');
+INSERT INTO ATTENDANCE VALUES ('SC0004', '2024/09/14');
+
+INSERT INTO ATTENDANCE VALUES ('SC0005', '2024/01/20');
+INSERT INTO ATTENDANCE VALUES ('SC0005', '2024/03/28');
+INSERT INTO ATTENDANCE VALUES ('SC0005', '2024/05/06');
+INSERT INTO ATTENDANCE VALUES ('SC0005', '2024/07/18');
+INSERT INTO ATTENDANCE VALUES ('SC0005', '2024/10/30');
+INSERT INTO ATTENDANCE VALUES ('SC0005', '2024/12/02');
+
+INSERT INTO ATTENDANCE VALUES ('SC0006', '2024/02/22');
+INSERT INTO ATTENDANCE VALUES ('SC0006', '2024/03/06');
+INSERT INTO ATTENDANCE VALUES ('SC0006', '2024/06/08');
+
+INSERT INTO ATTENDANCE VALUES ('SC0007', '2024/01/11');
+INSERT INTO ATTENDANCE VALUES ('SC0007', '2024/02/17');
+INSERT INTO ATTENDANCE VALUES ('SC0007', '2024/04/20');
+INSERT INTO ATTENDANCE VALUES ('SC0007', '2024/06/22');
+INSERT INTO ATTENDANCE VALUES ('SC0007', '2024/08/30');
+INSERT INTO ATTENDANCE VALUES ('SC0007', '2024/10/10');
+
+INSERT INTO ATTENDANCE VALUES ('SC0008', '2024/03/03');
+INSERT INTO ATTENDANCE VALUES ('SC0008', '2024/05/14');
+INSERT INTO ATTENDANCE VALUES ('SC0008', '2024/08/21');
+INSERT INTO ATTENDANCE VALUES ('SC0008', '2024/11/03');
+
+INSERT INTO ATTENDANCE VALUES ('SC0009', '2024/01/18');
+INSERT INTO ATTENDANCE VALUES ('SC0009', '2024/04/02');
+INSERT INTO ATTENDANCE VALUES ('SC0009', '2024/06/13');
+INSERT INTO ATTENDANCE VALUES ('SC0009', '2024/09/20');
+
+INSERT INTO ATTENDANCE VALUES ('SC0010', '2024/02/11');
+INSERT INTO ATTENDANCE VALUES ('SC0010', '2024/04/17');
+INSERT INTO ATTENDANCE VALUES ('SC0010', '2024/07/05');
+INSERT INTO ATTENDANCE VALUES ('SC0010', '2024/10/08');
+INSERT INTO ATTENDANCE VALUES ('SC0010', '2024/12/29');
+
+-- DV0001 (leave count = 5)
+INSERT INTO ATTENDANCE VALUES ('DV0001', '2024/01/15');
+INSERT INTO ATTENDANCE VALUES ('DV0001', '2024/03/10');
+INSERT INTO ATTENDANCE VALUES ('DV0001', '2024/05/22');
+INSERT INTO ATTENDANCE VALUES ('DV0001', '2024/08/19');
+INSERT INTO ATTENDANCE VALUES ('DV0001', '2024/11/05');
+
+-- DV0002 (leave count = 6)
+INSERT INTO ATTENDANCE VALUES ('DV0002', '2024/02/12');
+INSERT INTO ATTENDANCE VALUES ('DV0002', '2024/04/25');
+INSERT INTO ATTENDANCE VALUES ('DV0002', '2024/06/07');
+INSERT INTO ATTENDANCE VALUES ('DV0002', '2024/07/14');
+INSERT INTO ATTENDANCE VALUES ('DV0002', '2024/09/30');
+INSERT INTO ATTENDANCE VALUES ('DV0002', '2024/12/03');
+
+-- DV0003 (leave count = 4)
+INSERT INTO ATTENDANCE VALUES ('DV0003', '2024/03/01');
+INSERT INTO ATTENDANCE VALUES ('DV0003', '2024/06/15');
+INSERT INTO ATTENDANCE VALUES ('DV0003', '2024/09/10');
+INSERT INTO ATTENDANCE VALUES ('DV0003', '2024/12/22');
+
+-- DV0004 (leave count = 7)
+INSERT INTO ATTENDANCE VALUES ('DV0004', '2024/01/08');
+INSERT INTO ATTENDANCE VALUES ('DV0004', '2024/02/20');
+INSERT INTO ATTENDANCE VALUES ('DV0004', '2024/04/16');
+INSERT INTO ATTENDANCE VALUES ('DV0004', '2024/06/09');
+INSERT INTO ATTENDANCE VALUES ('DV0004', '2024/08/27');
+INSERT INTO ATTENDANCE VALUES ('DV0004', '2024/10/11');
+INSERT INTO ATTENDANCE VALUES ('DV0004', '2024/11/29');
+
+-- DV0005 (leave count = 5)
+INSERT INTO ATTENDANCE VALUES ('DV0005', '2024/02/04');
+INSERT INTO ATTENDANCE VALUES ('DV0005', '2024/05/18');
+INSERT INTO ATTENDANCE VALUES ('DV0005', '2024/07/09');
+INSERT INTO ATTENDANCE VALUES ('DV0005', '2024/10/06');
+INSERT INTO ATTENDANCE VALUES ('DV0005', '2024/12/15');
+
+-- DV0006 (leave count = 6)
+INSERT INTO ATTENDANCE VALUES ('DV0006', '2024/01/30');
+INSERT INTO ATTENDANCE VALUES ('DV0006', '2024/03/22');
+INSERT INTO ATTENDANCE VALUES ('DV0006', '2024/06/01');
+INSERT INTO ATTENDANCE VALUES ('DV0006', '2024/08/13');
+INSERT INTO ATTENDANCE VALUES ('DV0006', '2024/09/25');
+INSERT INTO ATTENDANCE VALUES ('DV0006', '2024/11/12');
+
+-- DV0007 (leave count = 4)
+INSERT INTO ATTENDANCE VALUES ('DV0007', '2024/04/03');
+INSERT INTO ATTENDANCE VALUES ('DV0007', '2024/06/21');
+INSERT INTO ATTENDANCE VALUES ('DV0007', '2024/08/30');
+INSERT INTO ATTENDANCE VALUES ('DV0007', '2024/10/23');
+
+-- DV0008 (leave count = 5)
+INSERT INTO ATTENDANCE VALUES ('DV0008', '2024/02/18');
+INSERT INTO ATTENDANCE VALUES ('DV0008', '2024/05/10');
+INSERT INTO ATTENDANCE VALUES ('DV0008', '2024/07/27');
+INSERT INTO ATTENDANCE VALUES ('DV0008', '2024/09/06');
+INSERT INTO ATTENDANCE VALUES ('DV0008', '2024/12/28');
+
+-- DV0009 (leave count = 6)
+INSERT INTO ATTENDANCE VALUES ('DV0009', '2024/01/19');
+INSERT INTO ATTENDANCE VALUES ('DV0009', '2024/03/25');
+INSERT INTO ATTENDANCE VALUES ('DV0009', '2024/05/07');
+INSERT INTO ATTENDANCE VALUES ('DV0009', '2024/07/31');
+INSERT INTO ATTENDANCE VALUES ('DV0009', '2024/10/15');
+INSERT INTO ATTENDANCE VALUES ('DV0009', '2024/12/09');
+
+-- DV0010 (leave count = 5)
+INSERT INTO ATTENDANCE VALUES ('DV0010', '2024/02/28');
+INSERT INTO ATTENDANCE VALUES ('DV0010', '2024/04/20');
+INSERT INTO ATTENDANCE VALUES ('DV0010', '2024/07/12');
+INSERT INTO ATTENDANCE VALUES ('DV0010', '2024/09/18');
+INSERT INTO ATTENDANCE VALUES ('DV0010', '2024/11/23');
+
+INSERT INTO AVAILABLE_DAY VALUES ('DR0001', '2,3');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0002', '1');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0003', '2,3,4');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0004', '3,5');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0005', '2,4');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0006', '2,3,6');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0007', '2,3,5');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0008', '3');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0009', '4,5');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0010', '2,6');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0011', '3,4,5');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0012', '1,2');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0013', '2,4,6');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0014', '3,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0015', '2');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0016', '2,3');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0017', '2,3,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0018', '3,4,5');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0019', '2,3,4');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0020', '2,5');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0021', '3,4,6');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0022', '2,3');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0023', '2,3,5');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0024', '3,4');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0025', '2,3');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0026', '1,2,3,4');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0027', '2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0028', '5');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0029', '2,3');
+INSERT INTO AVAILABLE_DAY VALUES ('DR0030', '3,4');
+
+
+
+INSERT INTO AVAILABLE_DAY VALUES ('NR0001', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0002', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0003', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0004', '2,3,4,6,7,1');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0005', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0006', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0007', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0008', '2,3,4,6,7,1');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0009', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0010', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0011', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0012', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0013', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0014', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0015', '2,3,4,6,7,1');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0016', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0017', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0018', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0019', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0020', '2,3,4,6,7,1');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0021', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0022', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0023', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0024', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0025', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0026', '2,3,4,6,7,1');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0027', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0028', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0029', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0030', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0031', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0032', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0033', '2,3,4,6,7,1');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0034', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0035', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0036', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0037', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0038', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0039', '2,3,4,6,7,1');
+INSERT INTO AVAILABLE_DAY VALUES ('NR0040', '2,3,4,5,6,7');
+
+
+
+INSERT INTO AVAILABLE_DAY VALUES ('CL0001', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('CL0002', '1,2,3,4,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('CL0003', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('CL0004', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('CL0005', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('CL0006', '1,2,3,4,5');
+INSERT INTO AVAILABLE_DAY VALUES ('CL0007', '2,3,4,5');
+INSERT INTO AVAILABLE_DAY VALUES ('CL0008', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('CL0009', '1,2,3,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('CL0010', '1,3,5,7');
+
+
+
+
+INSERT INTO AVAILABLE_DAY VALUES ('CS0001', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('CS0002', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('CS0003', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('CS0004', '2,3,4,6,7,1');
+INSERT INTO AVAILABLE_DAY VALUES ('CS0005', '2,3,4,5,6,7');
+
+
+
+INSERT INTO AVAILABLE_DAY VALUES ('AD0001', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0002', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0003', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0004', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0005', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0006', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0007', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0008', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0009', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0010', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0011', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0012', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0013', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0014', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('AD0015', '2,3,4,5,6,7');
+
+
+
+
+INSERT INTO AVAILABLE_DAY VALUES ('SC0001', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('SC0002', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('SC0003', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('SC0004', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('SC0005', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('SC0006', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('SC0007', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('SC0008', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('SC0009', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('SC0010', '2,3,4,5,6,7');
+
+-- Driver
+INSERT INTO AVAILABLE_DAY VALUES ('DV0001', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('DV0002', '2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('DV0003', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('DV0004', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('DV0005', '1,2,3,4,5');
+INSERT INTO AVAILABLE_DAY VALUES ('DV0006', '2,3,4,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('DV0007', '8');
+INSERT INTO AVAILABLE_DAY VALUES ('DV0008', '1,2,3,4,5,6');
+INSERT INTO AVAILABLE_DAY VALUES ('DV0009', '2,3,5,6,7');
+INSERT INTO AVAILABLE_DAY VALUES ('DV0010', '8');
+
+-- Mobile Numbers
+INSERT INTO Mobile_No (ID, Mobile_No) VALUES
+('DR0001', 9876543201), ('DR0002', 9876543202), ('DR0003', 9876543203), ('DR0004', 9876543204),
+('DR0005', 9876543205), ('DR0006', 9876543206), ('DR0007', 9876543207), ('DR0008', 9876543208),
+('DR0009', 9876543209), ('DR0010', 9876543210),
+('DR0011', 9876543211), ('DR0012', 9876543212), ('DR0013', 9876543213), ('DR0014', 9876543214),
+('DR0015', 9876543215), ('DR0016', 9876543216), ('DR0017', 9876543217), ('DR0018', 9876543218),
+('DR0019', 9876543219), ('DR0020', 9876543220), ('DR0021', 9876543221), ('DR0022', 9876543222),
+('DR0023', 9876543223), ('DR0024', 9876543224), ('DR0025', 9876543225), ('DR0026', 9876543226),
+('DR0027', 9876543227), ('DR0028', 9876543228), ('DR0029', 9876543229), ('DR0030', 9876543230),
+
+--additional ones
+
+('DR0003',9876543303),  ('DR0003',9876543403),
+('DR0006',9876543306),
+('DR0010',9876543310), 
+('DR0010',9876543410),
+('DR0014',9876543314),
+('DR0018',9876543318), 
+('DR0018',9876543418),
+('DR0021',9876543321),
+('DR0025',9876543325), 
+('DR0025',9876543425);
+
+-- Email IDs
+INSERT INTO Email_ID (ID, Email_ID) VALUES
+('DR0001', 'dr0001@hospital.org'), ('DR0002', 'dr0002@hospital.org'), ('DR0003', 'dr0003@hospital.org'),
+('DR0004', 'dr0004@hospital.org'), ('DR0005', 'dr0005@hospital.org'), ('DR0006', 'dr0006@hospital.org'),
+('DR0007', 'dr0007@hospital.org'), ('DR0008', 'dr0008@hospital.org'), ('DR0009', 'dr0009@hospital.org'),
+('DR0010', 'dr0010@hospital.org'), ('DR0011', 'dr0011@hospital.org'), ('DR0012', 'dr0012@hospital.org'),
+('DR0013', 'dr0013@hospital.org'), ('DR0014', 'dr0014@hospital.org'), ('DR0015', 'dr0015@hospital.org'),
+('DR0016', 'dr0016@hospital.org'), ('DR0017', 'dr0017@hospital.org'), ('DR0018', 'dr0018@hospital.org'),
+('DR0019', 'dr0019@hospital.org'), ('DR0020', 'dr0020@hospital.org'), ('DR0021', 'dr0021@hospital.org'),
+('DR0022', 'dr0022@hospital.org'), ('DR0023', 'dr0023@hospital.org'), ('DR0024', 'dr0024@hospital.org'),
+('DR0025', 'dr0025@hospital.org'), ('DR0026', 'dr0026@hospital.org'), ('DR0027', 'dr0027@hospital.org'),
+('DR0028', 'dr0028@hospital.org'), ('DR0029', 'dr0029@hospital.org'), ('DR0030', 'dr0030@hospital.org');
+
+-- Doctors with multiple unique email IDs
+INSERT INTO Email_ID VALUES
+('DR0003', 'dr0003a@hospital.org'),
+('DR0004', 'dr0004b@hospital.org'),
+('DR0007', 'dr0007c@hospital.org'),
+('DR0010', 'dr0010d@hospital.org'),
+('DR0012', 'dr0012e@hospital.org'),
+('DR0015', 'dr0015f@hospital.org'),
+('DR0021', 'dr0021g@hospital.org'),
+('DR0026', 'dr0026h@hospital.org');
+
+-- Email_IDs for donors based on their names
+INSERT INTO Email_ID VALUES 
+('DN0001', 'aarti.sharma@hospital.com'),
+('DN0002', 'rajesh.patel@hospital.com'),
+('DN0003', 'neha.verma@hospital.com'),
+('DN0004', 'suresh.yadav@hospital.com'),
+('DN0005', 'kavita.singh@hospital.com'),
+('DN0006', 'vikas.jain@hospital.com'),
+('DN0007', 'poonam.mehra@hospital.com'),
+('DN0008', 'rahul.desai@hospital.com'),
+('DN0009', 'geeta.dubey@hospital.com'),
+('DN0010', 'manoj.sinha@hospital.com'),
+('DN0011', 'sangeeta.kumar@hospital.com'),
+('DN0012', 'ashok.thakur@hospital.com'),
+('DN0013', 'priya.bhatt@hospital.com'),
+('DN0014', 'arun.nair@hospital.com'),
+('DN0015', 'meena.bose@hospital.com'),
+('DN0016', 'deepak.modi@hospital.com'),
+('DN0017', 'rekha.pandey@hospital.com'),
+('DN0018', 'nilesh.gupta@hospital.com'),
+('DN0019', 'anita.pillai@hospital.com'),
+('DN0020', 'dinesh.kapoor@hospital.com'),
+('DN0021', 'sonal.seth@hospital.com'),
+('DN0022', 'kamal.bhargav@hospital.com'),
+('DN0023', 'tanya.gandhi@hospital.com'),
+('DN0024', 'mahesh.shah@hospital.com'),
+('DN0025', 'radha.rana@hospital.com'),
+('DN0026', 'amit.shetty@hospital.com'),
+('DN0027', 'lata.ray@hospital.com'),
+('DN0028', 'sachin.kohli@hospital.com'),
+('DN0029', 'sudha.iyer@hospital.com'),
+('DN0030', 'vivek.banerjee@hospital.com');
+
+-- Donors with multiple unique email IDs
+INSERT INTO Email_ID VALUES
+('DN0003', 'neha.verma1@hospital.com'),
+('DN0004', 'suresh.yadav2@hospital.com'),
+('DN0007', 'poonam.mehra3@hospital.com'),
+('DN0010', 'manoj.sinha4@hospital.com'),
+('DN0013', 'priya.bhatt5@hospital.com'),
+('DN0016', 'deepak.modi6@hospital.com'),
+('DN0021', 'sonal.seth7@hospital.com'),
+('DN0026', 'amit.shetty8@hospital.com');
+
+-- Mobile Numbers
+INSERT INTO Mobile_No VALUES 
+('DN0001', 9990000001), ('DN0002', 9990000002), ('DN0003', 9990000003), ('DN0004', 9990000004),
+('DN0005', 9990000005), ('DN0006', 9990000006), ('DN0007', 9990000007), ('DN0008', 9990000008),
+('DN0009', 9990000009), ('DN0010', 9990000010), ('DN0011', 9990000011), ('DN0012', 9990000012),
+('DN0013', 9990000013), ('DN0014', 9990000014), ('DN0015', 9990000015), ('DN0016', 9990000016),
+('DN0017', 9990000017), ('DN0018', 9990000018), ('DN0019', 9990000019), ('DN0020', 9990000020),
+('DN0021', 9990000021), ('DN0022', 9990000022), ('DN0023', 9990000023), ('DN0024', 9990000024),
+('DN0025', 9990000025), ('DN0026', 9990000026), ('DN0027', 9990000027), ('DN0028', 9990000028),
+('DN0029', 9990000029), ('DN0030', 9990000030);
+
+
+--driver's email-id
+INSERT INTO Email_ID VALUES 
+('DV0001', 'driver1@hospital.com'),
+('DV0002', 'driver2@hospital.com'),
+('DV0003', 'driver3@hospital.com'),
+('DV0004', 'driver4@hospital.com'),
+('DV0005', 'driver5@hospital.com'),
+('DV0006', 'driver6@hospital.com'),
+('DV0007', 'driver7@hospital.com'),
+('DV0008', 'driver8@hospital.com'),
+('DV0009', 'driver9@hospital.com'),
+('DV0010', 'driver10@hospital.com');
+
+-- DRIVER:
+-- Drivers with multiple unique email IDs
+INSERT INTO Email_ID VALUES
+('DV0003', 'driver3a@hospital.com'),
+('DV0004', 'driver4b@hospital.com'),
+('DV0007', 'driver7c@hospital.com'),
+('DV0010', 'driver10d@hospital.com');
+
+--driver's mobile-no
+INSERT INTO Mobile_No VALUES 
+('DV0001',1234567890),
+('DV0002',1334567890),
+('DV0003',1434567890),
+('DV0004',1534567890),
+('DV0005',1634567890),
+('DV0006',1734567890),
+('DV0007',1834567890),
+('DV0008',1934567890),
+('DV0009',1034567890),
+('DV0010',2134567890),
+('DV0001',2234567890),
+('DV0003',2434567890),
+('DV0005',2634567890),
+('DV0007',2834567890), 
+('DV0007',2934567890),
+('DV0010',3134567890);
+
+INSERT INTO Email_ID  VALUES
+('NR0001', 'anjali.mehta@nursehospital.com'),
+('NR0002', 'neha.patel@nursehospital.com'),
+('NR0003', 'pooja.desai@nursehospital.com'),
+('NR0004', 'rita.sharma@nursehospital.com'),
+('NR0005', 'kavita.joshi@nursehospital.com'),
+('NR0006', 'mina.chauhan@nursehospital.com'),
+('NR0007', 'sonal.gandhi@nursehospital.com'),
+('NR0008', 'deepa.soni@nursehospital.com'),
+('NR0009', 'bhavna.shah@nursehospital.com'),
+('NR0010', 'seema.rawal@nursehospital.com'),
+('NR0011', 'nirali.vyas@nursehospital.com'),
+('NR0012', 'roshni.bhatt@nursehospital.com'),
+('NR0013', 'falguni.parmar@nursehospital.com'),
+('NR0014', 'sneha.kapadia@nursehospital.com'),
+('NR0015', 'komal.shah@nursehospital.com'),
+('NR0016', 'naina.rathod@nursehospital.com'),
+('NR0017', 'rupal.deshmukh@nursehospital.com'),
+('NR0018', 'binal.acharya@nursehospital.com'),
+('NR0019', 'hetal.trivedi@nursehospital.com'),
+('NR0020', 'krupa.shah@nursehospital.com'),
+('NR0021', 'namrata.iyer@nursehospital.com'),
+('NR0022', 'disha.solanki@nursehospital.com'),
+('NR0023', 'varsha.pandya@nursehospital.com'),
+('NR0024', 'sanjana.rao@nursehospital.com'),
+('NR0025', 'ritika.nair@nursehospital.com'),
+('NR0026', 'jigna.saxena@nursehospital.com'),
+('NR0027', 'surbhi.kaur@nursehospital.com'),
+('NR0028', 'pranali.gokhale@nursehospital.com'),
+('NR0029', 'chhaya.rane@nursehospital.com'),
+('NR0030', 'meena.pillai@nursehospital.com'),
+('NR0031', 'priya.kulkarni@nursehospital.com'),
+('NR0032', 'smita.joshi@nursehospital.com'),
+('NR0033', 'ruchi.mishra@nursehospital.com'),
+('NR0034', 'karishma.naik@nursehospital.com'),
+('NR0035', 'sheetal.shetty@nursehospital.com'),
+('NR0036', 'priti.banerjee@nursehospital.com'),
+('NR0037', 'rina.tiwari@nursehospital.com'),
+('NR0038', 'divya.pathak@nursehospital.com'),
+('NR0039', 'gayatri.more@nursehospital.com'),
+('NR0040', 'rupali.borkar@nursehospital.com');
+
+--NURSE :
+-- Nurses with multiple unique email IDs
+INSERT INTO Email_ID VALUES
+('NR0003', 'pooja.desai1@nursehospital.com'),
+('NR0004', 'rita.sharma2@nursehospital.com'),
+('NR0007', 'sonal.gandhi3@nursehospital.com'),
+('NR0010', 'seema.rawal4@nursehospital.com'),
+('NR0013', 'falguni.parmar5@nursehospital.com'),
+('NR0016', 'naina.rathod6@nursehospital.com'),
+('NR0019', 'hetal.trivedi7@nursehospital.com'),
+('NR0022', 'disha.solanki8@nursehospital.com'),
+('NR0025', 'ritika.nair9@nursehospital.com'),
+('NR0028', 'pranali.gokhale10@nursehospital.com');
+
+INSERT INTO Mobile_No VALUES
+('NR0001',9876000001),
+('NR0002',9876000002),
+('NR0003',9876000003),
+('NR0004',9876000004),
+('NR0005',9876000005),
+('NR0006',9876000006),
+('NR0007',9876000007),
+('NR0008',9876000008),
+('NR0009',9876000009),
+('NR0010',9876000010),
+('NR0011',9876000011),
+('NR0012',9876000012),
+('NR0013',9876000013),
+('NR0014',9876000014),
+('NR0015',9876000015),
+('NR0016',9876000016),
+('NR0017',9876000017),
+('NR0018',9876000018),
+('NR0019',9876000019),
+('NR0020',9876000020),
+('NR0021',9876000021),
+('NR0022',9876000022),
+('NR0023',9876000023),
+('NR0024',9876000024),
+('NR0025',9876000025),
+('NR0026',9876000026),
+('NR0027',9876000027),
+('NR0028',9876000028),
+('NR0029',9876000029),
+('NR0030',9876000030),
+('NR0031',9876000031),
+('NR0032',9876000032),
+('NR0033',9876000033),
+('NR0034',9876000034),
+('NR0035',9876000035),
+('NR0036',9876000036),
+('NR0037',9876000037),
+('NR0038',9876000038),
+('NR0039',9876000039),
+('NR0040',9876000040),
+
+-- Additional 
+
+('NR0002',9876010102),
+('NR0005',9876010105),
+('NR0011',9876010111),
+('NR0020',9876010120),
+('NR0023',9876010123),
+('NR0030',9876010130),
+('NR0037',9876010137),
+('NR0040',9876010140);
+
+
+
+
+INSERT INTO Email_ID VALUES ('PT0001', 'aarav.mehta@example.com');
+INSERT INTO Email_ID VALUES ('PT0002', 'vivaan.sharma@example.com');
+INSERT INTO Email_ID VALUES ('PT0003', 'aryan.reddy@example.com');
+INSERT INTO Email_ID VALUES ('PT0004', 'ananya.iyer@example.com');
+INSERT INTO Email_ID VALUES ('PT0005', 'diya.joshi@example.com');
+INSERT INTO Email_ID VALUES ('PT0006', 'meera.patel@example.com');
+INSERT INTO Email_ID VALUES ('PT0007', 'riya.nair@example.com');
+INSERT INTO Email_ID VALUES ('PT0008', 'kabir.kapoor@example.com');
+INSERT INTO Email_ID VALUES ('PT0009', 'ishita.roy@example.com');
+INSERT INTO Email_ID VALUES ('PT0010', 'reyansh.bansal@example.com');
+INSERT INTO Email_ID VALUES ('PT0011', 'krishna.desai@example.com');
+INSERT INTO Email_ID VALUES ('PT0012', 'rudra.singh@example.com');
+INSERT INTO Email_ID VALUES ('PT0013', 'dhruv.jain@example.com');
+INSERT INTO Email_ID VALUES ('PT0014', 'saanvi.varma@example.com');
+INSERT INTO Email_ID VALUES ('PT0015', 'aisha.pillai@example.com');
+INSERT INTO Email_ID VALUES ('PT0016', 'ishaan.shetty@example.com');
+INSERT INTO Email_ID VALUES ('PT0017', 'tanya.kaul@example.com');
+INSERT INTO Email_ID VALUES ('PT0018', 'nisha.malhotra@example.com');
+INSERT INTO Email_ID VALUES ('PT0019', 'rohan.bhatt@example.com');
+INSERT INTO Email_ID VALUES ('PT0020', 'shruti.agrawal@example.com');
+INSERT INTO Email_ID VALUES ('PT0021', 'pooja.srivastava@example.com');
+INSERT INTO Email_ID VALUES ('PT0022', 'yuvraj.trivedi@example.com');
+INSERT INTO Email_ID VALUES ('PT0023', 'kavya.sengupta@example.com');
+INSERT INTO Email_ID VALUES ('PT0024', 'neha.kulkarni@example.com');
+INSERT INTO Email_ID VALUES ('PT0025', 'arjun.dey@example.com');
+INSERT INTO Email_ID VALUES ('PT0026', 'siddharth.ghosh@example.com');
+INSERT INTO Email_ID VALUES ('PT0027', 'trisha.lamba@example.com');
+INSERT INTO Email_ID VALUES ('PT0028', 'charvi.bhagat@example.com');
+INSERT INTO Email_ID VALUES ('PT0029', 'kunal.mehra@example.com');
+INSERT INTO Email_ID VALUES ('PT0030', 'sneha.tiwari@example.com');
+INSERT INTO Email_ID VALUES ('PT0031', 'namrata.gokhale@example.com');
+INSERT INTO Email_ID VALUES ('PT0032', 'veer.choudhary@example.com');
+INSERT INTO Email_ID VALUES ('PT0033', 'bhavna.menon@example.com');
+INSERT INTO Email_ID VALUES ('PT0034', 'manav.purohit@example.com');
+INSERT INTO Email_ID VALUES ('PT0035', 'aarohi.mohan@example.com');
+INSERT INTO Email_ID VALUES ('PT0036', 'tanvi.arora@example.com');
+INSERT INTO Email_ID VALUES ('PT0037', 'shalini.sood@example.com');
+INSERT INTO Email_ID VALUES ('PT0038', 'aditya.chopra@example.com');
+INSERT INTO Email_ID VALUES ('PT0039', 'lavanya.rawat@example.com');
+INSERT INTO Email_ID VALUES ('PT0040', 'nikhil.prasad@example.com');
+INSERT INTO Email_ID VALUES ('PT0041', 'dev.anand@example.com');
+INSERT INTO Email_ID VALUES ('PT0042', 'harsh.sinha@example.com');
+INSERT INTO Email_ID VALUES ('PT0043', 'samar.dubey@example.com');
+INSERT INTO Email_ID VALUES ('PT0044', 'jayant.mishra@example.com');
+INSERT INTO Email_ID VALUES ('PT0045', 'tushar.kohli@example.com');
+INSERT INTO Email_ID VALUES ('PT0046', 'mitali.vora@example.com');
+INSERT INTO Email_ID VALUES ('PT0047', 'veena.sabharwal@example.com');
+INSERT INTO Email_ID VALUES ('PT0048', 'rajat.narayan@example.com');
+INSERT INTO Email_ID VALUES ('PT0049', 'amit.kaushik@example.com');
+INSERT INTO Email_ID VALUES ('PT0050', 'shivam.raina@example.com');
+INSERT INTO Email_ID VALUES ('PT0051', 'ira.saxena@example.com');
+INSERT INTO Email_ID VALUES ('PT0052', 'raghav.bhatia@example.com');
+INSERT INTO Email_ID VALUES ('PT0053', 'neeraj.malhotra@example.com');
+INSERT INTO Email_ID VALUES ('PT0054', 'simran.kaur@example.com');
+INSERT INTO Email_ID VALUES ('PT0055', 'avni.srivastava@example.com');
+INSERT INTO Email_ID VALUES ('PT0056', 'karan.joshi@example.com');
+INSERT INTO Email_ID VALUES ('PT0057', 'aaliya.mirza@example.com');
+INSERT INTO Email_ID VALUES ('PT0058', 'yash.verma@example.com');
+INSERT INTO Email_ID VALUES ('PT0059', 'mehak.bansal@example.com');
+INSERT INTO Email_ID VALUES ('PT0060', 'arnav.chatterjee@example.com');
+INSERT INTO Email_ID VALUES ('PT0061', 'ritika.sood@example.com');
+INSERT INTO Email_ID VALUES ('PT0062', 'naman.deshmukh@example.com');
+INSERT INTO Email_ID VALUES ('PT0063', 'shraddha.rathi@example.com');
+INSERT INTO Email_ID VALUES ('PT0064', 'anshul.dubey@example.com');
+INSERT INTO Email_ID VALUES ('PT0065', 'pallavi.sharma@example.com');
+INSERT INTO Email_ID VALUES ('PT0066', 'devansh.mehra@example.com');
+INSERT INTO Email_ID VALUES ('PT0067', 'radhika.kaul@example.com');
+INSERT INTO Email_ID VALUES ('PT0068', 'mohit.rajput@example.com');
+INSERT INTO Email_ID VALUES ('PT0069', 'anika.goyal@example.com');
+INSERT INTO Email_ID VALUES ('PT0070', 'taran.khurana@example.com');
+INSERT INTO Email_ID VALUES ('PT0071', 'niharika.sinha@example.com');
+INSERT INTO Email_ID VALUES ('PT0072', 'ritesh.jaiswal@example.com');
+INSERT INTO Email_ID VALUES ('PT0073', 'kritika.batra@example.com');
+INSERT INTO Email_ID VALUES ('PT0074', 'harshit.anand@example.com');
+INSERT INTO Email_ID VALUES ('PT0075', 'ishita.khanna@example.com');
+INSERT INTO Email_ID VALUES ('PT0076', 'rehan.qureshi@example.com');
+INSERT INTO Email_ID VALUES ('PT0077', 'tanisha.bedi@example.com');
+INSERT INTO Email_ID VALUES ('PT0078', 'sahil.khatri@example.com');
+INSERT INTO Email_ID VALUES ('PT0079', 'zoya.baig@example.com');
+INSERT INTO Email_ID VALUES ('PT0080', 'pranav.bhaskar@example.com');
+INSERT INTO Email_ID VALUES ('PT0081', 'divya.chauhan@example.com');
+INSERT INTO Email_ID VALUES ('PT0082', 'yug.kohli@example.com');
+INSERT INTO Email_ID VALUES ('PT0083', 'snehal.pawar@example.com');
+INSERT INTO Email_ID VALUES ('PT0084', 'nikhil.thakur@example.com');
+INSERT INTO Email_ID VALUES ('PT0085', 'sanya.kapoor@example.com');
+INSERT INTO Email_ID VALUES ('PT0086', 'kabir.malani@example.com');
+INSERT INTO Email_ID VALUES ('PT0087', 'vidya.rane@example.com');
+INSERT INTO Email_ID VALUES ('PT0088', 'omkar.pathak@example.com');
+INSERT INTO Email_ID VALUES ('PT0089', 'jyoti.vashisht@example.com');
+INSERT INTO Email_ID VALUES ('PT0090', 'ayaan.luthra@example.com');
+INSERT INTO Email_ID VALUES ('PT0091', 'navya.reddy@example.com');
+INSERT INTO Email_ID VALUES ('PT0092', 'vivaan.menon@example.com');
+INSERT INTO Email_ID VALUES ('PT0093', 'harleen.kaur@example.com');
+INSERT INTO Email_ID VALUES ('PT0094', 'parth.mathur@example.com');
+INSERT INTO Email_ID VALUES ('PT0095', 'preeti.joshi@example.com');
+INSERT INTO Email_ID VALUES ('PT0096', 'aarush.sethi@example.com');
+INSERT INTO Email_ID VALUES ('PT0097', 'riya.chhabra@example.com');
+INSERT INTO Email_ID VALUES ('PT0098', 'laksh.singhania@example.com');
+INSERT INTO Email_ID VALUES ('PT0099', 'tanya.kapoor@example.com');
+INSERT INTO Email_ID VALUES ('PT0100', 'aryan.rathore@example.com');
+-- Mothers' Mobile Numbers
+INSERT INTO Mobile_No VALUES ('PT0101', 9123456780);
+INSERT INTO Mobile_No VALUES ('PT0102', 9123456781);
+INSERT INTO Mobile_No VALUES ('PT0103', 9123456782);
+INSERT INTO Mobile_No VALUES ('PT0104', 9123456783);
+INSERT INTO Mobile_No VALUES ('PT0105', 9123456784);
+
+-- Babies' Mobile Numbers (same as mothers)
+INSERT INTO Mobile_No VALUES ('PT0106', 9123456780);
+INSERT INTO Mobile_No VALUES ('PT0107', 9123456781);
+INSERT INTO Mobile_No VALUES ('PT0108', 9123456782);
+INSERT INTO Mobile_No VALUES ('PT0109', 9123456783);
+INSERT INTO Mobile_No VALUES ('PT0110', 9123456784);
+
+-- Mothers' Email IDs
+INSERT INTO Email_ID VALUES ('PT0101', 'priya.shah@example.com');
+INSERT INTO Email_ID VALUES ('PT0102', 'anita.reddy@example.com');
+INSERT INTO Email_ID VALUES ('PT0103', 'sumita.sen@example.com');
+INSERT INTO Email_ID VALUES ('PT0104', 'rekha.verma@example.com');
+INSERT INTO Email_ID VALUES ('PT0105', 'meena.iyer@example.com');
+
+-- Babies' Email IDs (same as mothers)
+INSERT INTO Email_ID VALUES ('PT0106', 'priya.shah@example.com');
+INSERT INTO Email_ID VALUES ('PT0107', 'anita.reddy@example.com');
+INSERT INTO Email_ID VALUES ('PT0108', 'sumita.sen@example.com');
+INSERT INTO Email_ID VALUES ('PT0109', 'rekha.verma@example.com');
+INSERT INTO Email_ID VALUES ('PT0110', 'meena.iyer@example.com');
+
+--PATIENT:
+-- Patients with multiple unique email IDs
+INSERT INTO Email_ID VALUES
+('PT0001', 'aarav.mehta1@example.com'),
+('PT0002', 'vivaan.sharma2@example.com'),
+('PT0003', 'aryan.reddy3@example.com'),
+('PT0004', 'ananya.iyer4@example.com'),
+('PT0005', 'diya.joshi5@example.com'),
+('PT0006', 'meera.patel6@example.com'),
+('PT0007', 'riya.nair7@example.com'),
+('PT0008', 'kabir.kapoor8@example.com'),
+('PT0009', 'ishita.roy9@example.com'),
+('PT0010', 'reyansh.bansal10@example.com'),
+('PT0011', 'krishna.desai11@example.com'),
+('PT0012', 'rudra.singh12@example.com'),
+('PT0013', 'dhruv.jain13@example.com'),
+('PT0014', 'saanvi.varma14@example.com'),
+('PT0015', 'aisha.pillai15@example.com'),
+('PT0016', 'ishaan.shetty16@example.com'),
+('PT0017', 'tanya.kaul17@example.com'),
+('PT0018', 'nisha.malhotra18@example.com'),
+('PT0019', 'rohan.bhatt19@example.com'),
+('PT0020', 'shruti.agrawal20@example.com'),
+('PT0021', 'pooja.srivastava21@example.com'),
+('PT0022', 'yuvraj.trivedi22@example.com'),
+('PT0023', 'kavya.sengupta23@example.com'),
+('PT0024', 'neha.kulkarni24@example.com'),
+('PT0025', 'arjun.dey25@example.com'),
+('PT0026', 'siddharth.ghosh26@example.com'),
+('PT0027', 'trisha.lamba27@example.com'),
+('PT0028', 'charvi.bhagat28@example.com'),
+('PT0029', 'kunal.mehra29@example.com'),
+('PT0030', 'sneha.tiwari30@example.com'),
+('PT0031', 'namrata.gokhale31@example.com'),
+('PT0032', 'veer.choudhary32@example.com'),
+('PT0033', 'bhavna.menon33@example.com'),
+('PT0034', 'manav.purohit34@example.com'),
+('PT0035', 'aarohi.mohan35@example.com'),
+('PT0036', 'tanvi.arora36@example.com'),
+('PT0037', 'shalini.sood37@example.com'),
+('PT0038', 'aditya.chopra38@example.com'),
+('PT0039', 'lavanya.rawat39@example.com'),
+('PT0040', 'nikhil.prasad40@example.com');
+
+INSERT INTO Mobile_No  VALUES ('PT0001', 9406454400);
+INSERT INTO Mobile_No  VALUES ('PT0002', 6492884778);
+INSERT INTO Mobile_No  VALUES ('PT0003', 6864318148);
+INSERT INTO Mobile_No  VALUES ('PT0004', 8067591689);
+INSERT INTO Mobile_No  VALUES ('PT0005', 9557395681);
+INSERT INTO Mobile_No  VALUES ('PT0006', 9657715737);
+INSERT INTO Mobile_No  VALUES ('PT0007', 9094205206);
+INSERT INTO Mobile_No  VALUES ('PT0008', 6669262624);
+INSERT INTO Mobile_No  VALUES ('PT0009', 8857083241);
+INSERT INTO Mobile_No  VALUES ('PT0010', 7425801800);
+INSERT INTO Mobile_No  VALUES ('PT0011', 7086764736);
+INSERT INTO Mobile_No  VALUES ('PT0012', 9199172806);
+INSERT INTO Mobile_No  VALUES ('PT0013', 6340944528);
+INSERT INTO Mobile_No  VALUES ('PT0014', 6436665364);
+INSERT INTO Mobile_No  VALUES ('PT0015', 7068132128);
+INSERT INTO Mobile_No  VALUES ('PT0016', 9573169647);
+INSERT INTO Mobile_No  VALUES ('PT0017', 9425408226);
+INSERT INTO Mobile_No  VALUES ('PT0018', 6075458350);
+INSERT INTO Mobile_No  VALUES ('PT0019', 9593066779);
+INSERT INTO Mobile_No  VALUES ('PT0020', 8976487259);
+INSERT INTO Mobile_No  VALUES ('PT0021', 6141824947);
+INSERT INTO Mobile_No  VALUES ('PT0022', 7555751585);
+INSERT INTO Mobile_No  VALUES ('PT0023', 7965248662);
+INSERT INTO Mobile_No  VALUES ('PT0024', 6185155516);
+INSERT INTO Mobile_No  VALUES ('PT0025', 7387529763);
+INSERT INTO Mobile_No  VALUES ('PT0026', 8895944871);
+INSERT INTO Mobile_No  VALUES ('PT0027', 9895565663);
+INSERT INTO Mobile_No  VALUES ('PT0028', 9097329174);
+INSERT INTO Mobile_No  VALUES ('PT0029', 6461355621);
+INSERT INTO Mobile_No  VALUES ('PT0030', 6261187363);
+INSERT INTO Mobile_No  VALUES ('PT0031', 7747155054);
+INSERT INTO Mobile_No  VALUES ('PT0032', 7207917985);
+INSERT INTO Mobile_No  VALUES ('PT0033', 6598472762);
+INSERT INTO Mobile_No  VALUES ('PT0034', 6933297948);
+INSERT INTO Mobile_No  VALUES ('PT0035', 6385638999);
+INSERT INTO Mobile_No  VALUES ('PT0036', 8660411647);
+INSERT INTO Mobile_No  VALUES ('PT0037', 6783804807);
+INSERT INTO Mobile_No  VALUES ('PT0038', 9792011701);
+INSERT INTO Mobile_No  VALUES ('PT0039', 7362773174);
+INSERT INTO Mobile_No  VALUES ('PT0040', 6799872195);
+INSERT INTO Mobile_No  VALUES ('PT0041', 7319640575);
+INSERT INTO Mobile_No  VALUES ('PT0042', 9681638710);
+INSERT INTO Mobile_No  VALUES ('PT0043', 6093492362);
+INSERT INTO Mobile_No  VALUES ('PT0044', 9586900192);
+INSERT INTO Mobile_No  VALUES ('PT0045', 8540327700);
+INSERT INTO Mobile_No  VALUES ('PT0046', 9369751674);
+INSERT INTO Mobile_No  VALUES ('PT0047', 8281159716);
+INSERT INTO Mobile_No  VALUES ('PT0048', 9429035378);
+INSERT INTO Mobile_No  VALUES ('PT0049', 9591665158);
+INSERT INTO Mobile_No  VALUES ('PT0050', 7660319880);
+INSERT INTO Mobile_No VALUES ('PT0051', 9876543201);
+INSERT INTO Mobile_No VALUES ('PT0052', 9876543202);
+INSERT INTO Mobile_No VALUES ('PT0053', 9876543203);
+INSERT INTO Mobile_No VALUES ('PT0054', 9876543204);
+INSERT INTO Mobile_No VALUES ('PT0055', 9876543205);
+INSERT INTO Mobile_No VALUES ('PT0056', 9876543206);
+INSERT INTO Mobile_No VALUES ('PT0057', 9876543207);
+INSERT INTO Mobile_No VALUES ('PT0058', 9876543208);
+INSERT INTO Mobile_No VALUES ('PT0059', 9876543209);
+INSERT INTO Mobile_No VALUES ('PT0060', 9876543210);
+INSERT INTO Mobile_No VALUES ('PT0061', 9876543211);
+INSERT INTO Mobile_No VALUES ('PT0062', 9876543212);
+INSERT INTO Mobile_No VALUES ('PT0063', 9876543213);
+INSERT INTO Mobile_No VALUES ('PT0064', 9876543214);
+INSERT INTO Mobile_No VALUES ('PT0065', 9876543215);
+INSERT INTO Mobile_No VALUES ('PT0066', 9876543216);
+INSERT INTO Mobile_No VALUES ('PT0067', 9876543217);
+INSERT INTO Mobile_No VALUES ('PT0068', 9876543218);
+INSERT INTO Mobile_No VALUES ('PT0069', 9876543219);
+INSERT INTO Mobile_No VALUES ('PT0070', 9876543220);
+INSERT INTO Mobile_No VALUES ('PT0071', 9876543221);
+INSERT INTO Mobile_No VALUES ('PT0072', 9876543222);
+INSERT INTO Mobile_No VALUES ('PT0073', 9876543223);
+INSERT INTO Mobile_No VALUES ('PT0074', 9876543224);
+INSERT INTO Mobile_No VALUES ('PT0075', 9876543225);
+INSERT INTO Mobile_No VALUES ('PT0076', 9876543226);
+INSERT INTO Mobile_No VALUES ('PT0077', 9876543227);
+INSERT INTO Mobile_No VALUES ('PT0078', 9876543228);
+INSERT INTO Mobile_No VALUES ('PT0079', 9876543229);
+INSERT INTO Mobile_No VALUES ('PT0080', 9876543230);
+INSERT INTO Mobile_No VALUES ('PT0081', 9876543231);
+INSERT INTO Mobile_No VALUES ('PT0082', 9876543232);
+INSERT INTO Mobile_No VALUES ('PT0083', 9876543233);
+INSERT INTO Mobile_No VALUES ('PT0084', 9876543234);
+INSERT INTO Mobile_No VALUES ('PT0085', 9876543235);
+INSERT INTO Mobile_No VALUES ('PT0086', 9876543236);
+INSERT INTO Mobile_No VALUES ('PT0087', 9876543237);
+INSERT INTO Mobile_No VALUES ('PT0088', 9876543238);
+INSERT INTO Mobile_No VALUES ('PT0089', 9876543239);
+INSERT INTO Mobile_No VALUES ('PT0090', 9876543240);
+INSERT INTO Mobile_No VALUES ('PT0091', 9876543241);
+INSERT INTO Mobile_No VALUES ('PT0092', 9876543242);
+INSERT INTO Mobile_No VALUES ('PT0093', 9876543243);
+INSERT INTO Mobile_No VALUES ('PT0094', 9876543244);
+INSERT INTO Mobile_No VALUES ('PT0095', 9876543245);
+INSERT INTO Mobile_No VALUES ('PT0096', 9876543246);
+INSERT INTO Mobile_No VALUES ('PT0097', 9876543247);
+INSERT INTO Mobile_No VALUES ('PT0098', 9876543248);
+INSERT INTO Mobile_No VALUES ('PT0099', 9876543249);
+INSERT INTO Mobile_No VALUES ('PT0100', 9876543250);
+--Additional mobile numbers for selected patients
+INSERT INTO Mobile_No VALUES
+('PT0005',9000000005),
+('PT0010',9000000010),
+('PT0022',9000000022),
+('PT0033',9000000033),
+('PT0044',9000000044),
+('PT0055',9000000055),
+('PT0066',9000000066),
+('PT0077',9000000077),
+('PT0088',9000000088),
+('PT0099',9000000099);
+
+--trustee's mobile no
+INSERT INTO Mobile_No (ID, Mobile_No) VALUES
+('TT0001', 9876543210),
+('TT0002', 9123456780),
+('TT0003', 9988776655),
+('TT0004', 9001122334),
+('TT0005', 8899001122),
+('TT0006', 9012345678),
+('TT0007', 9345678901),
+('TT0008', 9456789012),
+('TT0009', 9567890123),
+('TT0010', 9678901234),
+('TT0011', 9789012345),
+('TT0012', 9890123456),
+('TT0013', 9901234567),
+('TT0014', 9812345670),
+('TT0015', 9823456701),
+('TT0016', 9834567012),
+('TT0017', 9845670123),
+('TT0018', 9856701234),
+('TT0019', 9867012345),
+('TT0020', 9870123456),
+('TT0021', 9881234567),
+('TT0022', 9892345678),
+('TT0023', 9903456789),
+('TT0024', 9914567890),
+('TT0025', 9925678901),
+('TT0026', 9936789012),
+('TT0027', 9947890123),
+('TT0028', 9958901234),
+('TT0029', 9969012345),
+('TT0030', 9970123456),
+('TT0003',9000000003),
+('TT0006',9000000006),
+('TT0009',9000000009),
+('TT0012',9000000012),
+('TT0015',9000000015),
+('TT0018',9000000018),
+('TT0021',9000000021),
+('TT0024',9000000024),
+('TT0027',9000000027),
+('TT0030',9000000030);
+
+--trustee's email-id
+INSERT INTO Email_ID (ID, Email_ID) VALUES
+('TT0001', 'arun.mehta@gmail.com'),
+('TT0002', 'sneha.rao@gmail.com'),
+('TT0003', 'vikram.shah@gmail.com'),
+('TT0004', 'neha.kapoor@gmail.com'),
+('TT0005', 'ramesh.iyer@gmail.com'),
+('TT0006', 'divya.nair@gmail.com'),
+('TT0007', 'rajeev.singh@gmail.com'),
+('TT0008', 'maya.fernandes@gmail.com'),
+('TT0009', 'anil.deshmukh@gmail.com'),
+('TT0010', 'lata.bansal@gmail.com'),
+('TT0011', 'siddharth.joshi@gmail.com'),
+('TT0012', 'priya.varma@gmail.com'),
+('TT0013', 'amitabh.rao@gmail.com'),
+('TT0014', 'kiran.desai@gmail.com'),
+('TT0015', 'nandita.pillai@gmail.com'),
+('TT0016', 'suresh.patil@gmail.com'),
+('TT0017', 'farah.khan@gmail.com'),
+('TT0018', 'manoj.verma@gmail.com'),
+('TT0019', 'ayesha.siddiqui@gmail.com'),
+('TT0020', 'kabir.malhotra@gmail.com'),
+('TT0021', 'tanvi.sharma@gmail.com'),
+('TT0022', 'zoya.merchant@gmail.com'),
+('TT0023', 'karthik.reddy@gmail.com'),
+('TT0024', 'reena.george@gmail.com'),
+('TT0025', 'deepak.bhatt@gmail.com'),
+('TT0026', 'meera.dsouza@gmail.com'),
+('TT0027', 'ajay.kulkarni@gmail.com'),
+('TT0028', 'shalini.bose@gmail.com'),
+('TT0029', 'harsh.vardhan@gmail.com'),
+('TT0030', 'anuja.banerjee@gmail.com');
+
+--TRUSTEE:
+-- Random trustees' email-ids
+INSERT INTO Email_ID (ID, Email_ID) VALUES
+('TT0023', 'karthik.alt@gmail.com'),
+('TT0008', 'maya.alt@gmail.com'),
+('TT0019', 'ayesha.alt@gmail.com'),
+('TT0012', 'priya.alt@gmail.com'),
+('TT0026', 'meera.alt@gmail.com'),
+('TT0015', 'nandita.alt@gmail.com'),
+('TT0003', 'vikram.alt@gmail.com'),
+('TT0028', 'shalini.alt@gmail.com'),
+('TT0010', 'lata.alt@gmail.com'),
+('TT0006', 'divya.alt@gmail.com'),
+('TT0017', 'farah.alt@gmail.com'),
+('TT0021', 'tanvi.alt@gmail.com'),
+('TT0004', 'neha.alt@gmail.com'),
+('TT0025', 'deepak.alt@gmail.com'),
+('TT0014', 'kiran.alt@gmail.com'),
+('TT0009', 'anil.alt@gmail.com'),
+('TT0011', 'siddharth.alt@gmail.com'),
+('TT0030', 'anuja.alt@gmail.com'),
+('TT0001', 'arun.alt@gmail.com'),
+('TT0027', 'ajay.alt@gmail.com');
+
+--cashier's mobile-no
+INSERT INTO Mobile_No (ID, Mobile_No) VALUES
+('CS0001',9876512341),
+('CS0002',9876512342),
+('CS0003',9876512343),
+('CS0004',9876512344),
+('CS0005',9876512345),
+('CS0002',9001010002),
+('CS0005',9001010005);
+
+--cashier's email-id
+INSERT INTO Email_ID (ID, Email_ID) VALUES
+('CS0001', 'cs0001@gmail.com'),
+('CS0002', 'cs0002@gmail.com'),
+('CS0003', 'cs0003@gmail.com'),
+('CS0004', 'cs0004@gmail.com'),
+('CS0005', 'cs0005@gmail.com');
+
+-- CASHIER
+INSERT INTO Email_ID (ID, Email_ID) VALUES
+('CS0004', 'reema.kashyap@hospitalmail.com'),
+('CS0001', 'amit.pandey@hospitalmail.com'),
+('CS0005', 'zainab.shaikh@hospitalmail.com'),
+('CS0002', 'kiran.rao@hospitalmail.com'),
+('CS0003', 'mohit.sabharwal@hospitalmail.com');
+
+--admin staff mobile-no
+INSERT INTO Mobile_No VALUES
+('AD0001', 9876543210),
+('AD0002', 9123456780),
+('AD0003', 9988776655),
+('AD0004', 9090909090),
+('AD0005', 9812345678),
+('AD0006', 9765432109),
+('AD0007', 9345612789),
+('AD0008', 9871234567),
+('AD0009', 9898989898),
+('AD0010', 9012345678),
+('AD0011', 9321654987),
+('AD0012', 9654321987),
+('AD0013', 9567891234),
+('AD0014', 9786543210),
+('AD0015', 9887766554);
+
+INSERT INTO Mobile_No VALUES
+-- Admin with multiple numbers
+('AD0003',9988776656),
+('AD0003',9876543201),
+('AD0004',9090919090),
+('AD0004',9011223344),
+('AD0004',9009988776),
+('AD0007',9345602789),
+('AD0007',9345612788),
+('AD0012',9650321987),
+('AD0012',9169456790),
+('AD0014',9783543210),
+('AD0014',9781543222);
+
+--admin staff email-id
+INSERT INTO Email_ID VALUES
+('AD0001', 'anjali.sharma@gmail.com'),
+('AD0002', 'rajeev.menon@gmail.com'),
+('AD0003', 'kavita.iyer@gmail.com'),
+('AD0004', 'amitabh.desai@gmail.com'),
+('AD0005', 'neha.bhandari@gmail.com'),
+('AD0006', 'suresh.reddy@gmail.com'),
+('AD0007', 'pooja.nair@gmail.com'),
+('AD0008', 'nikhil.verma@gmail.com'),
+('AD0009', 'swati.kulkarni@gmail.com'),
+('AD0010', 'manish.jha@gmail.com'),
+('AD0011', 'priya.das@gmail.com'),
+('AD0012', 'rahul.mehta@gmail.com'),
+('AD0013', 'deepa.joshi@gmail.com'),
+('AD0014', 'arun.patil@gmail.com'),
+('AD0015', 'meera.sinha@gmail.com');
+
+--ADMINS:
+-- Sample (some) Admin email IDs
+INSERT INTO Email_ID VALUES
+('AD0003', 'kavita1.iyer@gmail.com'),
+('AD0007', 'pooja1.nair@gmail.com'),
+('AD0010', 'manish1.jha@gmail.com'),
+('AD0001', 'anjaliq.sharma@gmail.com'),
+('AD0012', 'rahul2.mehta@gmail.com'),
+('AD0009', 'swat1i.kulkarni@gmail.com'),
+('AD0015', 'meera_69.sinha@gmail.com');
+
+--security guard mobile-no
+INSERT INTO Mobile_No VALUES
+('SC0001', 9812345670),
+('SC0002', 9823456781),
+('SC0003', 9834567892),
+('SC0004', 9845678903),
+('SC0005', 9856789014),
+('SC0006', 9867890125),
+('SC0007', 9878901236),
+('SC0008', 9889012347),
+('SC0009', 9890123458),
+('SC0010', 9901234569);
+
+--SECURITY_GUARD,
+INSERT INTO Mobile_No VALUES
+('SC0003',9134567892),
+('SC0003',9101122334),
+('SC0004',9145678903),
+('SC0004',9133445566),
+('SC0007',9187890123),
+('SC0007',9178901237),
+('SC0010',9101234569),
+('SC0010',9112345678);
+
+
+--security guard email-id
+INSERT INTO Email_ID VALUES
+('SC0001', 'rakesh.thakur@gmail.com'),
+('SC0002', 'sanjay.kumar@gmail.com'),
+('SC0003', 'manoj.rawat@gmail.com'),
+('SC0004', 'vikram.singh@gmail.com'),
+('SC0005', 'ravi.yadav@gmail.com'),
+('SC0006', 'suraj.chauhan@gmail.com'),
+('SC0007', 'amit.negi@gmail.com'),
+('SC0008', 'dinesh.sharma@gmail.com'),
+('SC0009', 'prakash.jha@gmail.com'),
+('SC0010', 'naresh.pillai@gmail.com');
+
+--SECURITY_GUARD:
+-- Some Security Guard email IDs
+INSERT INTO Email_ID VALUES
+('SC0002', 'sanjay1.kumar@gmail.com'),
+('SC0005', 'ravi1.yadav@gmail.com'),
+('SC0001', 'rake1sh.thakur@gmail.com'),
+('SC0009', 'praka11sh.jha@gmail.com'),
+('SC0006', 'suraj.1chauhan@gmail.com'),
+('SC0010', 'naresh1.pillai@gmail.com');
+
+--cleaner's mobile-no
+INSERT INTO Mobile_No (ID, Mobile_No) VALUES
+('CL0001', 9876543201),
+('CL0002', 9876543202),
+('CL0003', 9876543203),
+('CL0004', 9876543204),
+('CL0005', 9876543205),
+('CL0006', 9876543206),
+('CL0007', 9876543207),
+('CL0008', 9876543208),
+('CL0009', 9876543209),
+('CL0010', 9876543210);
+
+--CLEANER:
+INSERT INTO Mobile_No (ID, Mobile_No) VALUES
+('CL0003',7876543203),
+('CL0003',7887654321),
+('CL0004',7876543204),
+('CL0004',7898765432),
+('CL0007',7876543207),
+('CL0007',7876543211),
+('CL0010',7876543210),
+('CL0010',7898765430);
+
+--cleaner's email-id
+INSERT INTO Email_ID (ID, Email_ID) VALUES
+('CL0001', 'cl0001@gmail.com'),
+('CL0002', 'cl0002@gmail.com'),
+('CL0003', 'cl0003@gmail.com'),
+('CL0004', 'cl0004@gmail.com'),
+('CL0005', 'cl0005@gmail.com'),
+('CL0006', 'cl0006@gmail.com'),
+('CL0007', 'cl0007@gmail.com'),
+('CL0008', 'cl0008@gmail.com'),
+('CL0009', 'cl0009@gmail.com'),
+('CL0010', 'cl0010@gmail.com');
+--CLEANER:
+-- Some Cleaner email IDs
+INSERT INTO Email_ID (ID, Email_ID) VALUES
+('CL0002', 'cl1002@gmail.com'),
+('CL0005', 'cl1005@gmail.com'),
+('CL0007', 'cl1007@gmail.com'),
+('CL0010', 'cl110@gmail.com'),
+('CL0001', 'cl1001@gmail.com'),
+('CL0008', 'cl1008@gmail.com');
+
+--driver
+INSERT INTO DRIVER VALUES 
+('DV0001', 'GJ012345678912'),
+('DV0002', 'GJ098765432112'),
+('DV0003', 'GJ112233445566'),
+('DV0004', 'GJ223344556677'),
+('DV0005', 'GJ334455667788'),
+('DV0006', 'GJ445566778899'),
+('DV0007', 'GJ556677889900'),
+('DV0008', 'GJ667788990011'),
+('DV0009', 'GJ778899001122'),
+('DV0010', 'GJ889900112233');
+
+INSERT INTO Driven_by VALUES (1, 'DV0001', 'NR0001');
+INSERT INTO Driven_by VALUES (1, 'DV0002', 'NR0002');
+INSERT INTO Driven_by VALUES (1, 'DV0003', 'NR0003');
+INSERT INTO Driven_by VALUES (1, 'DV0004', 'NR0004');
+INSERT INTO Driven_by VALUES (1, 'DV0005', 'NR0005');
+INSERT INTO Driven_by VALUES (1, 'DV0006', 'NR0005');
+
+INSERT INTO Driven_by VALUES (2, 'DV0001', 'NR0006');
+INSERT INTO Driven_by VALUES (2, 'DV0002', 'NR0006');
+INSERT INTO Driven_by VALUES (2, 'DV0003', 'NR0007');
+INSERT INTO Driven_by VALUES (2, 'DV0004', 'NR0008');
+INSERT INTO Driven_by VALUES (2, 'DV0005', 'NR0009');
+INSERT INTO Driven_by VALUES (2, 'DV0006', 'NR0010');
+
+INSERT INTO Driven_by VALUES (3, 'DV0001', 'NR0011');
+INSERT INTO Driven_by VALUES (3, 'DV0003', 'NR0012');
+INSERT INTO Driven_by VALUES (3, 'DV0007', 'NR0013');
+INSERT INTO Driven_by VALUES (3, 'DV0008', 'NR0014');
+INSERT INTO Driven_by VALUES (3, 'DV0009', 'NR0015');
+INSERT INTO Driven_by VALUES (3, 'DV0006', 'NR0015');
+
+INSERT INTO Driven_by VALUES (4, 'DV0001', 'NR0016');
+INSERT INTO Driven_by VALUES (4, 'DV0003', 'NR0016');
+INSERT INTO Driven_by VALUES (4, 'DV0004', 'NR0017');
+INSERT INTO Driven_by VALUES (4, 'DV0005', 'NR0018');
+INSERT INTO Driven_by VALUES (4, 'DV0009', 'NR0019');
+INSERT INTO Driven_by VALUES (4, 'DV0010', 'NR0020');
+INSERT INTO Driven_by VALUES (4, 'DV0006', 'NR0020');
+
+INSERT INTO Driven_by VALUES (5, 'DV0001', 'NR0021');
+INSERT INTO Driven_by VALUES (5, 'DV0005', 'NR0022');
+INSERT INTO Driven_by VALUES (5, 'DV0006', 'NR0023');
+INSERT INTO Driven_by VALUES (5, 'DV0007', 'NR0024');
+INSERT INTO Driven_by VALUES (5, 'DV0010', 'NR0025');
+
+INSERT INTO Driven_by VALUES (6, 'DV0001', 'NR0026');
+INSERT INTO Driven_by VALUES (6, 'DV0003', 'NR0027');
+INSERT INTO Driven_by VALUES (6, 'DV0005', 'NR0028');
+INSERT INTO Driven_by VALUES (6, 'DV0006', 'NR0029');
+INSERT INTO Driven_by VALUES (6, 'DV0009', 'NR0030');
+
+INSERT INTO Driven_by VALUES (7, 'DV0001', 'NR0031');
+INSERT INTO Driven_by VALUES (7, 'DV0002', 'NR0031');
+INSERT INTO Driven_by VALUES (7, 'DV0004', 'NR0032');
+INSERT INTO Driven_by VALUES (7, 'DV0006', 'NR0033');
+INSERT INTO Driven_by VALUES (7, 'DV0007', 'NR0034');
+INSERT INTO Driven_by VALUES (7, 'DV0009', 'NR0035');
+
+INSERT INTO Driven_by VALUES (8, 'DV0001', 'NR0036');
+INSERT INTO Driven_by VALUES (8, 'DV0005', 'NR0036');
+INSERT INTO Driven_by VALUES (8, 'DV0006', 'NR0037');
+INSERT INTO Driven_by VALUES (8, 'DV0007', 'NR0038');
+INSERT INTO Driven_by VALUES (8, 'DV0008', 'NR0039');
+INSERT INTO Driven_by VALUES (8, 'DV0010', 'NR0040');
+
+INSERT INTO Driven_by VALUES (9, 'DV0001', 'NR0001');
+INSERT INTO Driven_by VALUES (9, 'DV0002', 'NR0002');
+INSERT INTO Driven_by VALUES (9, 'DV0009', 'NR0003');
+INSERT INTO Driven_by VALUES (9, 'DV0004', 'NR0004');
+INSERT INTO Driven_by VALUES (9, 'DV0010', 'NR0005');
+INSERT INTO Driven_by VALUES (9, 'DV0006', 'NR0005');
+
+INSERT INTO Driven_by VALUES (10, 'DV0001', 'NR0006');
+INSERT INTO Driven_by VALUES (10, 'DV0006', 'NR0007');
+INSERT INTO Driven_by VALUES (10, 'DV0007', 'NR0008');
+INSERT INTO Driven_by VALUES (10, 'DV0008', 'NR0009');
+INSERT INTO Driven_by VALUES (10, 'DV0010', 'NR0010');
+
+INSERT INTO DONOR (DONOR_ID, DONATE_DATE, DONOR_NAME, REIMBURSEMENT, DONATION_TYPE) VALUES
+('DN0001', '2007-05-14', 'Anil Mehta', 0, 'Blood'),
+('DN0002', '2011-08-21', 'Sneha Rao', 0, 'Blood'),
+('DN0003', '2015-03-09', 'Ravi Shankar', 0, 'Blood'),
+('DN0004', '2020-11-02', 'Neha Kumari', 0, 'Blood'),
+('DN0005', '2013-12-25', 'Tushar Sen', 0, 'Blood'),
+('DN0006', '2019-04-30', 'Rekha Iyer', 0, 'Blood'),
+('DN0007', '2002-07-19', 'Aditya Singh', 20000, 'Kidney'),
+('DN0008', '2009-10-15', 'Divya Shah', 15000, 'Liver'),
+('DN0009', '2022-01-11', 'Manoj Verma', 10000, 'Eye'),
+('DN0010', '2010-06-05', 'Priya Desai', 18000, 'Skin'),
+('DN0011', '2003-09-22', 'Nikhil Patil', 0, 'Blood'),
+('DN0012', '2018-03-17', 'Ritika Sharma', 0, 'Blood'),
+('DN0013', '2023-12-12', 'Dilip Nair', 22000, 'Heart'),
+('DN0014', '2005-02-28', 'Tanvi Joshi', 21000, 'Lung'),
+('DN0015', '2024-07-09', 'Ravi Kiran', 23000, 'Liver'),
+('DN0016', '2014-10-03', 'Meena Rani', 17000, 'Cornea'),
+('DN0017', '2021-01-19', 'Ajay Bhatt', 25000, 'Pancreas'),
+('DN0018', '2001-06-26', 'Kavita Jain', 20000, 'Kidney'),
+('DN0019', '2006-12-11', 'Rohan Kapoor', 26000, 'Skin'),
+('DN0020', '2016-09-14', 'Sanjana Mishra', 15000, 'Eye'),
+('DN0021', '2012-04-04', 'Jatin Shah', 0, 'Blood'),
+('DN0022', '2008-07-29', 'Aarti Yadav', 0, 'Blood'),
+('DN0023', '2004-01-13', 'Suresh Rawat', 0, 'Blood'),
+('DN0024', '2017-08-06', 'Poonam Dubey', 24000, 'Liver'),
+('DN0025', '2023-02-23', 'Amit Trivedi', 19000, 'Heart'),
+('DN0026', '2020-05-08', 'Vandana Gupta', 17000, 'Cornea'),
+('DN0027', '2011-11-27', 'Siddharth Rao', 18000, 'Skin'),
+('DN0028', '2009-03-15', 'Namrata Kaur', 0, 'Blood'),
+('DN0029', '2000-09-09', 'Vikram Dutta', 0, 'Blood'),
+('DN0030', '2015-01-31', 'Bhavika Shah', 22000, 'Kidney');
+
+-- Repeat donations by existing donors (after 3+ months)
+INSERT INTO DONOR (DONOR_ID, DONATE_DATE, DONOR_NAME, REIMBURSEMENT, DONATION_TYPE) VALUES
+('DN0001', '2007-09-20', 'Anil Mehta', 0, 'Blood'),
+('DN0003', '2015-07-10', 'Ravi Shankar', 0, 'Blood'),
+('DN0007', '2002-11-25', 'Aditya Singh', 21000, 'Kidney'),
+('DN0008', '2010-02-20', 'Divya Shah', 16000, 'Liver'),
+('DN0010', '2011-02-18', 'Priya Desai', 18500, 'Skin'),
+('DN0013', '2024-04-10', 'Dilip Nair', 23000, 'Heart'),
+('DN0014', '2005-06-30', 'Tanvi Joshi', 21500, 'Lung'),
+('DN0015', '2024-11-12', 'Ravi Kiran', 24000, 'Liver'),
+('DN0017', '2021-05-25', 'Ajay Bhatt', 26000, 'Pancreas'),
+('DN0024', '2017-12-20', 'Poonam Dubey', 25000, 'Liver'),
+('DN0025', '2023-07-05', 'Amit Trivedi', 20000, 'Heart'),
+('DN0026', '2020-09-12', 'Vandana Gupta', 18000, 'Cornea'),
+('DN0027', '2012-03-05', 'Siddharth Rao', 19000, 'Skin'),
+('DN0030', '2015-06-20', 'Bhavika Shah', 23000, 'Kidney');
+
+--trustee
+INSERT INTO TRUSTEE (Trustee_ID, Trustee_Name, Donation_Date, Amount) VALUES
+('TT0001', 'Arun Mehta', '2024-01-15', 50000),
+('TT0002', 'Sneha Rao', '2024-02-10', 30000),
+('TT0003', 'Vikram Shah', '2024-03-05', 75000),
+('TT0004', 'Neha Kapoor', '2024-03-25', 20000),
+('TT0005', 'Ramesh Iyer', '2024-04-01', 100000),
+('TT0006', 'Divya Nair', '2024-04-08', 25000),
+('TT0007', 'Rajeev Singh', '2024-04-09', 60000),
+('TT0008', 'Maya Fernandes', '2024-04-10', 40000),
+('TT0009', 'Anil Deshmukh', '2024-04-02', 85000),
+('TT0010', 'Lata Bansal', '2024-03-18', 30000),
+('TT0011', 'Siddharth Joshi', '2024-02-28', 55000),
+('TT0012', 'Priya Varma', '2024-01-30', 35000),
+('TT0013', 'Amitabh Rao', '2024-03-12', 45000),
+('TT0014', 'Kiran Desai', '2024-02-14', 22000),
+('TT0015', 'Nandita Pillai', '2024-03-29', 27000),
+('TT0016', 'Suresh Patil', '2024-01-22', 65000),
+('TT0017', 'Farah Khan', '2024-02-05', 48000),
+('TT0018', 'Manoj Verma', '2024-01-10', 90000),
+('TT0019', 'Ayesha Siddiqui', '2024-04-03', 30000),
+('TT0020', 'Kabir Malhotra', '2024-03-15', 72000),
+('TT0021', 'Tanvi Sharma', '2024-02-09', 41000),
+('TT0022', 'Zoya Merchant', '2024-01-18', 36500),
+('TT0023', 'Karthik Reddy', '2024-03-01', 29000),
+('TT0024', 'Reena George', '2024-02-21', 31000),
+('TT0025', 'Deepak Bhatt', '2024-04-05', 83000),
+('TT0026', 'Meera D’Souza', '2024-03-07', 26000),
+('TT0027', 'Ajay Kulkarni', '2024-01-25', 78000),
+('TT0028', 'Shalini Bose', '2024-02-12', 47000),
+('TT0029', 'Harsh Vardhan', '2024-03-20', 62000),
+('TT0030', 'Anuja Banerjee', '2024-04-06', 39000);
+
+INSERT INTO TRUSTEE (Trustee_ID, Trustee_Name, Donation_Date, Amount) VALUES
+('TT0001', 'Arun Mehta', '2024-05-16', 552000),
+('TT0003', 'Vikram Shah', '2024-06-10', 778000),
+('TT0005', 'Ramesh Iyer', '2024-05-20', 1102000),
+('TT0007', 'Rajeev Singh', '2024-06-12', 62000),
+('TT0009', 'Anil Deshmukh', '2024-05-30', 987000),
+('TT0011', 'Siddharth Joshi', '2024-05-02', 56000),
+('TT0013', 'Amitabh Rao', '2024-05-18', 47000),
+('TT0015', 'Nandita Pillai', '2024-06-04', 28500),
+('TT0017', 'Farah Khan', '2024-05-10', 49500),
+('TT0019', 'Ayesha Siddiqui', '2024-06-01', 531500),
+('TT0021', 'Tanvi Sharma', '2024-05-11', 743000),
+('TT0023', 'Karthik Reddy', '2024-05-27', 30000),
+('TT0025', 'Deepak Bhatt', '2024-06-06', 985000),
+('TT0027', 'Ajay Kulkarni', '2024-05-15', 80000),
+('TT0029', 'Harsh Vardhan', '2024-06-02', 964000);
+
+--bill
+INSERT INTO Bill VALUES (0001, 4091, 41, 1, '2024-03-05', 'UPI', 'PT0001');
+INSERT INTO Bill VALUES (0002, 42730, 29.8, 1, '2024-03-06', 'cheque', 'PT0002');
+INSERT INTO Bill VALUES (0003, 28881, 12.2, 1, '2024-03-07', 'Card', 'PT0003');
+INSERT INTO Bill VALUES (0004, 11600, 67, 0, '2024-03-08', 'Cash', 'PT0004');
+INSERT INTO Bill VALUES (0005, 14320, 14.5, 1, '2024-03-09', 'cheque', 'PT0005');
+INSERT INTO Bill VALUES (0006, 7200, 0, 1, '2024-03-10', 'Card', 'PT0006');
+INSERT INTO Bill VALUES (0007, 19490, 95, 0, '2024-03-11', 'Cash', 'PT0007');
+INSERT INTO Bill VALUES (0008, 23456, 17.8, 1, '2024-03-12', 'UPI', 'PT0008');
+INSERT INTO Bill VALUES (0009, 15890, 33, 0, '2024-03-13', 'cheque', 'PT0009');
+INSERT INTO Bill VALUES (0010, 11000, 0, 0, '2024-03-14', 'Cash', 'PT0010');
+
+INSERT INTO Bill VALUES (0011, 9500, 10.00, 0, '2024-03-15', 'Card', 'PT0011');
+INSERT INTO Bill VALUES (0012, 12000, 0, 1, '2024-03-16', 'UPI', 'PT0012');
+INSERT INTO Bill VALUES (0013, 8400, 5.00, 0, '2024-03-17', 'Card', 'PT0013');
+INSERT INTO Bill VALUES (0014, 10000, 0, 1, '2024-03-18', 'Cheque', 'PT0014');
+INSERT INTO Bill VALUES (0015, 9100, 0, 0, '2024-03-19', 'Cash', 'PT0015');
+INSERT INTO Bill VALUES (0016, 13500, 7.50, 1, '2024-03-20', 'Card', 'PT0016');
+INSERT INTO Bill VALUES (0017, 8700, 0, 1, '2024-03-21', 'UPI', 'PT0017');
+INSERT INTO Bill VALUES (0018, 15000, 0, 0, '2024-03-22', 'Cash', 'PT0018');
+INSERT INTO Bill VALUES (0019, 8000, 12.00, 1, '2024-03-23', 'Card', 'PT0019');
+INSERT INTO Bill VALUES (0020, 11300, 0, 0, '2024-03-24', 'UPI', 'PT0020');
+
+INSERT INTO Bill VALUES (0021, 9800, 6.00, 1, '2024-03-25', 'Card', 'PT0021');
+INSERT INTO Bill VALUES (0022, 10500, 0, 1, '2024-03-26', 'Cheque', 'PT0022');
+INSERT INTO Bill VALUES (0023, 8800, 8.00, 0, '2024-03-27', 'Card', 'PT0023');
+INSERT INTO Bill VALUES (0024, 10700, 0, 1, '2024-03-28', 'Cash', 'PT0024');
+INSERT INTO Bill VALUES (0025, 9900, 0, 0, '2024-03-29', 'UPI', 'PT0025');
+INSERT INTO Bill VALUES (0026, 12300, 10.00, 1, '2024-03-30', 'Card', 'PT0026');
+INSERT INTO Bill VALUES (0027, 9100, 0, 1, '2024-03-31', 'Cheque', 'PT0027');
+INSERT INTO Bill VALUES (0028, 11700, 0, 0, '2024-04-01', 'Cash', 'PT0028');
+INSERT INTO Bill VALUES (0029, 8700, 9.00, 1, '2024-04-02', 'Card', 'PT0029');
+INSERT INTO Bill VALUES (0030, 13400, 0, 1, '2024-04-03', 'UPI', 'PT0030');
+
+INSERT INTO Bill VALUES (0031, 9200, 0, 0, '2024-04-04', 'Cash', 'PT0031');
+INSERT INTO Bill VALUES (0032, 10800, 11.00, 1, '2024-04-05', 'Card', 'PT0032');
+INSERT INTO Bill VALUES (0033, 11200, 0, 0, '2024-04-06', 'Cheque', 'PT0033');
+INSERT INTO Bill VALUES (0034, 10200, 0, 1, '2024-04-07', 'UPI', 'PT0034');
+INSERT INTO Bill VALUES (0035, 12700, 13.00, 0, '2024-04-08', 'Card', 'PT0035');
+INSERT INTO Bill VALUES (0036, 8600, 0, 1, '2024-04-09', 'Cash', 'PT0036');
+INSERT INTO Bill VALUES (0037, 14100, 7.00, 1, '2024-04-10', 'Card', 'PT0037');
+INSERT INTO Bill VALUES (0038, 11900, 0, 0, '2024-04-11', 'Cheque', 'PT0038');
+INSERT INTO Bill VALUES (0039, 9000, 0, 1, '2024-04-12', 'Cash', 'PT0039');
+INSERT INTO Bill VALUES (0040, 13800, 5.50, 0, '2024-04-13', 'Card', 'PT0040');
+
+INSERT INTO Bill VALUES (0041, 11100, 0, 1, '2024-04-14', 'Cash', 'PT0041');
+INSERT INTO Bill VALUES (0042, 12000, 0, 1, '2024-04-15', 'Card', 'PT0042');
+INSERT INTO Bill VALUES (0043, 9800, 0, 0, '2024-04-16', 'Cash', 'PT0043');
+INSERT INTO Bill VALUES (0044, 10600, 12.50, 1, '2024-04-17', 'Cheque', 'PT0044');
+INSERT INTO Bill VALUES (0045, 11400, 0, 0, '2024-04-18', 'UPI', 'PT0045');
+INSERT INTO Bill VALUES (0046, 12500, 9.00, 1, '2024-04-19', 'Card', 'PT0046');
+INSERT INTO Bill VALUES (0047, 13700, 0, 1, '2024-04-20', 'Cash', 'PT0047');
+INSERT INTO Bill VALUES (0048, 14200, 7.00, 0, '2024-04-21', 'Card', 'PT0048');
+INSERT INTO Bill VALUES (0049, 12100, 0, 1, '2024-04-22', 'Cheque', 'PT0049');
+INSERT INTO Bill VALUES (0050, 12900, 8.50, 0, '2024-04-23', 'Cash', 'PT0050');
+INSERT INTO Bill VALUES (0051, 11300, 0, 1, '2024-04-24', 'Card', 'PT0051');
+
+INSERT INTO Bill VALUES (0052, 10800, 0, 0, '2024-04-25', 'UPI', 'PT0052');
+INSERT INTO Bill VALUES (0053, 9800, 0, 1, '2024-04-26', 'Cheque', 'PT0053');
+INSERT INTO Bill VALUES (0054, 11700, 9.00, 1, '2024-04-27', 'Card', 'PT0054');
+INSERT INTO Bill VALUES (0055, 10200, 0, 0, '2024-04-28', 'Cash', 'PT0055');
+INSERT INTO Bill VALUES (0056, 11400, 0, 1, '2024-04-29', 'Card', 'PT0056');
+INSERT INTO Bill VALUES (0057, 13700, 0, 1, '2024-04-30', 'UPI', 'PT0057');
+INSERT INTO Bill VALUES (0058, 14200, 0, 0, '2024-05-01', 'Cheque', 'PT0058');
+INSERT INTO Bill VALUES (0059, 12100, 12.00, 1, '2024-05-02', 'Cash', 'PT0059');
+INSERT INTO Bill VALUES (0060, 12900, 0, 1, '2024-05-03', 'Card', 'PT0060');
+
+INSERT INTO Bill VALUES (0061, 10800, 0, 0, '2024-05-04', 'Cash', 'PT0061');
+INSERT INTO Bill VALUES (0062, 9800, 8.00, 1, '2024-05-05', 'Cheque', 'PT0062');
+INSERT INTO Bill VALUES (0063, 11700, 0, 0, '2024-05-06', 'UPI', 'PT0063');
+INSERT INTO Bill VALUES (0064, 10200, 0, 1, '2024-05-07', 'Card', 'PT0064');
+INSERT INTO Bill VALUES (0065, 11400, 0, 1, '2024-05-08', 'Cash', 'PT0065');
+INSERT INTO Bill VALUES (0066, 13700, 0, 0, '2024-05-09', 'Card', 'PT0066');
+INSERT INTO Bill VALUES (0067, 14200, 0, 1, '2024-05-10', 'Cheque', 'PT0067');
+INSERT INTO Bill VALUES (0068, 12100, 10.00, 1, '2024-05-11', 'Cash', 'PT0068');
+INSERT INTO Bill VALUES (0069, 12900, 0, 0, '2024-05-12', 'UPI', 'PT0069');
+INSERT INTO Bill VALUES (0070, 11300, 0, 1, '2024-05-13', 'Card', 'PT0070');
+
+INSERT INTO Bill VALUES (0071, 10800, 11.00, 0, '2024-05-14', 'Cheque', 'PT0071');
+INSERT INTO Bill VALUES (0072, 9800, 0, 1, '2024-05-15', 'Card', 'PT0072');
+INSERT INTO Bill VALUES (0073, 11700, 0, 1, '2024-05-16', 'Cash', 'PT0073');
+INSERT INTO Bill VALUES (0074, 10200, 0, 0, '2024-05-17', 'UPI', 'PT0074');
+INSERT INTO Bill VALUES (0075, 11400, 9.50, 1, '2024-05-18', 'Cheque', 'PT0075');
+INSERT INTO Bill VALUES (0076, 13700, 0, 1, '2024-05-19', 'Card', 'PT0076');
+INSERT INTO Bill VALUES (0077, 14200, 0, 0, '2024-05-20', 'Cash', 'PT0077');
+INSERT INTO Bill VALUES (0078, 12100, 0, 1, '2024-05-21', 'UPI', 'PT0078');
+INSERT INTO Bill VALUES (0079, 12900, 10.50, 0, '2024-05-22', 'Cheque', 'PT0079');
+INSERT INTO Bill VALUES (0080, 11300, 0, 0, '2024-05-23', 'Card', 'PT0080');
+
+INSERT INTO Bill VALUES (0081, 10800, 0, 1, '2024-05-24', 'Cash', 'PT0081');
+INSERT INTO Bill VALUES (0082, 9800, 0, 0, '2024-05-25', 'UPI', 'PT0082');
+INSERT INTO Bill VALUES (0083, 11700, 0, 1, '2024-05-26', 'Cheque', 'PT0083');
+INSERT INTO Bill VALUES (0084, 10200, 9.00, 0, '2024-05-27', 'Card', 'PT0084');
+INSERT INTO Bill VALUES (0085, 11400, 0, 1, '2024-05-28', 'Cash', 'PT0085');
+INSERT INTO Bill VALUES (0086, 13700, 0, 0, '2024-05-29', 'UPI', 'PT0086');
+INSERT INTO Bill VALUES (0087, 14200, 7.00, 1, '2024-05-30', 'Cheque', 'PT0087');
+INSERT INTO Bill VALUES (0088, 12100, 0, 1, '2024-06-01', 'Card', 'PT0088');
+INSERT INTO Bill VALUES (0089, 12900, 0, 0, '2024-06-02', 'Cash', 'PT0089');
+INSERT INTO Bill VALUES (0090, 11300, 0, 1, '2024-06-03', 'UPI', 'PT0090');
+
+INSERT INTO Bill VALUES (0091, 10800, 0, 1, '2024-06-04', 'Cheque', 'PT0091');
+INSERT INTO Bill VALUES (0092, 9800, 0, 0, '2024-06-05', 'Card', 'PT0092');
+INSERT INTO Bill VALUES (0093, 11700, 0, 1, '2024-06-06', 'Cash', 'PT0093');
+INSERT INTO Bill VALUES (0094, 10200, 8.00, 0, '2024-06-07', 'UPI', 'PT0094');
+INSERT INTO Bill VALUES (0095, 11400, 0, 1, '2024-06-08', 'Cheque', 'PT0095');
+INSERT INTO Bill VALUES (0096, 13700, 0, 0, '2024-06-09', 'Card', 'PT0096');
+INSERT INTO Bill VALUES (0097, 14200, 0, 1, '2024-06-10', 'Cash', 'PT0097');
+INSERT INTO Bill VALUES (0098, 12100, 0, 1, '2024-06-11', 'UPI', 'PT0098');
+INSERT INTO Bill VALUES (0099, 12900, 11.00, 0, '2024-06-12', 'Cheque', 'PT0099');
+INSERT INTO Bill VALUES (0100, 11300, 0, 0, '2024-06-13', 'Card', 'PT0100');
+
+INSERT INTO Doctor (Doctor_ID, Experience) VALUES
+('DR0001', 18), ('DR0002', 15), ('DR0003', 20), ('DR0004', 12), ('DR0005', 21),
+('DR0006', 10), ('DR0007', 14), ('DR0008', 16), ('DR0009', 13), ('DR0010', 8),
+('DR0011', 17), ('DR0012', 12), ('DR0013', 13), ('DR0014', 20), ('DR0015', 14),
+('DR0016', 13), ('DR0017', 18), ('DR0018', 9), ('DR0019', 13), ('DR0020', 14),
+('DR0021', 16), ('DR0022', 7), ('DR0023', 18), ('DR0024', 12), ('DR0025', 16),
+('DR0026', 11), ('DR0027', 9), ('DR0028', 15), ('DR0029', 21), ('DR0030', 12);
+
+INSERT INTO Examined_By (Patient_ID, DOCTOR_ID, Admit_Date, Discharge_Date, Vehicle_ID, Driver_ID)
+VALUES
+-- Patient 1
+('PT0001', 'DR0001', '2024-03-01', '2024-03-05', 1, 'DV0001'),
+('PT0001', 'DR0002', '2024-03-01', '2024-03-05', NULL, NULL),
+
+-- Patient 2
+('PT0002', 'DR0003', '2024-03-02', '2024-03-06', 2, 'DV0002'),
+
+-- Patient 3
+('PT0003', 'DR0004', '2024-03-03', '2024-03-07', NULL, NULL),
+
+-- Patient 4
+('PT0004', 'DR0005', '2024-03-04', '2024-03-08', 3, 'DV0003'),
+('PT0004', 'DR0001', '2024-03-04', '2024-03-08', NULL, NULL),
+
+-- Patient 5
+('PT0005', 'DR0002', '2024-03-05', '2024-03-09', 4, 'DV0004'),
+
+-- Patient 6
+('PT0006', 'DR0003', '2024-03-06', '2024-03-10', NULL, NULL),
+
+-- Patient 7
+('PT0007', 'DR0004', '2024-03-07', '2024-03-11', 5, 'DV0005'),
+
+-- Patient 8
+('PT0008', 'DR0005', '2024-03-08', '2024-03-12', NULL, NULL),
+
+-- Patient 9
+('PT0009', 'DR0006', '2024-03-09', '2024-03-13', 6, 'DV0006'),
+
+-- Patient 10
+('PT0010', 'DR0007', '2024-03-10', '2024-03-14', 7, 'DV0007'),
+('PT0010', 'DR0008', '2024-03-10', '2024-03-14', NULL, NULL),
+
+-- Patient 11
+('PT0011', 'DR0009', '2024-03-11', '2024-03-15', 8, 'DV0008'),
+('PT0011', 'DR0010', '2024-03-11', '2024-03-15', NULL, NULL),
+
+-- Patient 12
+('PT0012', 'DR0011', '2024-03-12', '2024-03-16', 9, 'DV0009'),
+
+-- Patient 13
+('PT0013', 'DR0012', '2024-03-13', '2024-03-17', NULL, NULL),
+
+-- Patient 14
+('PT0014', 'DR0013', '2024-03-14', '2024-03-18', 10, 'DV0010'),
+('PT0014', 'DR0001', '2024-03-14', '2024-03-18', NULL, NULL),
+
+-- Patient 15
+('PT0015', 'DR0002', '2024-03-15', '2024-03-19', 1, 'DV0001'),
+
+-- Patient 16
+('PT0016', 'DR0003', '2024-03-16', '2024-03-20', NULL, NULL),
+
+-- Patient 17
+('PT0017', 'DR0004', '2024-03-16', '2024-03-21', 2, 'DV0002'),
+
+-- Patient 18
+('PT0018', 'DR0005', '2024-03-18', '2024-03-22', NULL, NULL),
+
+-- Patient 19
+('PT0019', 'DR0006', '2024-03-19', '2024-03-23', 3, 'DV0003'),
+('PT0019', 'DR0007', '2024-03-19', '2024-03-23', NULL, NULL),
+
+-- Patient 20
+('PT0020', 'DR0008', '2024-03-20', '2024-03-24', 4, 'DV0004'),
+
+
+-- Patient 21
+('PT0021', 'DR0009', '2024-03-21', '2024-03-25', NULL, NULL),
+('PT0021', 'DR0010', '2024-03-21', '2024-03-25', 5, 'DV0005'),
+
+-- Patient 22
+('PT0022', 'DR0011', '2024-03-22', '2024-03-26', 6, 'DV0006'),
+
+-- Patient 23
+('PT0023', 'DR0012', '2024-03-23', '2024-03-27', NULL, NULL),
+
+-- Patient 24
+('PT0024', 'DR0013', '2024-03-24', '2024-03-28', 7, 'DV0007'),
+
+-- Patient 25
+('PT0025', 'DR0014', '2024-03-25', '2024-03-29', 8, 'DV0008'),
+('PT0025', 'DR0015', '2024-03-25', '2024-03-29', NULL, NULL),
+
+-- Patient 26
+('PT0026', 'DR0016', '2024-03-26', '2024-03-30', NULL, NULL),
+
+-- Patient 27
+('PT0027', 'DR0017', '2024-03-27', '2024-03-31', 9, 'DV0009'),
+
+-- Patient 28
+('PT0028', 'DR0018', '2024-03-28', '2024-04-01', NULL, NULL),
+
+-- Patient 29
+('PT0029', 'DR0019', '2024-03-29', '2024-04-02', 10, 'DV0010'),
+('PT0029', 'DR0020', '2024-03-29', '2024-04-02', NULL, NULL),
+
+-- Patient 30
+('PT0030', 'DR0021', '2024-03-30', '2024-04-03', 1, 'DV0001'),
+
+-- Patient 31
+('PT0031', 'DR0022', '2024-03-31', '2024-04-04', NULL, NULL),
+('PT0031', 'DR0023', '2024-03-30', '2024-04-04', 2, 'DV0002'),
+
+-- Patient 32
+('PT0032', 'DR0024', '2024-04-01', '2024-04-05', 3, 'DV0003'),
+
+-- Patient 33
+('PT0033', 'DR0025', '2024-04-02', '2024-04-06', NULL, NULL),
+
+-- Patient 34
+('PT0034', 'DR0026', '2024-04-03', '2024-04-07', 4, 'DV0004'),
+
+-- Patient 35
+('PT0035', 'DR0027', '2024-04-04', '2024-04-08', 5, 'DV0005'),
+('PT0035', 'DR0028', '2024-04-04', '2024-04-08', NULL, NULL),
+
+-- Patient 36
+('PT0036', 'DR0029', '2024-04-05', '2024-04-09', NULL, NULL),
+
+-- Patient 37
+('PT0037', 'DR0030', '2024-04-06', '2024-04-10', 6, 'DV0006'),
+
+-- Patient 38
+('PT0038', 'DR0001', '2024-04-07', '2024-04-11', NULL, NULL),
+
+-- Patient 39
+('PT0039', 'DR0002', '2024-04-08', '2024-04-12', 7, 'DV0007'),
+('PT0039', 'DR0003', '2024-04-08', '2024-04-12', NULL, NULL),
+
+-- Patient 40
+('PT0040', 'DR0004', '2024-04-09', '2024-04-13', 8, 'DV0008'),
+
+-- Patient 41
+('PT0041', 'DR0005', '2024-04-10', '2024-04-14', NULL, NULL),
+('PT0041', 'DR0006', '2024-04-10', '2024-04-14', 9, 'DV0009'),
+
+-- Patient 42
+('PT0042', 'DR0007', '2024-04-11', '2024-04-15', 10, 'DV0010'),
+
+-- Patient 43
+('PT0043', 'DR0008', '2024-04-12', '2024-04-16', NULL, NULL),
+
+-- Patient 44
+('PT0044', 'DR0009', '2024-04-13', '2024-04-17', 1, 'DV0001'),
+('PT0044', 'DR0010', '2024-04-13', '2024-04-17', NULL, NULL),
+
+-- Patient 45
+('PT0045', 'DR0011', '2024-04-13', '2024-04-18', 2, 'DV0002'),
+
+-- Patient 46
+('PT0046', 'DR0012', '2024-04-15', '2024-04-19', NULL, NULL),
+
+-- Patient 47
+('PT0047', 'DR0013', '2024-04-16', '2024-04-20', 3, 'DV0003'),
+
+-- Patient 48
+('PT0048', 'DR0014', '2024-04-17', '2024-04-21', NULL, NULL),
+('PT0048', 'DR0015', '2024-04-17', '2024-04-21', 4, 'DV0004'),
+
+-- Patient 49
+('PT0049', 'DR0016', '2024-04-18', '2024-04-22', 5, 'DV0005'),
+
+-- Patient 50
+('PT0050', 'DR0017', '2024-04-19', '2024-04-23', NULL, NULL),
+
+-- Patient 51
+('PT0051', 'DR0018', '2024-04-20', '2024-04-24', 6, 'DV0006'),
+
+-- Patient 52
+('PT0052', 'DR0019', '2024-04-21', '2024-04-25', NULL, NULL),
+
+-- Patient 53
+('PT0053', 'DR0020', '2024-04-22', '2024-04-26', 7, 'DV0007'),
+
+-- Patient 54
+('PT0054', 'DR0021', '2024-04-23', '2024-04-27', NULL, NULL),
+('PT0054', 'DR0022', '2024-04-23', '2024-04-27', 8, 'DV0008'),
+
+-- Patient 55
+('PT0055', 'DR0023', '2024-04-24', '2024-04-28', 9, 'DV0009'),
+
+-- Patient 56
+('PT0056', 'DR0024', '2024-04-25', '2024-04-29', NULL, NULL),
+
+-- Patient 57
+('PT0057', 'DR0025', '2024-04-26', '2024-04-30', 10, 'DV0010'),
+
+-- Patient 58
+('PT0058', 'DR0026', '2024-04-27', '2024-05-01', NULL, NULL),
+('PT0058', 'DR0027', '2024-04-27', '2024-05-01', 1, 'DV0001'),
+
+-- Patient 59
+('PT0059', 'DR0028', '2024-04-27', '2024-05-02', 2, 'DV0002'),
+
+-- Patient 60
+('PT0060', 'DR0029', '2024-04-29', '2024-05-03', NULL, NULL),
+-- Patient 61
+('PT0061', 'DR0030', '2024-04-30', '2024-05-04', 3, 'DV0003'),
+
+-- Patient 62
+('PT0062', 'DR0001', '2024-05-01', '2024-05-05', NULL, NULL),
+
+-- Patient 63
+('PT0063', 'DR0002', '2024-05-02', '2024-05-06', 4, 'DV0004'),
+
+-- Patient 64
+('PT0064', 'DR0003', '2024-05-03', '2024-05-07', NULL, NULL),
+('PT0064', 'DR0004', '2024-05-03', '2024-05-07', 5, 'DV0005'),
+
+-- Patient 65
+('PT0065', 'DR0005', '2024-05-04', '2024-05-08', 6, 'DV0006'),
+
+-- Patient 66
+('PT0066', 'DR0006', '2024-05-05', '2024-05-09', NULL, NULL),
+
+-- Patient 67
+('PT0067', 'DR0007', '2024-05-06', '2024-05-10', 7, 'DV0007'),
+
+-- Patient 68
+('PT0068', 'DR0008', '2024-05-07', '2024-05-11', NULL, NULL),
+('PT0068', 'DR0009', '2024-05-07', '2024-05-11', 8, 'DV0008'),
+
+-- Patient 69
+('PT0069', 'DR0010', '2024-05-08', '2024-05-12', 9, 'DV0009'),
+
+-- Patient 70
+('PT0070', 'DR0011', '2024-05-09', '2024-05-13', NULL, NULL),
+-- Patient 71
+('PT0071', 'DR0012', '2024-05-10', '2024-05-14', 10, 'DV0010'),
+
+-- Patient 72
+('PT0072', 'DR0013', '2024-05-11', '2024-05-15', NULL, NULL),
+
+-- Patient 73
+('PT0073', 'DR0014', '2024-05-12', '2024-05-16', 1, 'DV0001'),
+
+-- Patient 74
+('PT0074', 'DR0015', '2024-05-13', '2024-05-17', NULL, NULL),
+('PT0074', 'DR0016', '2024-05-14', '2024-05-17', 2, 'DV0002'),
+
+-- Patient 75
+('PT0075', 'DR0017', '2024-05-14', '2024-05-18', 3, 'DV0003'),
+
+-- Patient 76
+('PT0076', 'DR0018', '2024-05-15', '2024-05-19', NULL, NULL),
+
+-- Patient 77
+('PT0077', 'DR0019', '2024-05-16', '2024-05-20', 4, 'DV0004'),
+
+-- Patient 78
+('PT0078', 'DR0020', '2024-05-17', '2024-05-21', NULL, NULL),
+('PT0078', 'DR0021', '2024-05-17', '2024-05-21', 5, 'DV0005'),
+
+-- Patient 79
+('PT0079', 'DR0022', '2024-05-18', '2024-05-22', 6, 'DV0006'),
+
+-- Patient 80
+('PT0080', 'DR0023', '2024-05-19', '2024-05-23', NULL, NULL),
+-- Patient 81
+('PT0081', 'DR0024', '2024-05-20', '2024-05-24', 7, 'DV0007'),
+
+-- Patient 82
+('PT0082', 'DR0025', '2024-05-21', '2024-05-25', NULL, NULL),
+
+-- Patient 83
+('PT0083', 'DR0026', '2024-05-22', '2024-05-26', 8, 'DV0008'),
+
+-- Patient 84
+('PT0084', 'DR0027', '2024-05-23', '2024-05-27', NULL, NULL),
+('PT0084', 'DR0028', '2024-05-24', '2024-05-27', 9, 'DV0009'),
+
+-- Patient 85
+('PT0085', 'DR0029', '2024-05-24', '2024-05-28', 10, 'DV0010'),
+
+-- Patient 86
+('PT0086', 'DR0030', '2024-05-25', '2024-05-29', NULL, NULL),
+
+-- Patient 87
+('PT0087', 'DR0012', '2024-05-26', '2024-05-30', 1, 'DV0001'),
+
+-- Patient 88
+('PT0088', 'DR0013', '2024-05-27', '2024-05-31', NULL, NULL),
+('PT0088', 'DR0014', '2024-05-28', '2024-05-31', 2, 'DV0002'),
+
+-- Patient 89
+('PT0089', 'DR0015', '2024-05-28', '2024-06-01', 3, 'DV0003'),
+
+-- Patient 90
+('PT0090', 'DR0016', '2024-05-29', '2024-06-02', NULL, NULL),
+-- Patient 91
+('PT0091', 'DR0017', '2024-05-30', '2024-06-03', 4, 'DV0004'),
+
+-- Patient 92
+('PT0092', 'DR0018', '2024-05-31', '2024-06-04', NULL, NULL),
+
+-- Patient 93
+('PT0093', 'DR0019', '2024-06-02', '2024-06-05', 5, 'DV0005'),
+
+-- Patient 94
+('PT0094', 'DR0020', '2024-06-02', '2024-06-06', NULL, NULL),
+('PT0094', 'DR0021', '2024-06-02', '2024-06-06', 6, 'DV0006'),
+
+-- Patient 95
+('PT0095', 'DR0022', '2024-06-03', '2024-06-07', 7, 'DV0007'),
+
+-- Patient 96
+('PT0096', 'DR0023', '2024-06-04', '2024-06-08', NULL, NULL),
+
+-- Patient 97
+('PT0097', 'DR0024', '2024-06-05', '2024-06-09', 8, 'DV0008'),
+
+-- Patient 98
+('PT0098', 'DR0025', '2024-06-06', '2024-06-10', NULL, NULL),
+('PT0098', 'DR0026', '2024-06-07', '2024-06-10', 9, 'DV0009'),
+
+-- Patient 99
+('PT0099', 'DR0027', '2024-06-07', '2024-06-11', 10, 'DV0010'),
+
+-- Patient 100
+('PT0100', 'DR0028', '2024-06-08', '2024-06-12', NULL, NULL);
+
+-- Mother Entries
+INSERT INTO Examined_By VALUES ('PT0101', 'DR0001', '2024-02-01', '2024-02-05', NULL, NULL);
+INSERT INTO Examined_By VALUES ('PT0102', 'DR0002', '2024-05-03', '2024-05-07', NULL, NULL);
+INSERT INTO Examined_By VALUES ('PT0103', 'DR0003', '2024-05-06', '2024-05-10', NULL, NULL);
+INSERT INTO Examined_By VALUES ('PT0104', 'DR0004', '2024-07-08', '2024-07-12', NULL, NULL);
+INSERT INTO Examined_By VALUES ('PT0105', 'DR0005', '2024-10-10', '2024-10-14', NULL, NULL);
+
+-- Baby Entries (Admit_Date same as Birthdate, which matched mother's Admit_Date)
+INSERT INTO Examined_By VALUES ('PT0106', 'DR0001', '2024-02-01', '2024-02-05', NULL, NULL);
+INSERT INTO Examined_By VALUES ('PT0107', 'DR0002', '2024-05-04', '2024-02-07', NULL, NULL);
+INSERT INTO Examined_By VALUES ('PT0108', 'DR0003', '2024-05-07', '2024-02-10', NULL, NULL);
+INSERT INTO Examined_By VALUES ('PT0109', 'DR0004', '2024-07-08', '2024-02-12', NULL, NULL);
+INSERT INTO Examined_By VALUES ('PT0110', 'DR0005', '2024-10-10', '2024-02-14', NULL, NULL);
+
+INSERT INTO Examined_By (Patient_ID, Doctor_ID, Admit_Date, Discharge_Date, Vehicle_ID, Driver_ID)
+VALUES
+-- P0002: Second visit (21 days later)
+('PT0002', 'DR0015', '2024-12-01', '2024-12-04', NULL, NULL),
+
+-- P0005: Second visit (21 days later)
+('PT0005', 'DR0021', '2024-11-10', '2024-11-13',5, 'DV0006'),
+
+-- P0007: Second visit (19 days later)
+('PT0007', 'DR0004', '2024-11-20', '2024-11-23', 7, 'DV0004'),
+
+-- P0010: Second visit (20 days later)
+('PT0010', 'DR0012', '2024-11-14', '2024-11-17', NULL, NULL),
+
+-- P0013: Second visit (20 days later)
+('PT0013', 'DR0002', '2024-10-21', '2024-10-25', 2, 'DV0005'),
+
+-- P0016: Second visit (20 days later)
+('PT0016', 'DR0008', '2024-12-15', '2024-12-17', 10, 'DV0007'),
+
+-- P0019: Second visit (21 days later)
+('PT0019', 'DR0023', '2024-11-10', '2024-11-13', 4, 'DV0003'),
+
+-- P0022: Second visit (23 days later)
+('PT0022', 'DR0017', '2024-12-08', '2024-12-11', 9, 'DV0002'),
+
+-- P0026: Second visit (21 days later)
+('PT0026', 'DR0009', '2024-11-20', '2024-11-23', NULL, NULL),
+
+-- P0029: Second visit (20 days later)
+('PT0029', 'DR0020', '2024-12-10', '2024-12-13', 6, 'DV0006'),
+
+-- P0031: Second visit (18 days later)
+('PT0031', 'DR0010', '2024-10-28', '2024-10-30', 3, 'DV0009'),
+
+-- P0034: Second visit (20 days later)
+('PT0034', 'DR0019', '2024-12-20', '2024-12-23', 7, 'DV0002'),
+
+-- P0036: Second visit (20 days later)
+('PT0036', 'DR0001', '2024-10-15', '2024-10-18', 5 ,'DV0005'),
+
+-- P0039: Second visit (21 days later)
+('PT0039', 'DR0016', '2024-11-20', '2024-11-24', NULL, NULL),
+
+-- P0040: Second visit (20 days later)
+('PT0040', 'DR0005', '2024-12-15', '2024-12-18', 9, 'DV0010'),
+
+-- P0005: Third visit (22 days later)
+('PT0005', 'DR0022', '2024-12-02', '2024-12-06', 4, 'DV0003'),
+
+-- P0013: Third visit (20 days later)
+('PT0013', 'DR0011', '2024-11-10', '2024-11-14', 6, 'DV0009'),
+
+-- P0036: Third visit (21 days later)
+('PT0036', 'DR0024', '2024-11-05', '2024-11-09', 2, 'DV0004');
+
+INSERT INTO Death_Record (Patient_ID, Date_Of_Death, Cause_Of_Death)
+VALUES
+('PT0003', '2024-03-07', 'Cardiac Arrest'),
+('PT0006', '2024-03-10', 'Severe Infection'),
+('PT0012', '2024-03-16', 'Head Trauma'),
+('PT0018', '2024-03-22', 'Stroke'),
+('PT0023', '2024-03-27', 'Multiple Organ Failure'),
+('PT0028', '2024-04-01', 'Internal Bleeding'),
+('PT0035', '2024-04-08', 'Septic Shock'),
+('PT0036', '2024-04-09', 'Respiratory Failure'),
+('PT0043', '2024-04-16', 'Heart Failure'),
+('PT0045', '2024-04-18', 'Cancer Complications'),
+('PT0048', '2024-04-21', 'Pneumonia'),
+('PT0050', '2024-04-23', 'Brain Hemorrhage'),
+('PT0061', '2024-05-04', 'Severe Burns'),
+('PT0076', '2024-05-19', 'Liver Failure'),
+('PT0084', '2024-05-27', 'COVID-19 Complications');
