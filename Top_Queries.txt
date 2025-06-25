@@ -1,0 +1,222 @@
+-- Group 8
+-- Hospital management system
+-- Queries 
+
+--1
+--Employee list who works at night 
+select E.Employee_ID,E.Employee_Name,A.Apartment_no,A.Street_no,A.Street_Name,A.City,A.Pincode,MO.Mobile_No,
+M.Email_ID from Employee E JOIN address_contact_Information A on E.Employee_ID = A.ID join Mobile_NO MO on E.Employee_Id = MO.ID
+join Email_ID M on E.Employee_ID = M.ID join Available_time T on E.Employee_ID = T.Employee_ID 
+where (T.Available_from >= '23:00:00' OR T.Available_To <= '23:59:59')
+OR (T.Available_from >= '00:00:00' OR T.Available_To <= '06:00:00');
+
+
+--2
+-- HOD info
+select D.department_name,D.department_id,E.employee_id AS HOD_ID,E.employee_name as HOD_NAME from Department D
+join Employee E  on D.hod_id  = E.employee_id;
+
+
+--3
+-- Unused inventory id and money wastage from that.
+SELECT 
+    I.inventory_id,
+    I.inventory_name,
+    I.quantity AS total_quantity,
+    SUM(DHI.quantity_associated) AS quantity_associated,
+    I.price * (I.quantity - SUM(DHI.quantity_associated)) AS wasted_money
+FROM 
+    Inventory I
+JOIN 
+    Department_Has_Inventory DHI ON I.inventory_id = DHI.inventory_id
+GROUP BY 
+    I.inventory_id, I.inventory_name, I.price, I.quantity;
+
+--4
+-- Department wise patient count & revenue from their bill
+SELECT 
+D.Department_ID, D.Department_Name, SUM(B.amount - round((card_relief*amount)/100)) AS Total_Bill_Amount FROM Department D JOIN 
+Employee E ON D.Department_ID = E.Department_ID
+JOIN Doctor DOC ON E.Employee_ID = DOC.Doctor_ID
+JOIN Examined_By EB ON DOC.Doctor_ID = EB.Doctor_ID
+JOIN Patient P ON EB.Patient_ID = P.Patient_ID
+JOIN Bill B ON P.Patient_ID = B.Patient_ID
+GROUP BY D.Department_ID;
+
+
+--5
+-- Most donated blood group.
+SELECT BLOOD_GROUP, COUNT(BLOOD_GROUP) FROM DONOR AS D JOIN GENERAL_INFORMATION AS G
+ON D.DONOR_ID = G.ID GROUP BY BLOOD_GROUP ORDER BY COUNT(BLOOD_GROUP) DESC LIMIT 1;
+
+--6
+-- No of patient brought by each driver 
+SELECT DRIVER_ID, COUNT(PATIENT_ID) FROM EXAMINED_BY GROUP BY DRIVER_ID;
+
+--7
+-- death record of a younger (age < 35) person.
+SELECT *, DATE_PART('year', Date_Of_Death) - DATE_PART('year', Date_Of_Birth) AS AGE
+FROM PATIENT NATURAL JOIN DEATH_RECORD
+WHERE DATE_PART('year', Date_Of_Death) - DATE_PART('year', Date_Of_Birth) < 35;
+
+--8
+-- Patients who admitted more than once 
+select * 
+from
+	(select 
+		patient_id , 
+		count(admit_date) as patient_apperance 
+	from examined_by 
+		group by patient_id) as r1 
+		where r1.patient_apperance > 1 ;
+
+--9
+-- List of empty beds in ward wise
+select 
+	ward_no , count(bed_id) 
+from bed 
+	where patient_id is null 
+	group by ward_no ;
+
+--10
+-- Number of donor by donation_type 
+select donation_type , count(donor_id) from donor group by donation_type ;
+
+--11
+-- Top 3 Trustee 
+SELECT DISTINCT (r4.trustee_id), r4.total_amount, r4.city, r4.state, r4.mobile_no, r4.email_id
+FROM (
+    SELECT 
+        r1.trustee_id, 
+        r1.total_amount, 
+        a.city, 
+        a.state, 
+        mo.mobile_no, 
+        mail.email_id
+    FROM (
+        SELECT trustee_id, SUM(amount) AS total_amount
+        FROM trustee
+        GROUP BY trustee_id
+        ORDER BY total_amount DESC
+        LIMIT 3
+    ) AS r1
+    JOIN address_contact_information AS a ON a.id = r1.trustee_id
+    JOIN mobile_no AS mo ON mo.id = r1.trustee_id
+    JOIN email_id AS mail ON mail.id = r1.trustee_id
+) AS r4;
+
+--12
+-- Total leaves of emoployee and Penalty on excess
+SELECT 
+    employee_id, 
+    total_leaves, 
+    remaining_leaves,
+    CASE 
+        WHEN remaining_leaves < 0 THEN 300 * ABS(remaining_leaves)
+        ELSE 0
+    END AS penalty
+FROM (
+    SELECT 
+        employee_id, 
+        COUNT(date_of_leave) AS total_leaves, 
+        (15 - COUNT(date_of_leave)) AS remaining_leaves
+    FROM (
+        SELECT * 
+        FROM employee AS e 
+        NATURAL JOIN attendance
+    ) AS r1 
+    GROUP BY r1.employee_id
+) AS r2;
+
+
+--13
+--No employee retires after a particular date, and years left to there retirement
+SELECT employee_id,employee_name, retirement_date,
+(EXTRACT(YEAR FROM (retirement_date)) - EXTRACT(YEAR FROM (current_date)) )AS years_remaining
+FROM employee
+WHERE retirement_date > '2050-01-01'
+ORDER BY years_remaining DESC;
+
+--14
+--Revenue by different payment methods and count of patients by bill status
+select * from bill;
+
+select payment_mode,payment_status,sum(amount),count(payment_status)
+from bill
+group by payment_mode,payment_status;
+
+--15
+--Doctors with max no of patients in charge.
+select ex.doctor_id,emp.employee_name,count(patient_id) as total_patient_examined
+from examined_by as ex 
+join employee as emp
+on ex.doctor_id = emp.employee_id
+group by  ex.doctor_id,emp.employee_name
+order by total_patient_examined desc ;
+
+--16
+--Patient’s card relief
+select patient_id,amount,card_relief,(amount - round((card_relief*amount)/100)) as total_payable_amount
+from bill
+where card_relief > 0;
+
+--17
+-- Driver who drives all vehicle 
+SELECT d.Driver_ID
+FROM Driven_by d
+GROUP BY d.Driver_ID
+HAVING COUNT(DISTINCT d.Vehicle_ID) = (
+    SELECT COUNT(*) FROM Vehicle
+);
+
+--18
+-- Get a donor's list whose blood group is O -ve , contact whose weight is above 70 kg in order
+-- to get a second time donation, check call only if the donation date is 3 months ago.
+SELECT 
+    d.DONOR_ID,
+    d.DONOR_NAME,
+    g.BLOOD_GROUP,
+    g.WEIGHT,
+    a.City,
+    a.State,
+    m.Mobile_No,
+    e.Email_ID,
+    MAX(d.DONATE_DATE) AS Last_Donation_Date
+FROM DONOR d
+JOIN GENERAL_INFORMATION g ON d.DONOR_ID = g.ID
+JOIN Address_Contact_Information a ON d.DONOR_ID = a.ID
+LEFT JOIN Mobile_No m ON d.DONOR_ID = m.ID
+LEFT JOIN Email_ID e ON d.DONOR_ID = e.ID
+GROUP BY d.DONOR_ID, d.DONOR_NAME, g.BLOOD_GROUP, g.WEIGHT, a.City, a.State, m.Mobile_No, e.Email_ID
+HAVING 
+    g.BLOOD_GROUP = 'O-' AND 
+    g.WEIGHT >50 AND 
+    MAX(d.DONATE_DATE) <= CURRENT_DATE - INTERVAL '3 MONTH';
+
+--19
+--total revenue
+select (
+(select sum (amount) from trustee)+
+(select sum (amount - round((card_relief*amount)/100)) from bill)-
+(select sum (salary) from employee ) -
+(select sum (price * quantity) from inventory)
+) as total_revenue;
+
+--20
+-- new born baby count 
+SELECT COUNT(*) AS Newborn_Baby_Count
+FROM Patient p
+JOIN Examined_By e ON p.Patient_ID = e.Patient_ID
+WHERE p.Date_Of_Birth = e.Admit_Date;
+
+--21
+-- doctor wise death count 
+SELECT 
+    e.DOCTOR_ID,
+    COUNT(*) AS Death_Count
+FROM 
+    Death_Record d
+JOIN 
+    Examined_By e ON d.Patient_ID = e.Patient_ID
+GROUP BY 
+    e.DOCTOR_ID;
